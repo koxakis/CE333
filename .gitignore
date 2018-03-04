@@ -2,6 +2,7 @@
 *.d
 
 .~lock.*
+~*.*
 
 # Object files
 *.o
