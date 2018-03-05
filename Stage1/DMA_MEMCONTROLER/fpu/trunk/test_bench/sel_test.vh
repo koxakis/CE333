@@ -23,9 +23,10 @@
 //// LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTIBILITY AND   ////
 //// FITNESS FOR A PARTICULAR PURPOSE.                           ////
 ////                                                             ////
-/////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 
-
+//initial
+//begin
 
 	if(fp_combo)
 	   begin
@@ -1024,3 +1025,4 @@
 		   end
 	   end
 	end
+//end

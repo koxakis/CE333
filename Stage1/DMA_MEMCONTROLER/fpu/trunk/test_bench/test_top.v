@@ -36,6 +36,7 @@
 
 
 `timescale 1ns / 100ps
+//`include "test_bench/sel_test.vh"
 
 module test;
 
@@ -50,7 +51,7 @@ reg	[31:0]	exp, exp1, exp2, exp3, exp4;
 reg	[31:0]	opa1, opa2, opa3, opa4;
 reg	[31:0]	opb1, opb2, opb3, opb4;
 reg	[2:0]	fpu_op, fpu_op1, fpu_op2, fpu_op3, fpu_op4, fpu_op5;
-reg	[3:0]	rmode, rmode1, rmode2, rmode3, rmode4, rmode5;
+reg	[3:0]	rmode, rmode1, rmode2, rmode3, rmode4, rmodtmeme5;
 reg		start, s1, s2, s3, s4;
 reg	[115:0]	tmem[0:500000];
 reg	[115:0]	tmp;
@@ -79,6 +80,12 @@ event		error_event;
 integer		error, vcount;
 
 always #50 clk = ~clk;
+
+initial
+	begin
+		$dumpfile ("fpu_graph.vcd");
+		$dumpvars; 
+	end
 
 initial
    begin
@@ -115,12 +122,18 @@ initial
 	fp_i2f   = 1;
 	fp_f2i   = 1;
 
+//	opa = 'd55;
+//	opb = 'd66;
+
 	test_sel   = 5'b11111;
 	test_rmode = 4'b1111;
 
 	@(posedge clk);
 
-`include "test_bench/sel_test.vh"
+//`include "test_bench/sel_test.vh"
+	$display("\nRunning Combo Test 1 ...\n");
+	$readmemh ("test_vectors/combo/fpu_combo1.hex", tmem);
+	run_test;
 
 	repeat (4)	@(posedge clk);
 	$display("\n\n");
@@ -250,7 +263,7 @@ always @(posedge clk)
 	rmode2 <= #1 rmode1;
 	rmode3 <= #1 rmode2;
 	rmode4 <= #1 rmode3;
-	rmode5 <= #1 rmode4;
+//	rmode5 <= #1 rmode4;
 	exc1 <= #1 exc;
 	exc2 <= #1 exc1;
 	exc3 <= #1 exc2;
@@ -358,7 +371,7 @@ always @(posedge clk)
 		$write("GOT:\t");	disp_fp(sum);
 		
 $display("\nThis rmode: %h fpop: %h; Previous: rmode: %h fpop: %h; Next: rmode: %h fpop: %h\n",
-rmode4, fpu_op4, rmode5, fpu_op5, rmode3, fpu_op3);
+rmode4, fpu_op4, fpu_op5, rmode3, fpu_op3);
 
 		$display("\n");
 		error = error + 1;
@@ -406,29 +419,3 @@ reg	[7:0]	exp;
 endtask
 
 endmodule
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
