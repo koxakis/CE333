@@ -57,6 +57,8 @@ initial begin
 	rst_n = 1;
 	#100
 	rst_n = 0;
+	mc_data_done = 0;
+	ctrl_data_address_in = 'b0;
 	ctrl_instruction = 'b0000000;
 	ctrl_valid_data = 1;
 	ctrl_valid_inst = 1;
@@ -68,8 +70,9 @@ initial begin
 	mc_cont_procc = 1;
 	#50
 	procc_done = 1;
-	#50
-	mc_data_done = 0;
+	#100
+	mc_data_done = 1;
+
 
 
 	#1000
