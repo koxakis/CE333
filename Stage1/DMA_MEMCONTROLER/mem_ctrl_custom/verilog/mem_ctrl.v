@@ -53,6 +53,8 @@ module mem_ctrl(
 	//Done proccessing state - Module has finished data proccessing and (by sending a proccessing done signal)
 	parameter DONE_PROC = 3'b100;
 
+    //States are mirroed from control unit and are fofilling their roles
+    //accoring to the states in there 
 	always @(posedge mc_clk or posedge mc_reset) begin
 		if (mc_reset) begin
 			mc_data_out <= 'b0;
