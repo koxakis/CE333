@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////
 //Module name: Core Control Module
-//File name: core_control.h
+//File name: core_control.v
 //Descreption: Provides control signals for memory controller and proccesing modules
 ////////////////////////////////////////////////////////////////////////////////////
 module core_control(
@@ -8,7 +8,7 @@ module core_control(
 	ctrl_reset,
 	ctrl_instruction,
 	ctrl_data_address_in,
-	mc_data_address_out,
+	ctrl_data_address_out,
 	ctrl_valid_inst,
 	ctrl_valid_data,
 	ctrl_last_data,
@@ -33,7 +33,7 @@ module core_control(
 
 	input mc_err, mc_cont_procc, procc_done, mc_data_done;
 
-	output reg [5:0] mc_data_address_out;
+	output reg [5:0] ctrl_data_address_out;
 	output reg mc_we;
 
 	//Data validity and existance in memory [HAS_DATA|VALID_DATA|HAS_DATA_R|VALID_DATA_R]
@@ -62,7 +62,7 @@ module core_control(
 			ctrl_data_contition <= 'b0;
 			mc_we <= 1'b0;
 			ctrl_state <= IDLE;
-			mc_data_address_out <= 'b0;
+			ctrl_data_address_out <= 'b0;
 		end else begin
 			case (ctrl_state)
 				/*Waits for valid_input and valid_inst signals from the outside world in order to start 
@@ -72,7 +72,7 @@ module core_control(
 					mc_we <= 1'b0;
 					if (ctrl_valid_data && ctrl_valid_inst) begin
 						mc_we = 1'b1;
-						mc_data_address_out <= ctrl_data_address_in;
+						ctrl_data_address_out <= ctrl_data_address_in;
 						ctrl_state <= STORE_DATA;
 					end
 				end
@@ -117,6 +117,7 @@ module core_control(
 					if (mc_cont_procc && !mc_data_done) begin
 						ctrl_state <= TRANS_DATA;
 					end else begin
+						ctrl_data_contition <= 4'b0000 ;
 						ctrl_state <= IDLE;
 					end
 				end
@@ -125,7 +126,7 @@ module core_control(
 					ctrl_data_contition <= 'b0;
 					mc_we <= 1'b0;
 					ctrl_state <= IDLE;
-					mc_data_address_out <= 'b0;
+					ctrl_data_address_out <= 'b0;
 				end
 			endcase
 		end

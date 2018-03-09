@@ -1,5 +1,5 @@
 `default_nettype none
-
+`timescale 1ns/10ps
 module tb_control;
 reg clk;
 reg rst_n;
@@ -54,6 +54,12 @@ end
 
 initial begin
 	clk = 1;
+	ctrl_valid_data = 0;
+	ctrl_instruction = 0;
+	ctrl_data_address_in = 0;
+	ctrl_valid_inst = 0;
+	mc_cont_procc = 0;
+	procc_done = 1;
 	rst_n = 1;
 	#100
 	rst_n = 0;
