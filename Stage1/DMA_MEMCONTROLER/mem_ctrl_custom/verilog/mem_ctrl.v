@@ -32,14 +32,7 @@ module mem_ctrl(
 
 	reg [3:0] mc_state;
 
-	single_port_ram ram_0
-	(
-		.mem_data_in(mem_data_in),
-		.mc_address_mem(mc_address_mem),
-		.mc_we(mc_we),
-		.clk(mc_clk),
-		.mem_data_out(mem_data_out)
-	);
+	//Memory module to be instansiated at top level as per archiecture 
 
 	//State definition 
 	//Idle state - waiting for input
