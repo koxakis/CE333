@@ -6,10 +6,10 @@ module single_port_ram(
 	mem_data_out
 );
 
-	input [31:0] mem_data_in,
-	input [5:0] mc_address_mem,
-	input mem_we, mem_clk,
-	output [31:0] mem_data_out
+	input [31:0] mem_data_in;
+	input [5:0] mc_address_mem;
+	input mem_we, mem_clk;
+	output [31:0] mem_data_out;
 
 	// Declare the RAM variable
 	reg [31:0] ram[63:0];
@@ -30,6 +30,6 @@ module single_port_ram(
 	// Continuous assignment implies read returns NEW data.
 	// This is the natural behavior of the TriMatrix memory
 	// blocks in Single Port mode.  
-	assign q = ram[addr_reg];
+	assign mem_data_out = ram[addr_reg];
 	
 endmodule

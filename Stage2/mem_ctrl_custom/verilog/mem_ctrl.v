@@ -21,18 +21,23 @@ module mem_ctrl(
 
 
 	input mc_clk, mc_reset;
-	input [6:0] mc_data_address_in;
+	input [5:0] mc_data_address_in;
 	input [31:0] mc_data_in, mem_data_out;
 	input [2:0] mc_data_contition;
-	input mc_we;
+	input mc_data_length;
 
-	output reg [31:0] mc_data_out, mem_data_in;
-	output reg [6:0] mc_address_mem;
-	output reg mc_err, mc_cont_procc, mc_data_done;
+	output reg [31:0] mc_data_out_opa, mc_data_out_opb, mem_data_in;
+	output reg [5:0] mc_address_mem;
+	output reg mc_data_done, mc_we;
+	output mc_done;
 
 	reg [2:0] mc_state;
 
-	reg trans_input_to_mem, trans_mem_to_reg;
+	reg trans_input_to_mem, trans_mem_to_reg, in_or_mem;
+	reg mc_done_in_to_mem, mc_done_mem_to_reg;
+	
+	reg ram_to_reg_address, ram_address;
+	reg mem_length;
 
 	//Memory module to be instansiated at top level as per archiecture 
 
@@ -43,13 +48,14 @@ module mem_ctrl(
 	parameter STORE_DATA = 2'b01;
 	//Transfer data state - Data is in memory and has to be transfered to the memory comtroller 
 	parameter TRANS_DATA = 2'b10;
+	//Prossessing data state
+	parameter PROCCESING = 2'b11;
 
 	//Assgign the apropriate signal to mc_done 
 	assign mc_done = (in_or_mem) ? mc_done_in_to_mem : mc_done_mem_to_reg;
 
 	always @(posedge mc_clk or posedge mc_reset) begin
 		if (mc_reset) begin
-			mc_data_out <= 'b0;
 			mem_data_in <= 'b0;
 			trans_input_to_mem <= 1'b0;
 			trans_mem_to_reg <= 1'b0;
@@ -81,14 +87,14 @@ module mem_ctrl(
 				begin
 					if (mc_data_contition == 3'b001) begin 
 						trans_mem_to_reg <= 1'b0;
-						mc_state <= PROSSESING;
+						mc_state <= PROCCESING;
 					end
 				end
-				PROSSESING:
+				PROCCESING:
 				begin
 					if (mc_data_contition == 3'b000) begin
 						in_or_mem <= 1'b0;
-						mc_state <= PROSSESING;
+						mc_state <= PROCCESING;
 					end else begin
 						if (mc_data_contition == 3'b010) begin
 							in_or_mem <= 1'b0;

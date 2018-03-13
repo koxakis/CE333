@@ -20,9 +20,6 @@ module core_control(
 
 	//Instruction input - instruction brakdown [OP_CODE]
 	input [2:0] ctrl_instruction;
-
-	//Data address to data
-	input [5:0] ctrl_data_address_in;
 	
 	//Valid data and inst input for module
 	input ctrl_valid_data, ctrl_valid_inst;
