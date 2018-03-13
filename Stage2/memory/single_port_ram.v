@@ -20,8 +20,8 @@ module single_port_ram(
 	always @ (posedge mem_clk)
 	begin
 	// Write
-		if (we)
-			ram[mc_address_mem] <= data;
+		if (mem_we)
+			ram[mc_address_mem] <= mem_data_in;
 		
 		addr_reg <= mc_address_mem;
 		

@@ -24,7 +24,7 @@ module mem_ctrl(
 	input [5:0] mc_data_address_in;
 	input [31:0] mc_data_in, mem_data_out;
 	input [2:0] mc_data_contition;
-	input mc_data_length;
+	input [5:0] mc_data_length;
 
 	output reg [31:0] mc_data_out_opa, mc_data_out_opb, mem_data_in;
 	output reg [5:0] mc_address_mem;

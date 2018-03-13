@@ -13,7 +13,7 @@ reg [2:0] mc_data_contition;
 reg mc_data_length;
 wire mc_done;
 wire mc_we;
-reg mc_data_done;
+wire mc_data_done;
 
 wire [5:0] mc_address_mem;
 wire [31:0] mem_data_in , mem_data_out;
@@ -46,12 +46,15 @@ localparam CLK_PERIOD = 10;
 always #(CLK_PERIOD/2) clk=~clk;
 
 initial begin
-	dumpfile("tb_system.vcd");
-	dumpvars(0, tb_system);
+	$dumpfile("tb_memoryctrl.vcd");
+	$dumpvars(0, tb_memoryctrl);
 end
 
 initial begin
-
+	clk = 1;
+	rst_n = 1;
+	#50;
+	rst_n = 0;
 end
 
 endmodule
