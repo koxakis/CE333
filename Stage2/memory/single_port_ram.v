@@ -1,3 +1,4 @@
+`timescale 1ns/10ps
 module single_port_ram(
 	mem_data_in,
 	mc_address_mem,

@@ -3,7 +3,6 @@
 //File name: core_control.v
 //Descreption: Provides control signals for memory controller and proccesing modules
 ////////////////////////////////////////////////////////////////////////////////////
-`timescale 1ns/10ps
 module core_control(
 	ctrl_clk,
 	ctrl_reset,
@@ -13,25 +12,23 @@ module core_control(
 	ctrl_data_in_size,
 	ctrl_data_contition,
 	mc_done,
-	mc_data_done,
 	mc_data_length,
-	procc_done,
-	procc_start
+	procc_done
 );
 
 	input ctrl_clk, ctrl_reset;
 
 	//Instruction input - instruction brakdown [OP_CODE]
 	input [2:0] ctrl_instruction;
-	input [5:0] ctrl_data_in_size;
 	
 	//Valid data and inst input for module
 	input ctrl_valid_data, ctrl_valid_inst;
-	output reg [5:0] mc_data_length;
+	input ctrl_data_length;
 
-	input wire mc_done, procc_done, mc_data_done;
+	input mc_done;
 
-	output reg procc_start;
+	output reg [5:0] ctrl_data_address_out;
+	output reg mc_we;
 
 	/*Valid Data location [Data in input|Data in memory|Data in reg]
 		No data at all 000
@@ -55,7 +52,6 @@ module core_control(
 	always @(posedge ctrl_clk or posedge ctrl_reset) begin
 		if (ctrl_reset == 1) begin
 			ctrl_data_contition <= 'b0;
-			procc_start <= 1'b0;
 			ctrl_state <= IDLE;
 		end else begin
 			case (ctrl_state)
@@ -64,7 +60,6 @@ module core_control(
 				IDLE:	
 				begin
 					if (ctrl_valid_data && ctrl_valid_inst) begin
-						mc_data_length <= ctrl_data_in_size;
 						ctrl_data_contition <= 3'b100;
 						ctrl_state <= STORE_DATA;
 					end
@@ -75,7 +70,7 @@ module core_control(
 				STORE_DATA:
 				begin
 					if (mc_done) begin
-						ctrl_data_contition <= 3'b010;
+						ctrl_data_contition <= 3'b010 ;
 						ctrl_state <= TRANS_DATA;
 					end
 				end
@@ -85,8 +80,7 @@ module core_control(
 				TRANS_DATA:
 				begin
 					if (mc_done) begin
-						procc_start <= 1'b1;
-						ctrl_data_contition <= 3'b001;
+						ctrl_data_contition <= 3'b001 ;
 						ctrl_state <= PROCCESING;
 					end
 				end
@@ -95,14 +89,12 @@ module core_control(
 					*/
 				PROCCESING:
 				begin
-					if ((procc_done) && (mc_data_done)) begin
+					if (procc_done && mc_data_done) begin
 						ctrl_data_contition <= 3'b000;
-						procc_start <= 1'b0;
 						ctrl_state <= IDLE;
 					end else begin
 						if (procc_done && !mc_data_done) begin
 							ctrl_data_contition <= 3'b010;
-							procc_start <= 1'b0;
 							ctrl_state <= TRANS_DATA;
 						end
 					end

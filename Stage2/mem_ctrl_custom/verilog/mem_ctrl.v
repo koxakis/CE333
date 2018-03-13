@@ -3,6 +3,7 @@
 //File name: mem_ctrl.v
 //Descreption: Provides control signals for memory modules 
 ////////////////////////////////////////////////////////////////////////////////////
+`timescale 1ns/10ps
 module mem_ctrl(
 	mc_clk,
 	mc_reset,
@@ -21,7 +22,6 @@ module mem_ctrl(
 
 
 	input mc_clk, mc_reset;
-	input [5:0] mc_data_address_in;
 	input [31:0] mc_data_in, mem_data_out;
 	input [2:0] mc_data_contition;
 	input [5:0] mc_data_length;
@@ -36,7 +36,7 @@ module mem_ctrl(
 	reg trans_input_to_mem, trans_mem_to_reg, in_or_mem;
 	reg mc_done_in_to_mem, mc_done_mem_to_reg;
 	
-	reg ram_to_reg_address, ram_address;
+	reg [5:0] ram_to_reg_address, ram_address;
 	reg mem_length;
 
 	//Memory module to be instansiated at top level as per archiecture 
@@ -50,6 +50,7 @@ module mem_ctrl(
 	parameter TRANS_DATA = 2'b10;
 	//Prossessing data state
 	parameter PROCCESING = 2'b11;
+	parameter REGISTER_LENGTH = 1'b1;
 
 	//Assgign the apropriate signal to mc_done 
 	assign mc_done = (in_or_mem) ? mc_done_in_to_mem : mc_done_mem_to_reg;
@@ -123,7 +124,8 @@ module mem_ctrl(
 				mc_done_mem_to_reg <= 1'b0;
 				ram_to_reg_address <= 'b0;
 			end else begin
-				if ((ram_to_reg_address == mc_data_length) || (ram_to_reg_address == mem_length)) begin
+				if (ram_to_reg_address == mem_length) begin
+					mc_data_done <= 1'b1;
 					mc_done_mem_to_reg <= 1'b1;
 					ram_to_reg_address <= 'b0;
 				end else begin
@@ -135,6 +137,7 @@ module mem_ctrl(
 					ram_to_reg_address <= ram_to_reg_address + 1'b1;
 					mc_address_mem <= ram_to_reg_address;
 					mc_data_out_opb <= mem_data_out;
+					mc_done_mem_to_reg <= 1'b1;
 				end
 			end		
 		end
