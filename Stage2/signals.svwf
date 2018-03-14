@@ -1,0 +1,152 @@
+
+#
+# Mnemonic Maps
+#
+mmap new -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+array unset createdGroup
+array set createdGroup {}
+set id [waveform add -label {CORE CONTROL} -comment {}]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.ctrl_clk}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.ctrl_data_contition[2:0]}]}
+	} ]]
+waveform format $id -radix %b
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.ctrl_data_in_size[5:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.ctrl_instruction[2:0]}]}
+	} ]]
+waveform format $id -radix %b
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.ctrl_reset}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.ctrl_state}]}
+	} ]]
+waveform format $id -radix %b
+waveform hierarchy collapse $id
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.ctrl_valid_data}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.ctrl_valid_inst}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.mc_data_done}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.mc_data_length[5:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.mc_done}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.procc_done}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_core_control_0.procc_start}]}
+	} ]]
+set id [waveform add -cdivider divider]
+set id [waveform add -label {MEM CONTROLLER} -comment {}]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_data_contition[2:0]}]}
+	} ]]
+waveform format $id -radix %b
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_data_done}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_data_in[31:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_data_length[5:0]}]}
+	} ]]
+waveform format $id -radix %d
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_data_out_opa[31:0]}]}
+	} ]]
+waveform format $id -radix %d
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_data_out_opb[31:0]}]}
+	} ]]
+waveform format $id -radix %d
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_done}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_done_in_to_mem}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_done_mem_to_reg}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_reset}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_state}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mc_we}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.mem_data_in[31:0]}]}
+	} ]]
+waveform format $id -radix %d
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.in_or_mem}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.ram_address[5:0]}]}
+	} ]]
+waveform format $id -radix %d
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.trans_input_to_mem}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_memctrl_0.trans_mem_to_reg}]}
+	} ]]
+set id [waveform add -cdivider divider]
+set id [waveform add -label RAM -comment {}]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_ram_0.mem_data_in[31:0]}]}
+	} ]]
+waveform format $id -radix %d
+waveform hierarchy collapse $id
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_ram_0.mem_we}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_ram_0.mc_address_mem_opa[5:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_ram_0.mc_address_mem_opb[5:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_ram_0.mem_data_in[31:0]}]}
+	} ]]
+waveform hierarchy collapse $id
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_ram_0.mem_data_out_opa[31:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_ram_0.mem_data_out_opb[31:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_ram_0.ram_opa[63:0]}]}
+	} ]]
+waveform hierarchy expand $id
+set id [waveform add -signals [subst  {
+	{[format {tb_partial_sys.dut_ram_0.ram_opb[63:0]}]}
+	} ]]
+waveform hierarchy expand $id
+
+waveform xview limits 998000ps 1000000ps

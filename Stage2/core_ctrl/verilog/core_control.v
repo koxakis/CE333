@@ -55,6 +55,7 @@ module core_control(
 	always @(posedge ctrl_clk or posedge ctrl_reset) begin
 		if (ctrl_reset == 1) begin
 			ctrl_data_contition <= 'b0;
+			mc_data_length <= 'b0;
 			procc_start <= 1'b0;
 			ctrl_state <= IDLE;
 		end else begin
@@ -90,9 +91,8 @@ module core_control(
 						ctrl_state <= PROCCESING;
 					end
 				end
-				/*Starts the proccessing unit and sends the data contition as [1111] and waits for a signal that 
-					indicates the data proccesing is complete.
-					*/
+				/*Starts the proccessing unit and sends the data contition as [001] and waits for a signal that 
+					indicates the data proccesing is complete.*/
 				PROCCESING:
 				begin
 					if ((procc_done) && (mc_data_done)) begin
