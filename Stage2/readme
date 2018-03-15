@@ -6,6 +6,7 @@ ToDo
 5) Produce a more comprahensive test case scenario
 6) Define Top-Level better 
 7) Update Report accortingly 
+8) Check if exesive handshacing is really nesesary 
 
 Things to consider
 1) Top down appoach in presentations
@@ -14,6 +15,7 @@ Things to consider
 3) Have better waveforms 
 	a.Have more than just simple waveform
 	b.Don't display usless data
+	c.If somthing is better to be presented with graphs ( e.g. excel ) use that
 4) Make the scope a more parallel aproach 
 5) Analize things further internally and know more stuff anout our unit
 	a.Have a more clear vision about the problem we are solving
