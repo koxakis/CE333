@@ -1,1 +1,20 @@
-tade
+ToDo 
+1) Add two more proccessing units 
+2) Deal with input registers 
+3) Fix minor bugs in proccessing stuff 
+4) Finilize the design
+5) Produce a more comprahensive test case scenario
+
+Things to consider
+1) Top down appoach in presentations
+2) Have a more minimalist style with les focus in text
+	a.Add table of contents in the middle of the presentation
+3) Have better waveforms 
+	a.Have more than just simple waveform
+	b.Don't display usless data
+4) Make the scope a more parallel aproach 
+5) Analize things further internally and know more stuff anout our unit
+	a.Have a more clear vision about the problem we are solving
+	b.Know the internal structure of our modules better 
+	c.Know the theory behind the modules and logic better 
+	d.Try to predict Sotos comments and or questions
