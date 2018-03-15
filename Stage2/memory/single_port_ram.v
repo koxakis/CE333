@@ -15,14 +15,14 @@ module single_port_ram(
 	mem_data_out_opb
 );
 
-	input [31:0] mem_data_in_opa, mem_data_in_opb;
-	output [31:0] mem_data_out_opa, mem_data_out_opb;
+	input [63:0] mem_data_in_opa, mem_data_in_opb;
+	output [63:0] mem_data_out_opa, mem_data_out_opb;
 	input mem_we, mem_clk;
 	input [5:0] mc_address_mem_opa, mc_address_mem_opb;
 
 	// Declare the RAM variable
-	reg [31:0] ram_opa[63:0];
-	reg [31:0] ram_opb[63:0];
+	reg [63:0] ram_opa[63:0];
+	reg [63:0] ram_opb[63:0];
 	
 	// Variable to hold the registered read address
 	reg [5:0] addr_reg_opa;
@@ -41,9 +41,7 @@ module single_port_ram(
 		
 	end
 		
-	// Continuous assignment implies read returns NEW data.
-	// This is the natural behavior of the TriMatrix memory
-	// blocks in Single Port mode.  
+	// Continuous assignment implies read returns NEW data.  
 	assign mem_data_out_opa = ram_opa[mc_address_mem_opa];
 	assign mem_data_out_opb = ram_opb[mc_address_mem_opb];
 	

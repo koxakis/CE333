@@ -15,6 +15,7 @@ module core_control(
 	mc_done,
 	mc_data_done,
 	mc_data_length,
+	procc_instruction,
 	procc_done,
 	procc_start
 );
@@ -29,7 +30,7 @@ module core_control(
 	input ctrl_valid_data, ctrl_valid_inst;
 	output reg [5:0] mc_data_length;
 
-	input wire mc_done, procc_done, mc_data_done;
+	input mc_done, procc_done, mc_data_done;
 
 	output reg procc_start;
 
@@ -39,6 +40,8 @@ module core_control(
 		Data in mem 010
 		Data in reg 001*/
 	output reg [2:0] ctrl_data_contition;
+
+	output reg [2:0] procc_instruction;
 
 	reg [1:0] ctrl_state;
 
@@ -87,6 +90,7 @@ module core_control(
 				begin
 					if (mc_done) begin
 						procc_start <= 1'b1;
+						procc_instruction <= ctrl_instruction;
 						ctrl_data_contition <= 3'b001;
 						ctrl_state <= PROCCESING;
 					end

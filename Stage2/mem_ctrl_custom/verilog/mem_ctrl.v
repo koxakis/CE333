@@ -26,18 +26,18 @@ module mem_ctrl(
 
 
 	input mc_clk, mc_reset;
-	input [31:0] mc_data_in_opa, mc_data_in_opb, mem_data_out_opa, mem_data_out_opb;
+	input [63:0] mc_data_in_opa, mc_data_in_opb, mem_data_out_opa, mem_data_out_opb;
 	input [2:0] mc_data_contition;
 	input [5:0] mc_data_length;
 
-	output reg [31:0] mc_data_out_opa, mc_data_out_opb, mem_data_in_opa, mem_data_in_opb;
+	output reg [63:0] mc_data_out_opa, mc_data_out_opb, mem_data_in_opa, mem_data_in_opb;
 	output reg [5:0] mc_address_mem_opa, mc_address_mem_opb;
 	output reg mc_data_done, mc_we;
 	output reg mc_done;
 
 	reg [2:0] mc_state;
 
-	reg trans_input_to_mem, trans_mem_to_reg, in_or_mem;
+	reg trans_input_to_mem, trans_mem_to_reg;
 	reg mc_done_in_to_mem, mc_done_mem_to_reg;
 	
 	reg [5:0] ram_to_reg_address_opa, ram_to_reg_address_opb, ram_address;
@@ -64,7 +64,6 @@ module mem_ctrl(
 			mem_data_in_opb <= 'b0;
 			trans_input_to_mem <= 1'b0;
 			trans_mem_to_reg <= 1'b0;
-			in_or_mem <= 1'b0;
 
 			mc_address_mem_opa <= 'b0;
 			mc_we <= 1'b0;
@@ -86,7 +85,6 @@ module mem_ctrl(
 				IDLE:
 				begin
 					if (mc_data_contition == 3'b100) begin
-						in_or_mem <= 1'b1;
 						trans_input_to_mem <= 1'b1;
 						mc_state <= STORE_DATA;  
 					end
@@ -104,7 +102,6 @@ module mem_ctrl(
 						trans_input_to_mem <= 1'b0;
 						trans_mem_to_reg <= 1'b1;
 						mc_we <= 1'b0;
-						in_or_mem <= 1'b0;
 						mc_state <= TRANS_DATA;
 					end else begin 
 						mc_done <= 1'b0;
@@ -128,6 +125,7 @@ module mem_ctrl(
 				begin
 					if (mc_data_contition == 3'b001) begin 
 						trans_mem_to_reg <= 1'b0;
+						mc_done <= 1'b0;
 						mc_state <= PROCCESING;
 					end else begin
 						if (ram_to_reg_address_opa == MEM_LENGTH) begin
@@ -156,11 +154,9 @@ module mem_ctrl(
 				PROCCESING:
 				begin
 					if (mc_data_contition == 3'b000) begin
-						in_or_mem <= 1'b0;
 						mc_state <= IDLE;
 					end else begin
 						if (mc_data_contition == 3'b010) begin
-							in_or_mem <= 1'b0;
 							trans_mem_to_reg <= 1'b1;
 							mc_state <= TRANS_DATA;
 						end

@@ -19,7 +19,7 @@ wire [5:0] data_length;
 wire mc_done;
 wire mc_we;
 wire mc_data_done;
-wire procc_done;
+reg procc_done;
 
 wire [5:0] mc_address_mem;
 reg [31:0] mc_data_in_opa, mc_data_in_opb ;
@@ -154,6 +154,36 @@ initial begin
 		mc_data_in_opb = test_numbers_data_b[test_values];
 		#10;
 	end
+	#20
+	procc_done = 1'b1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
+		#20
+	procc_done = 1;
 
 end
 
