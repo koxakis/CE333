@@ -41,11 +41,11 @@ always @(posedge clk or posedge reset) begin
 		test_numbers_data_a[0] <= 64'h11111111_22222222;
 		test_numbers_data_a[1] <= 64'h22222222_11111111;
 
-		test_numbers_data_a[2] <= 'd33333333;
-		test_numbers_data_a[3] <= 'd44444444;
+		test_numbers_data_a[2] <=  64'h33333333_22222222;
+		test_numbers_data_a[3] <=  64'h44444444_11111111;
 
-		test_numbers_data_a[4] <= 'd55555555;
-		test_numbers_data_a[5] <= 'd66666666;
+		test_numbers_data_a[4] <=  64'h55555555_22222222;
+		test_numbers_data_a[5] <=  64'h66666666_22222222;
 
 		test_numbers_data_a[6] <= 'd77777777;
 		test_numbers_data_a[7] <= 'd88888888;
@@ -67,11 +67,11 @@ always @(posedge clk or posedge reset) begin
 		test_numbers_data_b[0] <= 64'h11111111_22222222;
 		test_numbers_data_b[1] <= 64'h22222222_11111111;
 
-		test_numbers_data_b[2] <= 'd66633333;
-		test_numbers_data_b[3] <= 'd66644444;
+		test_numbers_data_b[2] <=  64'h11111111_22222222;
+		test_numbers_data_b[3] <=  64'h22222222_11111111;
 
-		test_numbers_data_b[4] <= 'd66655555;
-		test_numbers_data_b[5] <= 'd99966666;
+		test_numbers_data_b[4] <= 64'h11111111_22222222;
+		test_numbers_data_b[5] <= 64'h11111111_22222222;
 
 		test_numbers_data_b[6] <= 'd66677777;
 		test_numbers_data_b[7] <= 'd66688888;
@@ -97,7 +97,7 @@ initial begin
 	clk = 1;
 	valid_data = 1'b0;
 	valid_instruction = 1'b0;
-	data_size = 'd14;
+	data_size = 'd6;
 	reset = 1;
 	#50;
 	instruction = 3'b000;
@@ -105,7 +105,7 @@ initial begin
 	valid_data = 1'b1;
 	valid_instruction = 1'b1;
 	#20;
-	for (test_values = 0; test_values < 14; test_values = test_values + 1) begin
+	for (test_values = 0; test_values < 6; test_values = test_values + 1) begin
 		mc_data_in_opa = test_numbers_data_a[test_values];
 		mc_data_in_opb = test_numbers_data_b[test_values];
 		#10;
