@@ -8,10 +8,10 @@ reg valid_data;
 reg valid_instruction;
 reg [2:0] instruction;
 reg [5:0] data_size;
-reg [63:0] mc_data_in_opa, mc_data_in_opb;
+reg [127:0] mc_data_in_opa, mc_data_in_opb;
 
-reg [63:0] test_numbers_data_a [63:0] ;
-reg [63:0] test_numbers_data_b [63:0] ;
+reg [127:0] test_numbers_data_a [63:0] ;
+reg [127:0] test_numbers_data_b [63:0] ;
 
 reg [3:0] test_values;
 
@@ -38,17 +38,17 @@ always #(CLK_PERIOD/2) clk=~clk;
 
 always @(posedge clk or posedge reset) begin
 	if (reset) begin
-		test_numbers_data_a[0] <= 64'h11111111_22222222;
-		test_numbers_data_a[1] <= 64'h22222222_11111111;
+		test_numbers_data_a[0] <= 128'h11111111_22222222_55555555_66666666;
+		test_numbers_data_a[1] <= 128'h22222222_11111111_55555555_66666666;
 
-		test_numbers_data_a[2] <=  64'h33333333_22222222;
-		test_numbers_data_a[3] <=  64'h44444444_11111111;
+		test_numbers_data_a[2] <= 128'h33333333_22222222_11111111_22222222;
+		test_numbers_data_a[3] <= 128'h44444444_11111111_11111111_22222222;
 
-		test_numbers_data_a[4] <=  64'h55555555_22222222;
-		test_numbers_data_a[5] <=  64'h66666666_22222222;
+		test_numbers_data_a[4] <= 128'h55555555_22222222_44444444_44444444;
+		test_numbers_data_a[5] <= 128'h66666666_22222222_44444444_44444444;
 
-		test_numbers_data_a[6] <= 'd77777777;
-		test_numbers_data_a[7] <= 'd88888888;
+		test_numbers_data_a[6] <= 128'h55555555_22222222_44444444_44444444;
+		test_numbers_data_a[7] <= 128'h33333333_22222222_11111111_22222222;
 
 		test_numbers_data_a[8] <= 'd99999999;
 		test_numbers_data_a[9] <= 'd10101010;
@@ -64,17 +64,17 @@ end
 
 always @(posedge clk or posedge reset) begin
 	if (reset) begin
-		test_numbers_data_b[0] <= 64'h11111111_22222222;
-		test_numbers_data_b[1] <= 64'h22222222_11111111;
+		test_numbers_data_b[0] <= 128'h11111111_22222222_33333333_44444444;
+		test_numbers_data_b[1] <= 128'h22222222_11111111_33333333_44444444;
 
-		test_numbers_data_b[2] <=  64'h11111111_22222222;
-		test_numbers_data_b[3] <=  64'h22222222_11111111;
+		test_numbers_data_b[2] <= 128'h11111111_22222222_5555555_22222222;
+		test_numbers_data_b[3] <= 128'h22222222_11111111_5555555_22222222;
 
-		test_numbers_data_b[4] <= 64'h11111111_22222222;
-		test_numbers_data_b[5] <= 64'h11111111_22222222;
+		test_numbers_data_b[4] <= 128'h11111111_22222222_99999999_66666666;
+		test_numbers_data_b[5] <= 128'h11111111_22222222_99999999_66666666;
 
-		test_numbers_data_b[6] <= 'd66677777;
-		test_numbers_data_b[7] <= 'd66688888;
+		test_numbers_data_b[6] <= 128'h33333333_22222222_11111111_22222222;
+		test_numbers_data_b[7] <= 128'h11111111_22222222_33333333_44444444;
 
 		test_numbers_data_b[8] <= 'd66699999;
 		test_numbers_data_b[9] <= 'd66601010;
@@ -111,6 +111,8 @@ initial begin
 		#10;
 	end
 
+    #10000
+    $finish;
 end
 
 endmodule

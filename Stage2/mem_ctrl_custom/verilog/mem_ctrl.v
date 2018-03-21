@@ -26,11 +26,11 @@ module mem_ctrl(
 
 
 	input mc_clk, mc_reset;
-	input [63:0] mc_data_in_opa, mc_data_in_opb, mem_data_out_opa, mem_data_out_opb;
+	input [127:0] mc_data_in_opa, mc_data_in_opb, mem_data_out_opa, mem_data_out_opb;
 	input [2:0] mc_data_contition;
 	input [5:0] mc_data_length;
 
-	output reg [63:0] mc_data_out_opa, mc_data_out_opb, mem_data_in_opa, mem_data_in_opb;
+	output reg [127:0] mc_data_out_opa, mc_data_out_opb, mem_data_in_opa, mem_data_in_opb;
 	output reg [5:0] mc_address_mem_opa, mc_address_mem_opb;
 	output reg mc_data_done, mc_we;
 	output reg mc_done;
@@ -84,7 +84,9 @@ module mem_ctrl(
 					data in the MC module input */
 				IDLE:
 				begin
+					mc_data_done <= 1'b1;
 					if (mc_data_contition == 3'b100) begin
+						mc_data_done <= 1'b0;
 						trans_input_to_mem <= 1'b1;
 						mc_state <= STORE_DATA;  
 					end
@@ -128,7 +130,7 @@ module mem_ctrl(
 						mc_done <= 1'b0;
 						mc_state <= PROCCESING;
 					end else begin
-						if (ram_to_reg_address_opa == MEM_LENGTH) begin
+						if ((ram_to_reg_address_opa == mc_data_length) || (ram_to_reg_address_opa == MEM_LENGTH)) begin
 							mc_data_done <= 1'b1;
 							mc_done <= 1'b1;
 							ram_to_reg_address_opa <= 'b0;

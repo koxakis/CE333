@@ -99,7 +99,7 @@ module core_control(
 					indicates the data proccesing is complete.*/
 				PROCCESING:
 				begin
-					if ((procc_done) && (mc_data_done)) begin
+					if (mc_data_done) begin
 						ctrl_data_contition <= 3'b000;
 						procc_start <= 1'b0;
 						ctrl_state <= IDLE;

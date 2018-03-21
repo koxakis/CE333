@@ -16,7 +16,11 @@ module simd_top_level(
 	out_procc0,
 	out_extra_procc0,
 	out_procc1,
-	out_extra_procc1
+	out_extra_procc1,
+	out_procc2,
+	out_extra_procc2,
+	out_procc3,
+	out_extra_procc3
 );
 
 	input clk, reset;
@@ -27,20 +31,22 @@ module simd_top_level(
 	input [5:0] data_size;
 
 	output [31:0] out_procc0, out_extra_procc0, out_procc1, out_extra_procc1;
+	output [31:0] out_procc2, out_extra_procc2, out_procc3 ,out_extra_procc3;
 
 	wire [5:0] mc_address_mem_opa_w, mc_address_mem_opb_w;
-	wire [63:0] mc_data_out_opa_w, mc_data_out_opb_w, mem_data_in_opa_w, mem_data_in_opb_w;
+	wire [127:0] mc_data_out_opa_w, mc_data_out_opb_w, mem_data_in_opa_w, mem_data_in_opb_w;
 
 	wire [5:0] mc_address_mem;
-	input [63:0] mc_data_in_opa, mc_data_in_opb ;
-	wire [63:0] mc_data_out_opa, mc_data_out_opb;
+	input [127:0] mc_data_in_opa, mc_data_in_opb ;
+	wire [127:0] mc_data_out_opa, mc_data_out_opb;
 	wire [5:0] ctrl_data_in_size, data_length;
 	wire [2:0] data_contition;
 
 	wire [31:0] inA_procc0, inB_procc0, inA_procc1, inB_procc1, result, extra_result;
+	wire [31:0] inA_procc2, inA_procc3, inB_procc2, inB_procc3;
 	wire [2:0] opcode, procc_instruction;
 
-	wire procc_0_done, procc_1_done;
+	wire procc_0_done, procc_1_done, procc_2_done, procc_3_done;
 
 
 	mem_ctrl dut_memctrl_0(
@@ -91,13 +97,21 @@ module simd_top_level(
 	);
 
 
-	assign procc_done = procc_0_done & procc_1_done;
+	assign procc_done = procc_0_done & procc_1_done & procc_2_done & procc_3_done;
 
-	assign inA_procc0 = mc_data_out_opa_w[63:32];
-	assign inB_procc0 = mc_data_out_opb_w[63:32];
+	//Add 01 and 02 proccessing units and increase the input data from 64 to 128 bits 
+	assign inA_procc0 = mc_data_out_opa_w[127:96];
+	assign inB_procc0 = mc_data_out_opb_w[127:96];
 
-	assign inA_procc1 = mc_data_out_opa_w[31:0];
-	assign inB_procc1 = mc_data_out_opb_w[31:0];
+	assign inA_procc1 = mc_data_out_opa_w[95:64];
+	assign inB_procc1 = mc_data_out_opb_w[95:64];
+
+	assign inA_procc2 = mc_data_out_opa_w[63:32];
+	assign inB_procc2 = mc_data_out_opb_w[63:32];
+
+	assign inA_procc3 = mc_data_out_opa_w[31:0];
+	assign inB_procc3 = mc_data_out_opb_w[31:0];
+
 
 	alu dut_alu_0(
 		.clk(clk),
@@ -121,6 +135,30 @@ module simd_top_level(
 		.zero(zero),
 		.PStart(procc_start),
 		.PDone(procc_1_done)
+	);
+
+	alu dut_alu_2(
+		.clk(clk),
+		.inA(inA_procc2),
+		.inB(inB_procc2),
+		.opcode(procc_instruction),
+		.result(out_procc2),
+		.extra_result(out_extra_procc2),
+		.zero(zero),
+		.PStart(procc_start),
+		.PDone(procc_2_done)
+	);
+
+	alu dut_alu_3(
+		.clk(clk),
+		.inA(inA_procc3),
+		.inB(inB_procc3),
+		.opcode(procc_instruction),
+		.result(out_procc3),
+		.extra_result(out_extra_procc3),
+		.zero(zero),
+		.PStart(procc_start),
+		.PDone(procc_3_done)
 	);
 
 endmodule // simd_top_level
