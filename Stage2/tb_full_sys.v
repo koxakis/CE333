@@ -50,14 +50,14 @@ always @(posedge clk or posedge reset) begin
 		test_numbers_data_a[6] <= 128'h55555555_22222222_44444444_44444444;
 		test_numbers_data_a[7] <= 128'h33333333_22222222_11111111_22222222;
 
-		test_numbers_data_a[8] <= 'd99999999;
-		test_numbers_data_a[9] <= 'd10101010;
+		test_numbers_data_a[8] <= 128'h12345678_87654321_01234567_76543210;
+		test_numbers_data_a[9] <= 128'h12345678_87654321_01234567_76543210;
 
-		test_numbers_data_a[10] <= 'd1313131;
-		test_numbers_data_a[11] <= 'd1414141;
+		test_numbers_data_a[10] <= 128'h99999999_99999999_99999999_99999999;
+		test_numbers_data_a[11] <= 128'h00000001_00000001_00000001_00000001;
 
-		test_numbers_data_a[12] <= 'd1515151;
-		test_numbers_data_a[13] <= 'd1717171;	
+		test_numbers_data_a[12] <= 128'h12378965_32165498_12345678_98765438;
+		test_numbers_data_a[13] <= 128'h99988877_33322211_51515151_46798548;	
 		
 	end
 end
@@ -76,14 +76,14 @@ always @(posedge clk or posedge reset) begin
 		test_numbers_data_b[6] <= 128'h33333333_22222222_11111111_22222222;
 		test_numbers_data_b[7] <= 128'h11111111_22222222_33333333_44444444;
 
-		test_numbers_data_b[8] <= 'd66699999;
-		test_numbers_data_b[9] <= 'd66601010;
+		test_numbers_data_b[8] <= 128'h10293847_56473829_12345678_83291846;
+		test_numbers_data_b[9] <= 128'h21435465_98786756_13847384_38424849;
 
-		test_numbers_data_b[10] <= 'd6613131;
-		test_numbers_data_b[11] <= 'd6614141;
+		test_numbers_data_b[10] <= 128'h00000001_00000001_00000001_00000001;
+		test_numbers_data_b[11] <= 128'h99999999_99999999_99999999_99999999;
 
-		test_numbers_data_b[12] <= 'd6615151;
-		test_numbers_data_b[13] <= 'd6617171;	
+		test_numbers_data_b[12] <= 128'h12345678_87654321_01234567_76543210;
+		test_numbers_data_b[13] <= 128'h12345678_87654321_01234567_76543210;	
 		
 	end
 end
@@ -97,7 +97,7 @@ initial begin
 	clk = 1;
 	valid_data = 1'b0;
 	valid_instruction = 1'b0;
-	data_size = 'd6;
+	data_size = 'd13;
 	reset = 1;
 	#50;
 	instruction = 3'b000;
@@ -105,7 +105,7 @@ initial begin
 	valid_data = 1'b1;
 	valid_instruction = 1'b1;
 	#20;
-	for (test_values = 0; test_values < 6; test_values = test_values + 1) begin
+	for (test_values = 0; test_values < 14; test_values = test_values + 1) begin
 		mc_data_in_opa = test_numbers_data_a[test_values];
 		mc_data_in_opb = test_numbers_data_b[test_values];
 		#10;
