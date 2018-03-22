@@ -53,7 +53,7 @@ always @(posedge clk or posedge reset) begin
 		test_numbers_data_a[8] <= 128'h12345678_87654321_01234567_76543210;
 		test_numbers_data_a[9] <= 128'h12345678_87654321_01234567_76543210;
 
-		test_numbers_data_a[10] <= 128'h99999999_99999999_99999999_99999999;
+		test_numbers_data_a[10] <= 128'hffffffff_ffffffff_ffffffff_ffffffff;
 		test_numbers_data_a[11] <= 128'h00000001_00000001_00000001_00000001;
 
 		test_numbers_data_a[12] <= 128'h12378965_32165498_12345678_98765438;

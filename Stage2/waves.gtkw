@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
-[*] Wed Mar 21 17:11:12 2018
+[*] Thu Mar 22 15:39:33 2018
 [*]
 [dumpfile] "/home/nikolas/Git_Repos/CE333/Stage2/tb_full_sys.vcd"
-[dumpfile_mtime] "Wed Mar 21 16:48:27 2018"
-[dumpfile_size] 4444764
+[dumpfile_mtime] "Thu Mar 22 15:31:38 2018"
+[dumpfile_size] 2118010
 [savefile] "/home/nikolas/Git_Repos/CE333/Stage2/waves.gtkw"
-[timestart] 444600
+[timestart] 419200
 [size] 1920 1033
 [pos] -451 -197
-*-15.468079 605700 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-14.468079 590000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_full_sys.
 [treeopen] tb_full_sys.dut_simd.
 [sst_width] 204
@@ -25,12 +25,14 @@ tb_full_sys.data_size[5:0]
 tb_full_sys.instruction[2:0]
 @22
 tb_full_sys.out_extra_procc0[31:0]
-tb_full_sys.out_extra_procc1[31:0]
-tb_full_sys.dut_simd.out_extra_procc2[31:0]
-tb_full_sys.dut_simd.out_extra_procc3[31:0]
 tb_full_sys.out_procc0[31:0]
+tb_full_sys.out_extra_procc1[31:0]
 tb_full_sys.out_procc1[31:0]
+tb_full_sys.dut_simd.out_extra_procc2[31:0]
+@23
 tb_full_sys.dut_simd.out_procc2[31:0]
+@22
+tb_full_sys.dut_simd.out_extra_procc3[31:0]
 tb_full_sys.dut_simd.out_procc3[31:0]
 tb_full_sys.test_values[3:0]
 @28
@@ -58,15 +60,12 @@ tb_full_sys.dut_simd.inB_procc3[31:0]
 @200
 -Memory controller
 @28
-tb_full_sys.dut_simd.dut_memctrl_0.mc_state[2:0]
 tb_full_sys.dut_simd.dut_core_control_0.mc_data_done
 @200
 -Core control
 @28
 tb_full_sys.dut_simd.dut_core_control_0.procc_done
-@29
 tb_full_sys.dut_simd.dut_core_control_0.mc_done
-@28
 tb_full_sys.dut_simd.dut_core_control_0.ctrl_data_contition[2:0]
 @22
 tb_full_sys.dut_simd.dut_memctrl_0.ram_address[5:0]
