@@ -16,7 +16,7 @@ module single_port_ram(
 );
 
 	input [127:0] mem_data_in_opa, mem_data_in_opb;
-	output [127:0] mem_data_out_opa, mem_data_out_opb;
+	output reg [127:0] mem_data_out_opa, mem_data_out_opb;
 	input mem_we, mem_clk;
 	input [5:0] mc_address_mem_opa, mc_address_mem_opb;
 
@@ -38,11 +38,15 @@ module single_port_ram(
 
 		//addr_reg_opa <= mc_address_mem_opa;
 		//addr_reg_opb <= mc_address_mem_opb;
+		mem_data_out_opa <= ram_opa[mc_address_mem_opa];
+		mem_data_out_opb <= ram_opb[mc_address_mem_opb];
 		
 	end
 		
 	// Continuous assignment implies read returns NEW data.  
-	assign mem_data_out_opa = ram_opa[mc_address_mem_opa];
-	assign mem_data_out_opb = ram_opb[mc_address_mem_opb];
+	//assign mem_data_out_opa = ram_opa[mc_address_mem_opa];
+	//assign mem_data_out_opa = ram_opa[addr_reg_opa];
+	//assign mem_data_out_opb = ram_opb[mc_address_mem_opb];
+	//assign mem_data_out_opb = ram_opb[addr_reg_opb];
 	
 endmodule

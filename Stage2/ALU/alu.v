@@ -37,12 +37,15 @@ module alu(
 
     always @(posedge clk)
     begin
-    
-        inA_Reg <= inA;
-        inB_Reg <= inB;
-        ProcConditon_reg <= PStart;
-        opcode_reg <= opcode;
-    
+		if (PStart) begin
+	    	inA_Reg <= inA;
+        	inB_Reg <= inB;
+        	ProcConditon_reg <= PStart;
+        	opcode_reg <= opcode;
+		end else begin
+	     	ProcConditon_reg <= 1'b0;
+        	opcode_reg <= opcode;
+		end
     
     end
     

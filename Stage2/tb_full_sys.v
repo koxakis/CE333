@@ -100,7 +100,7 @@ initial begin
 	data_size = 'd13;
 	reset = 1;
 	#50;
-	instruction = 3'b000;
+	instruction = 3'b101;
 	reset = 0;
 	valid_data = 1'b1;
 	valid_instruction = 1'b1;

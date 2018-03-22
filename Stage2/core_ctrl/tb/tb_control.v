@@ -6,10 +6,9 @@ reg rst_n;
 
 
 //Instruction input - instruction brakdown [FPU_OP|ROUND_MODE]
-reg [4:0] ctrl_instruction;
+reg [2:0] ctrl_instruction;
 
-//Data address to data
-reg [5:0] ctrl_data_address_in;
+
 	
 //Valid data and inst input for module
 reg ctrl_valid_data, ctrl_valid_inst, ctrl_last_data;
@@ -31,17 +30,16 @@ core_control DUT
 	.ctrl_clk(clk),
 	.ctrl_reset(rst_n),
 	.ctrl_instruction(ctrl_instruction),
-	.ctrl_data_address_in(ctrl_data_address_in),
-	.mc_data_address_out(mc_data_address_out),
 	.ctrl_valid_inst(ctrl_valid_inst),
 	.ctrl_valid_data(ctrl_valid_data),
-	.ctrl_last_data(ctrl_last_data),
-	.ctrl_data_contition(ctrl_data_contition),
-	.mc_err(mc_err),
-	.mc_cont_procc(mc_cont_procc),
-	.mc_we(mc_we),
+	.ctrl_data_in_size(data_size),
+	.ctrl_data_contition(data_contition),
+	.mc_done(mc_done),
+	.mc_data_done(mc_data_done),
+	.mc_data_length(data_length),
+	.procc_instruction(procc_instruction),
 	.procc_done(procc_done),
-	.mc_data_done(mc_data_done)
+	.procc_start(procc_start)
 );
 
 localparam CLK_PERIOD = 10;
@@ -56,7 +54,6 @@ initial begin
 	clk = 1;
 	ctrl_valid_data = 0;
 	ctrl_instruction = 0;
-	ctrl_data_address_in = 0;
 	ctrl_valid_inst = 0;
 	mc_cont_procc = 0;
 	procc_done = 1;
@@ -64,8 +61,7 @@ initial begin
 	#100
 	rst_n = 0;
 	mc_data_done = 0;
-	ctrl_data_address_in = 'b0;
-	ctrl_instruction = 'b0000000;
+	ctrl_instruction = 'b000;
 	ctrl_valid_data = 1;
 	ctrl_valid_inst = 1;
 	#50

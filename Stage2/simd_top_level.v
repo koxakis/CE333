@@ -99,7 +99,10 @@ module simd_top_level(
 
 	assign procc_done = procc_0_done & procc_1_done & procc_2_done & procc_3_done;
 
-	//Add 01 and 02 proccessing units and increase the input data from 64 to 128 bits 
+	/* Data from input are seperated in 32 bit numbers for opa and opb respectivly
+		from MSB to LSB of the 128 bit input these 32bit numbers are for
+		procc0, procc1, procc2, procc3
+		*/
 	assign inA_procc0 = mc_data_out_opa_w[127:96];
 	assign inB_procc0 = mc_data_out_opb_w[127:96];
 
