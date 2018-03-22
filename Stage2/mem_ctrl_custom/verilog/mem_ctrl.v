@@ -35,7 +35,7 @@ module mem_ctrl(
 	output reg mc_data_done, mc_we;
 	output reg mc_done;
 
-	reg [2:0] mc_state;
+	reg [1:0] mc_state;
 
 	reg trans_input_to_mem, trans_mem_to_reg;
 	reg mc_done_in_to_mem, mc_done_mem_to_reg;

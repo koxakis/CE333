@@ -104,7 +104,7 @@ module core_control(
 						procc_start <= 1'b0;
 						ctrl_state <= IDLE;
 					end else begin
-						if (procc_done && !mc_data_done) begin
+						if (procc_done ) begin
 							ctrl_data_contition <= 3'b010;
 							procc_start <= 1'b0;
 							ctrl_state <= TRANS_DATA;

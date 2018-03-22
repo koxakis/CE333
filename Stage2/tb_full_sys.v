@@ -110,6 +110,7 @@ initial begin
 		mc_data_in_opb = test_numbers_data_b[test_values];
 		#10;
 	end
+	valid_data = 1'b0;
 
     #10000
     $finish;
