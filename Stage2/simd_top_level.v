@@ -48,6 +48,8 @@ module simd_top_level(
 
 	wire procc_0_done, procc_1_done, procc_2_done, procc_3_done;
 
+	wire mc_done, mc_we, mc_data_done, procc_done, procc_start, zero;
+
 
 	mem_ctrl dut_memctrl_0(
 		.mc_clk(clk),

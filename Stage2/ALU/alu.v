@@ -35,6 +35,8 @@ module alu(
     reg [2:0] opcode_reg;
     reg ProcConditon_reg;
 
+	wire o1, o2, xout;
+
     always @(posedge clk)
     begin
 		if (PStart) begin
