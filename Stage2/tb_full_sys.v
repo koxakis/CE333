@@ -16,6 +16,7 @@ reg [127:0] test_numbers_data_b [63:0] ;
 reg [3:0] test_values;
 
 wire [31:0] out_procc0, out_procc1, out_extra_procc0, out_extra_procc1;
+wire [31:0] out_procc2, out_procc3, out_extra_procc2, out_extra_procc3;
 
 simd_top_level dut_simd(
 	.clk(clk),
@@ -29,7 +30,11 @@ simd_top_level dut_simd(
 	.out_procc0(out_procc0),
 	.out_extra_procc0(out_extra_procc0),
 	.out_procc1(out_procc1),
-	.out_extra_procc1(out_extra_procc1)
+	.out_extra_procc1(out_extra_procc1),
+	.out_procc2(out_procc2),
+	.out_extra_procc2(out_extra_procc2),
+	.out_procc3(out_procc3),
+	.out_extra_procc3(out_extra_procc3)
 );
 
 
