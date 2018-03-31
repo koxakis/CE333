@@ -61,6 +61,7 @@ module core_control(
 			mc_data_length <= 'b0;
 			procc_start <= 1'b0;
 			ctrl_state <= IDLE;
+			procc_instruction <= 'b0;
 		end else begin
 			case (ctrl_state)
 				/*Waits for valid_input and valid_inst signals from the outside world in order to start 

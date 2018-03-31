@@ -36,9 +36,6 @@ module mem_ctrl(
 	output reg mc_done;
 
 	reg [1:0] mc_state;
-
-	reg trans_input_to_mem, trans_mem_to_reg;
-	reg mc_done_in_to_mem, mc_done_mem_to_reg;
 	
 	reg [5:0] ram_to_reg_address_opa, ram_to_reg_address_opb, ram_address;
 
@@ -62,20 +59,17 @@ module mem_ctrl(
 		if (mc_reset) begin
 			mem_data_in_opa <= 'b0;
 			mem_data_in_opb <= 'b0;
-			trans_input_to_mem <= 1'b0;
-			trans_mem_to_reg <= 1'b0;
 
 			mc_address_mem_opa <= 'b0;
 			mc_we <= 1'b0;
-			mc_done_in_to_mem <= 1'b0;
 			ram_address <= 'b0;
 			mc_state <= IDLE;
+			mc_done <= 1'b0;
 
 			mc_address_mem_opa <= 'b0;
 			mc_data_done <= 1'b0;
 			mc_data_out_opa <= 'b0;
 			mc_data_out_opb <= 'b0;
-			mc_done_mem_to_reg <= 1'b0;
 			ram_to_reg_address_opa <= 'b0;
 			ram_to_reg_address_opb <= 'b0;
 		end else begin
@@ -85,9 +79,9 @@ module mem_ctrl(
 				IDLE:
 				begin
 					mc_data_done <= 1'b1;
+					mc_done <= 1'b0;
 					if (mc_data_contition == 3'b100) begin
 						mc_data_done <= 1'b0;
-						trans_input_to_mem <= 1'b1;
 						mc_state <= STORE_DATA;  
 					end
 				end
@@ -101,8 +95,6 @@ module mem_ctrl(
 						contition signal*/
 					if ((mc_data_contition == 3'b010) || (mc_done)) begin
 						mc_done <= 1'b0;
-						trans_input_to_mem <= 1'b0;
-						trans_mem_to_reg <= 1'b1;
 						mc_we <= 1'b0;
 						mc_state <= TRANS_DATA;
 					end else begin 
@@ -126,7 +118,6 @@ module mem_ctrl(
 				TRANS_DATA:
 				begin
 					if (mc_data_contition == 3'b001) begin 
-						trans_mem_to_reg <= 1'b0;
 						mc_done <= 1'b0;
 						mc_state <= PROCCESING;
 					end else begin
@@ -159,7 +150,6 @@ module mem_ctrl(
 						mc_state <= IDLE;
 					end else begin
 						if (mc_data_contition == 3'b010) begin
-							trans_mem_to_reg <= 1'b1;
 							mc_state <= TRANS_DATA;
 						end
 					end
