@@ -129,12 +129,13 @@ module mem_ctrl(
 						end else begin
 							//mc_done <= 1'b0;
 							//Send the operant opa
-							mc_address_mem_opa <= ram_to_reg_address_opa;
-							mc_data_out_opa <= mem_data_out_opa;
-							mc_address_mem_opb <= ram_to_reg_address_opb;
-							mc_data_out_opb <= mem_data_out_opb;
-							//Send the operant opb
 							if (!mc_done) begin
+								mc_address_mem_opa <= ram_to_reg_address_opa;
+								mc_data_out_opa <= mem_data_out_opa;
+								mc_address_mem_opb <= ram_to_reg_address_opb;
+								mc_data_out_opb <= mem_data_out_opb;
+							//Send the operant opb
+
 								ram_to_reg_address_opa <= ram_to_reg_address_opa + 1'b1;
 								ram_to_reg_address_opb <= ram_to_reg_address_opb + 1'b1;
 							end
