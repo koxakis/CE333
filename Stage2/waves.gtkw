@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
-[*] Thu Mar 22 16:37:58 2018
+[*] Sun Apr  1 08:38:12 2018
 [*]
 [dumpfile] "/home/nikolas/Git_Repos/CE333/Stage2/tb_full_sys.vcd"
-[dumpfile_mtime] "Thu Mar 22 16:34:40 2018"
-[dumpfile_size] 2227791
+[dumpfile_mtime] "Sun Apr  1 08:33:24 2018"
+[dumpfile_size] 1113469
 [savefile] "/home/nikolas/Git_Repos/CE333/Stage2/waves.gtkw"
-[timestart] 183800
-[size] 1920 1033
-[pos] -451 -197
-*-14.468079 230000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[timestart] 0
+[size] 1280 1001
+[pos] -131 -193
+*-19.468079 230000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb_full_sys.
 [treeopen] tb_full_sys.dut_simd.
 [sst_width] 204
@@ -58,19 +58,24 @@ tb_full_sys.dut_simd.inB_procc3[31:0]
 @200
 -Memory controller
 @28
+tb_full_sys.dut_simd.dut_memctrl_0.mc_state[1:0]
+tb_full_sys.dut_simd.dut_memctrl_0.mc_done
 tb_full_sys.dut_simd.dut_core_control_0.mc_data_done
+@24
+tb_full_sys.dut_simd.dut_memctrl_0.ram_to_reg_address_opb[5:0]
+tb_full_sys.dut_simd.dut_memctrl_0.ram_to_reg_address_opa[5:0]
+@23
+tb_full_sys.dut_simd.dut_memctrl_0.ram_address[5:0]
 @200
 -Core control
-@29
-tb_full_sys.dut_simd.dut_core_control_0.procc_start
 @28
+tb_full_sys.dut_simd.dut_core_control_0.procc_start
 tb_full_sys.dut_simd.dut_core_control_0.procc_done
 tb_full_sys.dut_simd.dut_core_control_0.mc_done
 tb_full_sys.dut_simd.dut_core_control_0.ctrl_data_contition[2:0]
 @22
 tb_full_sys.dut_simd.dut_memctrl_0.ram_address[5:0]
-@24
-tb_full_sys.dut_simd.dut_memctrl_0.ram_to_reg_address_opa[5:0]
-tb_full_sys.dut_simd.dut_memctrl_0.ram_to_reg_address_opb[5:0]
+@200
+-RAM
 [pattern_trace] 1
 [pattern_trace] 0

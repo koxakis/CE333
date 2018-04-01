@@ -90,7 +90,7 @@ module core_control(
 				TRANS_DATA:
 				begin
 					if (mc_done) begin
-						procc_start <= 1'b1;
+						//procc_start <= 1'b1;
 						procc_instruction <= ctrl_instruction;
 						ctrl_data_contition <= 3'b001;
 						ctrl_state <= PROCCESING;
@@ -100,6 +100,7 @@ module core_control(
 					indicates the data proccesing is complete.*/
 				PROCCESING:
 				begin
+					procc_start <= 1'b1;
 					if (mc_data_done) begin
 						ctrl_data_contition <= 3'b000;
 						procc_start <= 1'b0;

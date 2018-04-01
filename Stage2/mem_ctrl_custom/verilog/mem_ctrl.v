@@ -78,7 +78,7 @@ module mem_ctrl(
 					data in the MC module input */
 				IDLE:
 				begin
-					mc_data_done <= 1'b1;
+					mc_data_done <= 1'b0;
 					mc_done <= 1'b0;
 					if (mc_data_contition == 3'b100) begin
 						mc_data_done <= 1'b0;
@@ -127,16 +127,17 @@ module mem_ctrl(
 							ram_to_reg_address_opa <= 'b0;
 							ram_to_reg_address_opb <= 'b0;
 						end else begin
-							mc_done <= 1'b0;
+							//mc_done <= 1'b0;
 							//Send the operant opa
 							mc_address_mem_opa <= ram_to_reg_address_opa;
 							mc_data_out_opa <= mem_data_out_opa;
-							//Send the operant opb
-							ram_to_reg_address_opa <= ram_to_reg_address_opa + 1'b1;
-
 							mc_address_mem_opb <= ram_to_reg_address_opb;
 							mc_data_out_opb <= mem_data_out_opb;
-							ram_to_reg_address_opb <= ram_to_reg_address_opb + 1'b1;
+							//Send the operant opb
+							if (!mc_done) begin
+								ram_to_reg_address_opa <= ram_to_reg_address_opa + 1'b1;
+								ram_to_reg_address_opb <= ram_to_reg_address_opb + 1'b1;
+							end
 							mc_done <= 1'b1;
 						end
 					end
@@ -146,6 +147,7 @@ module mem_ctrl(
 					IDLE state*/
 				PROCCESING:
 				begin
+					mc_done <= 1'b0;
 					if (mc_data_contition == 3'b000) begin
 						mc_state <= IDLE;
 					end else begin

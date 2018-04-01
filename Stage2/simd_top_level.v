@@ -120,6 +120,7 @@ module simd_top_level(
 
 	alu dut_alu_0(
 		.clk(clk),
+		.reset(reset),
 		.inA(inA_procc0),
 		.inB(inB_procc0),
 		.opcode(procc_instruction),
@@ -132,6 +133,7 @@ module simd_top_level(
 
 	alu dut_alu_1(
 		.clk(clk),
+		.reset(reset),
 		.inA(inA_procc1),
 		.inB(inB_procc1),
 		.opcode(procc_instruction),
@@ -143,7 +145,8 @@ module simd_top_level(
 	);
 
 	alu dut_alu_2(
-		.clk(clk),
+		.clk(clk),		
+		.reset(reset),
 		.inA(inA_procc2),
 		.inB(inB_procc2),
 		.opcode(procc_instruction),
@@ -156,6 +159,7 @@ module simd_top_level(
 
 	alu dut_alu_3(
 		.clk(clk),
+		.reset(reset),
 		.inA(inA_procc3),
 		.inB(inB_procc3),
 		.opcode(procc_instruction),

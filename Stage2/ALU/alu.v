@@ -1,6 +1,7 @@
 `timescale 1ns/10ps
 module alu(
     clk,
+	reset,
     inA,
     inB,
     opcode,
@@ -20,7 +21,7 @@ module alu(
     parameter SLL = 3'b110; //6
     parameter SLR = 3'b111; //7
     
-    input                      clk;
+    input	clk, reset;
     input       [31:0]         inA, inB;
     input       [2:0]          opcode;
     output reg  [31:0]         result, extra_result;
@@ -36,31 +37,37 @@ module alu(
     reg ProcConditon_reg;
 
 	wire o1, o2, xout;
+    
+    multiplier mu0(inA_Reg, inB_Reg, mul_res);
 
-    always @(posedge clk)
+    
+    always@(posedge clk or posedge reset)
     begin
+	if (reset) begin
+		PDone <= 1'b0;
+		total_result = 64'b0;
+		result <= 'b0;
+		extra_result <= 'b0;
+		ProcConditon_reg <='b0;
+
+		inA_Reg <= 'b0;
+		inB_Reg <= 'b0;
+		opcode_reg <= 'b0;
+
+	end else begin
+
 		if (PStart) begin
 	    	inA_Reg <= inA;
         	inB_Reg <= inB;
         	ProcConditon_reg <= PStart;
         	opcode_reg <= opcode;
 		end else begin
-	     	ProcConditon_reg <= 1'b0;
-        	opcode_reg <= opcode;
+			ProcConditon_reg <= 1'b0;
 		end
-    
-    end
-    
-    multiplier mu0(inA_Reg, inB_Reg, mul_res);
-
-    
-    always@(posedge clk)
-    begin
-    
+		    
         total_result = 64'b0;
     
         case(opcode_reg)
-        
                 ADD:
                 begin
                     total_result = inA_Reg + inB_Reg;
@@ -99,22 +106,17 @@ module alu(
                 SLR:
                 begin
                     total_result = inA_Reg >> inB_Reg[4:0];
-                end
-                
-            
+                end 
         endcase
-        
-        
+
         if( total_result == 0)    zero = 1'b1;
         else                      zero = 1'b0;
         
         result       <= total_result[ 31:0];
         extra_result <= total_result[63:32];
-        PDone        <= ProcConditon_reg;
-        
-    end
-
-    
+        PDone        <= PStart;
+		end 
+	end
 endmodule
 
 module HA (I1, I2, sum, carry);
