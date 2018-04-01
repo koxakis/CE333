@@ -2,7 +2,7 @@
 `default_nettype none
 
 module tb_full_sys;
-reg clk;
+reg clk, clk_2;
 reg reset;
 reg valid_data;
 reg valid_instruction;
@@ -20,6 +20,7 @@ wire [31:0] out_procc2, out_procc3, out_extra_procc2, out_extra_procc3;
 
 simd_top_level dut_simd(
 	.clk(clk),
+	.clk_2(clk_2),
 	.reset(reset),
 	.valid_data(valid_data),
 	.valid_instruction(valid_instruction),
@@ -38,8 +39,11 @@ simd_top_level dut_simd(
 );
 
 
-localparam CLK_PERIOD = 10;
+localparam CLK_PERIOD = 80;
 always #(CLK_PERIOD/2) clk=~clk;
+
+localparam CLK_2_PERIOD = 10;
+always #(CLK_2_PERIOD/2) clk_2 = ~clk_2;
 
 always @(posedge clk or posedge reset) begin
 	if (reset) begin
@@ -100,6 +104,7 @@ end
 
 initial begin
 	clk = 1;
+	clk_2 = 1;
 	valid_data = 1'b0;
 	valid_instruction = 1'b0;
 	data_size = 'd13;
@@ -109,11 +114,11 @@ initial begin
 	reset = 0;
 	valid_data = 1'b1;
 	valid_instruction = 1'b1;
-	#20;
+	#160;
 	for (test_values = 0; test_values < 14; test_values = test_values + 1) begin
 		mc_data_in_opa = test_numbers_data_a[test_values];
 		mc_data_in_opb = test_numbers_data_b[test_values];
-		#10;
+		#80;
 	end
 	valid_data = 1'b0;
 

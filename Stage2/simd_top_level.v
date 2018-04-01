@@ -6,6 +6,7 @@
 `timescale 1ns/10ps
 module simd_top_level(
 	clk,
+	clk_2,
 	reset,
 	valid_data,
 	valid_instruction,
@@ -23,7 +24,7 @@ module simd_top_level(
 	out_extra_procc3
 );
 
-	input clk, reset;
+	input clk, clk_2, reset;
 
 	input valid_data,valid_instruction;
 	input [2:0] instruction;
