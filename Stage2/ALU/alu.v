@@ -7,7 +7,7 @@ module alu(
     opcode,
     result,
     extra_result,
-    zero,
+    //zero,
     PStart,
     PDone
     );
@@ -109,8 +109,8 @@ module alu(
                 end 
         endcase
 
-        if( total_result == 0)    zero = 1'b1;
-        else                      zero = 1'b0;
+        //if( total_result == 0)    zero = 1'b1;
+        //else                      zero = 1'b0;
         
         result       <= total_result[ 31:0];
         extra_result <= total_result[63:32];
