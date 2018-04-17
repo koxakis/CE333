@@ -107,7 +107,7 @@ initial begin
 	clk_2 = 1;
 	valid_data = 1'b0;
 	valid_instruction = 1'b0;
-	data_size = 'd13;
+	data_size = 'd15;
 	reset = 1;
 	#50;
 	instruction = 3'b101;

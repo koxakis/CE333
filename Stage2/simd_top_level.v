@@ -49,7 +49,7 @@ module simd_top_level(
 
 	wire procc_0_done, procc_1_done, procc_2_done, procc_3_done;
 
-	wire mc_done, mc_we, mc_data_done, procc_done, procc_start, zero;
+	wire mc_done, mc_we, mc_data_done, procc_done, procc_start;
 
 
 	mem_ctrl dut_memctrl_0(
@@ -120,53 +120,52 @@ module simd_top_level(
 
 
 	alu dut_alu_0(
-		.clk(clk),
+		.clk(clk_2),
 		.reset(reset),
 		.inA(inA_procc0),
 		.inB(inB_procc0),
 		.opcode(procc_instruction),
 		.result(out_procc0),
 		.extra_result(out_extra_procc0),
-		.zero(zero),
+		//.zero(zero),
 		.PStart(procc_start),
 		.PDone(procc_0_done)
 	);
 
 	alu dut_alu_1(
-		.clk(clk),
+		.clk(clk_2),
 		.reset(reset),
 		.inA(inA_procc1),
 		.inB(inB_procc1),
 		.opcode(procc_instruction),
 		.result(out_procc1),
 		.extra_result(out_extra_procc1),
-		.zero(zero),
+		//.zero(zero),
 		.PStart(procc_start),
 		.PDone(procc_1_done)
 	);
 
 	alu dut_alu_2(
-		.clk(clk),		
+		.clk(clk_2),		
 		.reset(reset),
 		.inA(inA_procc2),
 		.inB(inB_procc2),
 		.opcode(procc_instruction),
 		.result(out_procc2),
 		.extra_result(out_extra_procc2),
-		.zero(zero),
 		.PStart(procc_start),
 		.PDone(procc_2_done)
 	);
 
 	alu dut_alu_3(
-		.clk(clk),
+		.clk(clk_2),
 		.reset(reset),
 		.inA(inA_procc3),
 		.inB(inB_procc3),
 		.opcode(procc_instruction),
 		.result(out_procc3),
 		.extra_result(out_extra_procc3),
-		.zero(zero),
+		//.zero(zero),
 		.PStart(procc_start),
 		.PDone(procc_3_done)
 	);
