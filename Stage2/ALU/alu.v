@@ -25,7 +25,6 @@ module alu(
     input       [31:0]         inA, inB;
     input       [2:0]          opcode;
     output reg  [31:0]         result, extra_result;
-    //output reg                 zero;
     input wire                 PStart;
     output reg                 PDone; 
     
@@ -62,6 +61,11 @@ module alu(
         	inB_Reg <= inB;
         	ProcConditon_reg <= PStart;
         	opcode_reg <= opcode;
+			if (opcode_reg == MUL) begin
+				PDone <= Pdone_out;
+			end else begin
+				PDone <= ProcConditon_reg;
+			end
 		end else begin
 			ProcConditon_reg <= 1'b0;
 		end
@@ -109,20 +113,10 @@ module alu(
                     total_result = inA_Reg >> inB_Reg[4:0];
                 end 
         endcase
-
-        //if( total_result == 0)    zero = 1'b1;
-        //else                      zero = 1'b0;
         
         	result       <= total_result[ 31:0];
         	extra_result <= total_result[63:32];
-			if (opcode_reg == MUL && PStart) begin
-				PDone <= Pdone_out;
-			end else begin
-				PDone <= ProcConditon_reg;
-			end
 
-	//	PDone <= (opcode_reg == MUL) ? ProcConditon_reg3 : PStart;
-        //PDone        <= PStart;
 		end 
 	end
 endmodule
@@ -2473,39 +2467,39 @@ FA	inst1985	(rc_last_reg[29], pp_reg[991], r31c[29], r31s[30], r31c[30]);
 //Posible pipline
 always @(posedge clk) begin
 	r31s_reg <= r31s;
-	rc_last_reg[30] <= r30c[30];
+	rc_last_reg[30] <= r31c[30];
 	PDone_out <= ProcConditon_reg[30];
 end
 
-HA	inst1986	(r31s[1], pp_reg[993], m[32], r32c[0]);
-FA	inst1987	(r31s[2], pp_reg[994], r32c[0], m[33], r32c[1]);
-FA	inst1988	(r31s[3], pp_reg[995], r32c[1], m[34], r32c[2]);
-FA	inst1989	(r31s[4], pp_reg[996], r32c[2], m[35], r32c[3]);
-FA	inst1990	(r31s[5], pp_reg[997], r32c[3], m[36], r32c[4]);
-FA	inst1991	(r31s[6], pp_reg[998], r32c[4], m[37], r32c[5]);
-FA	inst1992	(r31s[7], pp_reg[999], r32c[5], m[38], r32c[6]);
-FA	inst1993	(r31s[8], pp_reg[1000], r32c[6], m[39], r32c[7]);
-FA	inst1994	(r31s[9], pp_reg[1001], r32c[7], m[40], r32c[8]);
-FA	inst1995	(r31s[10], pp_reg[1002], r32c[8], m[41], r32c[9]);
-FA	inst1996	(r31s[11], pp_reg[1003], r32c[9], m[42], r32c[10]);
-FA	inst1997	(r31s[12], pp_reg[1004], r32c[10], m[43], r32c[11]);
-FA	inst1998	(r31s[13], pp_reg[1005], r32c[11], m[44], r32c[12]);
-FA	inst1999	(r31s[14], pp_reg[1006], r32c[12], m[45], r32c[13]);
-FA	inst2000	(r31s[15], pp_reg[1007], r32c[13], m[46], r32c[14]);
-FA	inst2001	(r31s[16], pp_reg[1008], r32c[14], m[47], r32c[15]);
-FA	inst2002	(r31s[17], pp_reg[1009], r32c[15], m[48], r32c[16]);
-FA	inst2003	(r31s[18], pp_reg[1010], r32c[16], m[49], r32c[17]);
-FA	inst2004	(r31s[19], pp_reg[1011], r32c[17], m[50], r32c[18]);
-FA	inst2005	(r31s[20], pp_reg[1012], r32c[18], m[51], r32c[19]);
-FA	inst2006	(r31s[21], pp_reg[1013], r32c[19], m[52], r32c[20]);
-FA	inst2007	(r31s[22], pp_reg[1014], r32c[20], m[53], r32c[21]);
-FA	inst2008	(r31s[23], pp_reg[1015], r32c[21], m[54], r32c[22]);
-FA	inst2009	(r31s[24], pp_reg[1016], r32c[22], m[55], r32c[23]);
-FA	inst2010	(r31s[25], pp_reg[1017], r32c[23], m[56], r32c[24]);
-FA	inst2011	(r31s[26], pp_reg[1018], r32c[24], m[57], r32c[25]);
-FA	inst2012	(r31s[27], pp_reg[1019], r32c[25], m[58], r32c[26]);
-FA	inst2013	(r31s[28], pp_reg[1020], r32c[26], m[59], r32c[27]);
-FA	inst2014	(r31s[29], pp_reg[1021], r32c[27], m[60], r32c[28]);
-FA	inst2015	(r31s[30], pp_reg[1022], r32c[28], m[61], r32c[29]);
-FA	inst2016	(r31c[30], pp_reg[1023], r32c[29], m[62], m[63]);
+HA	inst1986	(r31s_reg[1], pp_reg[993], m[32], r32c[0]);
+FA	inst1987	(r31s_reg[2], pp_reg[994], r32c[0], m[33], r32c[1]);
+FA	inst1988	(r31s_reg[3], pp_reg[995], r32c[1], m[34], r32c[2]);
+FA	inst1989	(r31s_reg[4], pp_reg[996], r32c[2], m[35], r32c[3]);
+FA	inst1990	(r31s_reg[5], pp_reg[997], r32c[3], m[36], r32c[4]);
+FA	inst1991	(r31s_reg[6], pp_reg[998], r32c[4], m[37], r32c[5]);
+FA	inst1992	(r31s_reg[7], pp_reg[999], r32c[5], m[38], r32c[6]);
+FA	inst1993	(r31s_reg[8], pp_reg[1000], r32c[6], m[39], r32c[7]);
+FA	inst1994	(r31s_reg[9], pp_reg[1001], r32c[7], m[40], r32c[8]);
+FA	inst1995	(r31s_reg[10], pp_reg[1002], r32c[8], m[41], r32c[9]);
+FA	inst1996	(r31s_reg[11], pp_reg[1003], r32c[9], m[42], r32c[10]);
+FA	inst1997	(r31s_reg[12], pp_reg[1004], r32c[10], m[43], r32c[11]);
+FA	inst1998	(r31s_reg[13], pp_reg[1005], r32c[11], m[44], r32c[12]);
+FA	inst1999	(r31s_reg[14], pp_reg[1006], r32c[12], m[45], r32c[13]);
+FA	inst2000	(r31s_reg[15], pp_reg[1007], r32c[13], m[46], r32c[14]);
+FA	inst2001	(r31s_reg[16], pp_reg[1008], r32c[14], m[47], r32c[15]);
+FA	inst2002	(r31s_reg[17], pp_reg[1009], r32c[15], m[48], r32c[16]);
+FA	inst2003	(r31s_reg[18], pp_reg[1010], r32c[16], m[49], r32c[17]);
+FA	inst2004	(r31s_reg[19], pp_reg[1011], r32c[17], m[50], r32c[18]);
+FA	inst2005	(r31s_reg[20], pp_reg[1012], r32c[18], m[51], r32c[19]);
+FA	inst2006	(r31s_reg[21], pp_reg[1013], r32c[19], m[52], r32c[20]);
+FA	inst2007	(r31s_reg[22], pp_reg[1014], r32c[20], m[53], r32c[21]);
+FA	inst2008	(r31s_reg[23], pp_reg[1015], r32c[21], m[54], r32c[22]);
+FA	inst2009	(r31s_reg[24], pp_reg[1016], r32c[22], m[55], r32c[23]);
+FA	inst2010	(r31s_reg[25], pp_reg[1017], r32c[23], m[56], r32c[24]);
+FA	inst2011	(r31s_reg[26], pp_reg[1018], r32c[24], m[57], r32c[25]);
+FA	inst2012	(r31s_reg[27], pp_reg[1019], r32c[25], m[58], r32c[26]);
+FA	inst2013	(r31s_reg[28], pp_reg[1020], r32c[26], m[59], r32c[27]);
+FA	inst2014	(r31s_reg[29], pp_reg[1021], r32c[27], m[60], r32c[28]);
+FA	inst2015	(r31s_reg[30], pp_reg[1022], r32c[28], m[61], r32c[29]);
+FA	inst2016	(rc_last_reg[30], pp_reg[1023], r32c[29], m[62], m[63]);
 endmodule

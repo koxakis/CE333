@@ -42,7 +42,7 @@ simd_top_level dut_simd(
 localparam CLK_PERIOD = 80;
 always #(CLK_PERIOD/2) clk=~clk;
 
-localparam CLK_2_PERIOD = 10;
+localparam CLK_2_PERIOD = 20;
 always #(CLK_2_PERIOD/2) clk_2 = ~clk_2;
 
 always @(posedge clk or posedge reset) begin
@@ -122,7 +122,7 @@ initial begin
 	end
 	valid_data = 1'b0;
 
-    #10000
+    #15000
     $finish;
 end
 
