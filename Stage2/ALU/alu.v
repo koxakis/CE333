@@ -68,6 +68,8 @@ module alu(
 			end
 		end else begin
 			ProcConditon_reg <= 1'b0;
+			PDone <= 1'b0;
+			
 		end
 		    
         total_result = 64'b0;
