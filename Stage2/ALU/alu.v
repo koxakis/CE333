@@ -1288,6 +1288,9 @@ and	(pp[1023], a[31], b[31]);
 always @(posedge clk) begin
 	pp_reg <= pp;
 	ProcConditon_reg[0] <= PDone_in;
+	if (!PDone_in) begin
+		ProcConditon_reg[0] <= 1'b0;
+	end
 end
 
 
@@ -1328,6 +1331,9 @@ always @(posedge clk) begin
 	r1s_reg <= r1s;
 	rc_last_reg[0] <= r1c[30];
 	ProcConditon_reg[1] <= ProcConditon_reg[0];
+	if (!PDone_in) begin
+		ProcConditon_reg[1] <= 1'b0;
+	end
 end
 //module HA (I1, I2, sum, carry);
 //module FA (I1, I2, I3, sum, carry);
@@ -1368,6 +1374,9 @@ always @(posedge clk) begin
 	r2s_reg <= r2s;
 	rc_last_reg[1] <= r2c[30];
 	ProcConditon_reg[2] <= ProcConditon_reg[1];
+	if (!PDone_in) begin
+		ProcConditon_reg[2] <= 1'b0;
+	end
 end
 
 HA	inst1087	(r2s_reg[1], pp_reg[96], m[3], r3c[0]);
@@ -1406,6 +1415,9 @@ always @(posedge clk) begin
 	r3s_reg <= r3s;
 	rc_last_reg[2] <= r3c[30];
 	ProcConditon_reg[3] <= ProcConditon_reg[2];
+	if (!PDone_in) begin
+		ProcConditon_reg[3] <= 1'b0;
+	end
 end
 
 HA	inst1118	(r3s_reg[1], pp_reg[128], m[4], r4c[0]);
@@ -1444,6 +1456,9 @@ always @(posedge clk) begin
 	r4s_reg <= r4s;
 	rc_last_reg[3] <= r4c[30];
 	ProcConditon_reg[4] <= ProcConditon_reg[3];
+	if (!PDone_in) begin
+		ProcConditon_reg[4] <= 1'b0;
+	end
 end
 
 HA	inst1149	(r4s_reg[1], pp_reg[160], m[5], r5c[0]);
@@ -1484,6 +1499,9 @@ always @(posedge clk) begin
 	r5s_reg <= r5s;
 	rc_last_reg[4] <= r5c[30];
 	ProcConditon_reg[5] <= ProcConditon_reg[4];
+	if (!PDone_in) begin
+		ProcConditon_reg[5] <= 1'b0;
+	end
 end
 
 HA	inst1180	(r5s_reg[1], pp_reg[192], m[6], r6c[0]);
@@ -1522,6 +1540,9 @@ always @(posedge clk) begin
 	r6s_reg <= r6s;
 	rc_last_reg[5] <= r6c[30];
 	ProcConditon_reg[6] <= ProcConditon_reg[5];
+	if (!PDone_in) begin
+		ProcConditon_reg[6] <= 1'b0;
+	end
 end
 
 
@@ -1561,6 +1582,9 @@ always @(posedge clk) begin
 	r7s_reg <= r7s;
 	rc_last_reg[6] <= r7c[30];
 	ProcConditon_reg[7] <= ProcConditon_reg[6];
+	if (!PDone_in) begin
+		ProcConditon_reg[7] <= 1'b0;
+	end
 end
 
 HA	inst1242	(r7s_reg[1], pp_reg[256], m[8], r8c[0]);
@@ -1599,6 +1623,9 @@ always @(posedge clk) begin
 	r8s_reg <= r8s;
 	rc_last_reg[7] <= r8c[30];
 	ProcConditon_reg[8] <= ProcConditon_reg[7];
+	if (!PDone_in) begin
+		ProcConditon_reg[8] <= 1'b0;
+	end
 end
 
 HA	inst1273	(r8s_reg[1], pp_reg[288], m[9], r9c[0]);
@@ -1638,6 +1665,9 @@ always @(posedge clk) begin
 	r9s_reg <= r9s;
 	rc_last_reg[8] <= r9c[30];
 	ProcConditon_reg[9] <= ProcConditon_reg[8];
+	if (!PDone_in) begin
+		ProcConditon_reg[9] <= 1'b0;
+	end
 end
 
 HA	inst1304	(r9s_reg[1], pp_reg[320], m[10], r10c[0]);
@@ -1677,6 +1707,9 @@ always @(posedge clk) begin
 	r10s_reg <= r10s;
 	rc_last_reg[9] <= r10c[30];
 	ProcConditon_reg[10] <= ProcConditon_reg[9];
+	if (!PDone_in) begin
+		ProcConditon_reg[10] <= 1'b0;
+	end
 end
 
 HA	inst1335	(r10s_reg[1], pp_reg[352], m[11], r11c[0]);
@@ -1715,6 +1748,9 @@ always @(posedge clk) begin
 	r11s_reg <= r11s;
 	rc_last_reg[10] <= r11c[30];
 	ProcConditon_reg[11] <= ProcConditon_reg[10];
+	if (!PDone_in) begin
+		ProcConditon_reg[11] <= 1'b0;
+	end
 end
 
 HA	inst1366	(r11s_reg[1], pp_reg[384], m[12], r12c[0]);
@@ -1753,6 +1789,9 @@ always @(posedge clk) begin
 	r12s_reg <= r12s;
 	rc_last_reg[11] <= r12c[30];
 	ProcConditon_reg[12] <= ProcConditon_reg[11];
+	if (!PDone_in) begin
+		ProcConditon_reg[12] <= 1'b0;
+	end
 end
 
 HA	inst1397	(r12s_reg[1], pp_reg[416], m[13], r13c[0]);
@@ -1791,6 +1830,9 @@ always @(posedge clk) begin
 	r13s_reg <= r13s;
 	rc_last_reg[12] <= r13c[30];
 	ProcConditon_reg[13] <= ProcConditon_reg[12];
+	if (!PDone_in) begin
+		ProcConditon_reg[13] <= 1'b0;
+	end
 end
 
 
@@ -1830,6 +1872,9 @@ always @(posedge clk) begin
 	r14s_reg <= r14s;
 	rc_last_reg[13] <= r14c[30];
 	ProcConditon_reg[14] <= ProcConditon_reg[13];
+	if (!PDone_in) begin
+		ProcConditon_reg[14] <= 1'b0;
+	end
 end
 
 
@@ -1870,6 +1915,9 @@ always @(posedge clk) begin
 	r15s_reg <= r15s;
 	rc_last_reg[14] <= r15c[30];
 	ProcConditon_reg[15] <= ProcConditon_reg[14];
+	if (!PDone_in) begin
+		ProcConditon_reg[15] <= 1'b0;
+	end
 end
 
 HA	inst1490	(r15s_reg[1], pp_reg[512], m[16], r16c[0]);
@@ -1908,6 +1956,9 @@ always @(posedge clk) begin
 	r16s_reg <= r16s;
 	rc_last_reg[15] <= r16c[30];
 	ProcConditon_reg[16] <= ProcConditon_reg[15];
+	if (!PDone_in) begin
+		ProcConditon_reg[16] <= 1'b0;
+	end
 end
 
 HA	inst1521	(r16s_reg[1], pp_reg[544], m[17], r17c[0]);
@@ -1946,6 +1997,9 @@ always @(posedge clk) begin
 	r17s_reg <= r17s;
 	rc_last_reg[16] <= r17c[30];
 	ProcConditon_reg[17] <= ProcConditon_reg[16];
+	if (!PDone_in) begin
+		ProcConditon_reg[17] <= 1'b0;
+	end
 end
 
 HA	inst1552	(r17s_reg[1], pp_reg[576], m[18], r18c[0]);
@@ -1984,6 +2038,9 @@ always @(posedge clk) begin
 	r18s_reg <= r18s;
 	rc_last_reg[17] <= r18c[30];
 	ProcConditon_reg[18] <= ProcConditon_reg[17];
+	if (!PDone_in) begin
+		ProcConditon_reg[18] <= 1'b0;
+	end
 end
 
 HA	inst1583	(r18s_reg[1], pp_reg[608], m[19], r19c[0]);
@@ -2022,6 +2079,9 @@ always @(posedge clk) begin
 	r19s_reg <= r19s;
 	rc_last_reg[18] <= r19c[30];
 	ProcConditon_reg[19] <= ProcConditon_reg[18];
+	if (!PDone_in) begin
+		ProcConditon_reg[19] <= 1'b0;
+	end
 end
 
 HA	inst1614	(r19s_reg[1], pp_reg[640], m[20], r20c[0]);
@@ -2060,6 +2120,9 @@ always @(posedge clk) begin
 	r20s_reg <= r20s;
 	rc_last_reg[19] <= r20c[30];
 	ProcConditon_reg[20] <= ProcConditon_reg[19];
+	if (!PDone_in) begin
+		ProcConditon_reg[20] <= 1'b0;
+	end
 end
 
 HA	inst1645	(r20s_reg[1], pp_reg[672], m[21], r21c[0]);
@@ -2098,6 +2161,9 @@ always @(posedge clk) begin
 	r21s_reg <= r21s;
 	rc_last_reg[20] <= r21c[30];
 	ProcConditon_reg[21] <= ProcConditon_reg[20];
+	if (!PDone_in) begin
+		ProcConditon_reg[21] <= 1'b0;
+	end
 end
 
 HA	inst1676	(r21s_reg[1], pp_reg[704], m[22], r22c[0]);
@@ -2136,6 +2202,9 @@ always @(posedge clk) begin
 	r22s_reg <= r22s;
 	rc_last_reg[21] <= r22c[30];
 	ProcConditon_reg[22] <= ProcConditon_reg[20];
+	if (!PDone_in) begin
+		ProcConditon_reg[22] <= 1'b0;
+	end
 end
 
 HA	inst1707	(r22s[1], pp_reg[736], m[23], r23c[0]);
@@ -2175,6 +2244,9 @@ always @(posedge clk) begin
 	r23s_reg <= r23s;
 	rc_last_reg[22] <= r23c[30];
 	ProcConditon_reg[23] <= ProcConditon_reg[22];
+	if (!PDone_in) begin
+		ProcConditon_reg[23] <= 1'b0;
+	end
 end
 
 HA	inst1738	(r23s_reg[1], pp_reg[768], m[24], r24c[0]);
@@ -2213,6 +2285,9 @@ always @(posedge clk) begin
 	r24s_reg <= r24s;
 	rc_last_reg[23] <= r24c[30];
 	ProcConditon_reg[24] <= ProcConditon_reg[23];
+	if (!PDone_in) begin
+		ProcConditon_reg[24] <= 1'b0;
+	end
 end
 
 HA	inst1769	(r24s_reg[1], pp_reg[800], m[25], r25c[0]);
@@ -2251,6 +2326,9 @@ always @(posedge clk) begin
 	r25s_reg <= r25s;
 	rc_last_reg[24] <= r25c[30];
 	ProcConditon_reg[25] <= ProcConditon_reg[24];
+	if (!PDone_in) begin
+		ProcConditon_reg[25] <= 1'b0;
+	end
 end
 
 HA	inst1800	(r25s_reg[1], pp_reg[832], m[26], r26c[0]);
@@ -2289,6 +2367,9 @@ always @(posedge clk) begin
 	r26s_reg <= r26s;
 	rc_last_reg[25] <= r26c[30];
 	ProcConditon_reg[26] <= ProcConditon_reg[25];
+	if (!PDone_in) begin
+		ProcConditon_reg[26] <= 1'b0;
+	end
 end
 
 HA	inst1831	(r26s_reg[1], pp_reg[864], m[27], r27c[0]);
@@ -2327,6 +2408,9 @@ always @(posedge clk) begin
 	r27s_reg <= r27s;
 	rc_last_reg[26] <= r27c[30];
 	ProcConditon_reg[27] <= ProcConditon_reg[26];
+	if (!PDone_in) begin
+		ProcConditon_reg[27] <= 1'b0;
+	end
 end
 
 HA	inst1862	(r27s_reg[1], pp_reg[896], m[28], r28c[0]);
@@ -2365,6 +2449,9 @@ always @(posedge clk) begin
 	r28s_reg <= r28s;
 	rc_last_reg[27] <= r28c[30];
 	ProcConditon_reg[28] <= ProcConditon_reg[27];
+	if (!PDone_in) begin
+		ProcConditon_reg[28] <= 1'b0;
+	end
 end
 
 HA	inst1893	(r28s_reg[1], pp_reg[928], m[29], r29c[0]);
@@ -2403,6 +2490,9 @@ always @(posedge clk) begin
 	r29s_reg <= r29s;
 	rc_last_reg[28] <= r29c[30];
 	ProcConditon_reg[29] <= ProcConditon_reg[28];
+	if (!PDone_in) begin
+		ProcConditon_reg[29] <= 1'b0;
+	end
 end
 
 
@@ -2442,6 +2532,9 @@ always @(posedge clk) begin
 	r30s_reg <= r30s;
 	rc_last_reg[29] <= r30c[30];
 	ProcConditon_reg[30] <= ProcConditon_reg[29];
+	if (!PDone_in) begin
+		ProcConditon_reg[30] <= 1'b0;
+	end
 end
 
 HA	inst1955	(r30s_reg[1], pp_reg[992], m[31], r31c[0]);
@@ -2518,7 +2611,7 @@ always @(posedge clk ) begin
 		PDone_out <= ProcConditon_reg[30];
 	end else begin
 		PDone_out <= 'b0;
-		ProcConditon_reg <= 'b0;
+		//ProcConditon_reg <= 'b0;
 	end
 end
 endmodule
