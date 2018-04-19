@@ -151,13 +151,6 @@ input	[31 :0] b;
 output	[63 :0] m;
 
 reg [31:0] ProcConditon_reg;
-always @(posedge clk or posedge reset) begin
-	if (reset) begin
-		ProcConditon_reg <= 'b0;
-		PDone_out <= 'b0;
-	end
-
-end
 //reg ProcConditon_reg, ProcConditon_reg2, ProcConditon_reg3, ProcConditon_reg4, ProcConditon_reg5;
 //reg ProcConditon_reg6, ProcConditon_reg7;
 
