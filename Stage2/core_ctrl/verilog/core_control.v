@@ -89,8 +89,8 @@ module core_control(
 					have been transfered*/
 				TRANS_DATA:
 				begin
+					procc_start <= 1'b0;
 					if (mc_done) begin
-						//procc_start <= 1'b1;
 						procc_instruction <= ctrl_instruction;
 						ctrl_data_contition <= 3'b001;
 						ctrl_state <= PROCCESING;

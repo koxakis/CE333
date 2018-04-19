@@ -38,7 +38,7 @@ module alu(
 
 	wire o1, o2, xout;
     
-    multiplier mu0(clk, inA_Reg, inB_Reg, mul_res, ProcConditon_reg, Pdone_out);
+    multiplier mu0(clk, reset, inA_Reg, inB_Reg, mul_res, ProcConditon_reg, Pdone_out);
 
     
     always@(posedge clk or posedge reset)
@@ -61,15 +61,8 @@ module alu(
         	inB_Reg <= inB;
         	ProcConditon_reg <= PStart;
         	opcode_reg <= opcode;
-			if (opcode_reg == MUL) begin
-				PDone <= Pdone_out;
-			end else begin
-				PDone <= ProcConditon_reg;
-			end
 		end else begin
 			ProcConditon_reg <= 1'b0;
-			PDone <= 1'b0;
-			
 		end
 		    
         total_result = 64'b0;
@@ -78,41 +71,49 @@ module alu(
                 ADD:
                 begin
                     total_result = inA_Reg + inB_Reg;
+					PDone <= ProcConditon_reg;
                 end
                 
                 SUB:
                 begin
                     total_result = inA_Reg - inB_Reg;
+					PDone <= ProcConditon_reg;
                 end
                 
                 OR:
                 begin
                     total_result = inA_Reg | inB_Reg;
+					PDone <= ProcConditon_reg;
                 end
                 
                 AND:
                 begin
                     total_result = inA_Reg & inB_Reg;
+					PDone <= ProcConditon_reg;
                 end
                 
                 NOT:
                 begin
                     total_result = ~ inA_Reg;
+					PDone <= ProcConditon_reg;
                 end
                 
                 MUL:
                 begin
                     total_result = mul_res;
+					PDone <= (PStart) ? Pdone_out : 'b0;
                 end
                 
                 SLL:
                 begin
                     total_result = inA_Reg << inB_Reg[4:0];
+					PDone <= ProcConditon_reg;
                 end 
                 
                 SLR:
                 begin
                     total_result = inA_Reg >> inB_Reg[4:0];
+					PDone <= ProcConditon_reg;
                 end 
         endcase
         
@@ -141,16 +142,22 @@ and (o2, xout, I3);
 or (carry, o1, o2);
 endmodule
 
-module multiplier (clk, a, b, m, PDone_in, PDone_out);
+module multiplier (clk, reset, a, b, m, PDone_in, PDone_out);
 input clk;
-input PDone_in;
+input PDone_in, reset;
 output reg PDone_out;
 input	[31 :0] a;
 input	[31 :0] b;
 output	[63 :0] m;
 
 reg [31:0] ProcConditon_reg;
+always @(posedge clk or posedge reset) begin
+	if (reset) begin
+		ProcConditon_reg <= 'b0;
+		PDone_out <= 'b0;
+	end
 
+end
 //reg ProcConditon_reg, ProcConditon_reg2, ProcConditon_reg3, ProcConditon_reg4, ProcConditon_reg5;
 //reg ProcConditon_reg6, ProcConditon_reg7;
 
@@ -1322,6 +1329,8 @@ always @(posedge clk) begin
 	rc_last_reg[0] <= r1c[30];
 	ProcConditon_reg[1] <= ProcConditon_reg[0];
 end
+//module HA (I1, I2, sum, carry);
+//module FA (I1, I2, I3, sum, carry);
 
 HA	inst1056	(r1s_reg[1], pp_reg[64], m[2], r2c[0]);
 FA	inst1057	(r1s_reg[2], pp_reg[65], r2c[0], r2s[1], r2c[1]);
@@ -2470,7 +2479,6 @@ FA	inst1985	(rc_last_reg[29], pp_reg[991], r31c[29], r31s[30], r31c[30]);
 always @(posedge clk) begin
 	r31s_reg <= r31s;
 	rc_last_reg[30] <= r31c[30];
-	PDone_out <= ProcConditon_reg[30];
 end
 
 HA	inst1986	(r31s_reg[1], pp_reg[993], m[32], r32c[0]);
@@ -2504,4 +2512,13 @@ FA	inst2013	(r31s_reg[28], pp_reg[1020], r32c[26], m[59], r32c[27]);
 FA	inst2014	(r31s_reg[29], pp_reg[1021], r32c[27], m[60], r32c[28]);
 FA	inst2015	(r31s_reg[30], pp_reg[1022], r32c[28], m[61], r32c[29]);
 FA	inst2016	(rc_last_reg[30], pp_reg[1023], r32c[29], m[62], m[63]);
+
+always @(posedge clk ) begin
+	if (PDone_in) begin
+		PDone_out <= ProcConditon_reg[30];
+	end else begin
+		PDone_out <= 'b0;
+		ProcConditon_reg <= 'b0;
+	end
+end
 endmodule
