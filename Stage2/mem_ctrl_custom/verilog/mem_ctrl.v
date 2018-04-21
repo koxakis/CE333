@@ -101,6 +101,7 @@ module mem_ctrl(
 						mc_done <= 1'b0;
 						mc_we <= 1'b1;
 						mc_address_mem_opa <= ram_address;
+						mc_address_mem_opb <= ram_address;
 						mem_data_in_opa <= mc_data_in_opa;
 						mem_data_in_opb <= mc_data_in_opb;
 						ram_address <= ram_address + 1'b1;

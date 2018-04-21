@@ -33,7 +33,7 @@ module single_port_ram(
 	// Write
 		if (mem_we) begin
 			ram_opa[mc_address_mem_opa] <= mem_data_in_opa;
-			ram_opb[mc_address_mem_opa] <= mem_data_in_opb;
+			ram_opb[mc_address_mem_opb] <= mem_data_in_opb;
 		end
 
 		//addr_reg_opa <= mc_address_mem_opa;
