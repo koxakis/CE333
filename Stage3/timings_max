@@ -1,0 +1,2277 @@
+compile -map_effort high -area_effort high -scan -power_effort high
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 15:45:34 2018
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: cdr3synPwcslV225T125
+Wire Load Model Mode: enclosed
+
+  Startpoint: dut_alu_1/PDone_reg
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_core_control_0/ctrl_state_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  core_control       1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  dut_alu_1/PDone_reg/ck (sdffpr_2)                       0.00 #    60.00 r
+  dut_alu_1/PDone_reg/q (sdffpr_2)                        0.68      60.68 f
+  dut_alu_1/PDone (alu_2)                                 0.00      60.68 f
+  U2/x (and4_2)                                           0.60      61.28 f
+  dut_core_control_0/procc_done (core_control)            0.00      61.28 f
+  dut_core_control_0/U25/x (oai21_1)                      0.38      61.66 r
+  dut_core_control_0/U23/x (and4i_1)                      0.82      62.48 r
+  dut_core_control_0/U17/x (inv_2)                        0.88      63.36 f
+  dut_core_control_0/U26/x (oai221_1)                     0.54      63.90 r
+  dut_core_control_0/ctrl_state_reg[1]/d (sdffpr_2)       0.00      63.90 r
+  data arrival time                                                 63.90
+
+  clock clk (rise edge)                                  80.00      80.00
+  clock network delay (ideal)                             0.00      80.00
+  dut_core_control_0/ctrl_state_reg[1]/ck (sdffpr_2)      0.00      80.00 r
+  library setup time                                     -1.15      78.85
+  data required time                                                78.85
+  --------------------------------------------------------------------------
+  data required time                                                78.85
+  data arrival time                                                -63.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.95
+
+
+  Startpoint: dut_alu_1/mu0/pp_reg_reg[896]
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_alu_1/mu0/rc_last_reg_reg[27]
+            (rising edge-triggered flip-flop clocked by clk_2)
+  Path Group: clk_2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  multiplier_2       16K                   cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  dut_alu_1/mu0/pp_reg_reg[896]/ck (sdffpc_1)             0.00 #     0.00 r
+  dut_alu_1/mu0/pp_reg_reg[896]/q (sdffpc_1)              0.87       0.87 f
+  dut_alu_1/mu0/inst1862/I2 (HA_68)                       0.00       0.87 f
+  dut_alu_1/mu0/inst1862/U1/x (and2_1)                    0.79       1.65 f
+  dut_alu_1/mu0/inst1862/carry (HA_68)                    0.00       1.65 f
+  dut_alu_1/mu0/inst1863/I3 (FA_2069)                     0.00       1.65 f
+  dut_alu_1/mu0/inst1863/U1/x (ao22_2)                    0.62       2.27 f
+  dut_alu_1/mu0/inst1863/carry (FA_2069)                  0.00       2.27 f
+  dut_alu_1/mu0/inst1864/I3 (FA_2068)                     0.00       2.27 f
+  dut_alu_1/mu0/inst1864/U3/x (ao22_1)                    0.57       2.84 f
+  dut_alu_1/mu0/inst1864/carry (FA_2068)                  0.00       2.84 f
+  dut_alu_1/mu0/inst1865/I3 (FA_2067)                     0.00       2.84 f
+  dut_alu_1/mu0/inst1865/U1/x (ao22_2)                    0.62       3.46 f
+  dut_alu_1/mu0/inst1865/carry (FA_2067)                  0.00       3.46 f
+  dut_alu_1/mu0/inst1866/I3 (FA_2066)                     0.00       3.46 f
+  dut_alu_1/mu0/inst1866/U2/x (ao22_1)                    0.57       4.03 f
+  dut_alu_1/mu0/inst1866/carry (FA_2066)                  0.00       4.03 f
+  dut_alu_1/mu0/inst1867/I3 (FA_2065)                     0.00       4.03 f
+  dut_alu_1/mu0/inst1867/U1/x (ao22_2)                    0.63       4.66 f
+  dut_alu_1/mu0/inst1867/carry (FA_2065)                  0.00       4.66 f
+  dut_alu_1/mu0/inst1868/I3 (FA_2064)                     0.00       4.66 f
+  dut_alu_1/mu0/inst1868/U1/x (ao22_2)                    0.47       5.13 f
+  dut_alu_1/mu0/inst1868/carry (FA_2064)                  0.00       5.13 f
+  dut_alu_1/mu0/inst1869/I3 (FA_2063)                     0.00       5.13 f
+  dut_alu_1/mu0/inst1869/U2/x (ao22_1)                    0.57       5.70 f
+  dut_alu_1/mu0/inst1869/carry (FA_2063)                  0.00       5.70 f
+  dut_alu_1/mu0/inst1870/I3 (FA_2062)                     0.00       5.70 f
+  dut_alu_1/mu0/inst1870/U1/x (ao22_2)                    0.63       6.33 f
+  dut_alu_1/mu0/inst1870/carry (FA_2062)                  0.00       6.33 f
+  dut_alu_1/mu0/inst1871/I3 (FA_2061)                     0.00       6.33 f
+  dut_alu_1/mu0/inst1871/U1/x (ao22_2)                    0.49       6.81 f
+  dut_alu_1/mu0/inst1871/carry (FA_2061)                  0.00       6.81 f
+  dut_alu_1/mu0/inst1872/I3 (FA_2060)                     0.00       6.81 f
+  dut_alu_1/mu0/inst1872/U1/x (ao22_3)                    0.47       7.28 f
+  dut_alu_1/mu0/inst1872/carry (FA_2060)                  0.00       7.28 f
+  dut_alu_1/mu0/inst1873/I3 (FA_2059)                     0.00       7.28 f
+  dut_alu_1/mu0/inst1873/U1/x (ao22_2)                    0.42       7.71 f
+  dut_alu_1/mu0/inst1873/carry (FA_2059)                  0.00       7.71 f
+  dut_alu_1/mu0/inst1874/I3 (FA_2058)                     0.00       7.71 f
+  dut_alu_1/mu0/inst1874/U1/x (ao22_2)                    0.48       8.18 f
+  dut_alu_1/mu0/inst1874/carry (FA_2058)                  0.00       8.18 f
+  dut_alu_1/mu0/inst1875/I3 (FA_2057)                     0.00       8.18 f
+  dut_alu_1/mu0/inst1875/U1/x (ao22_2)                    0.48       8.66 f
+  dut_alu_1/mu0/inst1875/carry (FA_2057)                  0.00       8.66 f
+  dut_alu_1/mu0/inst1876/I3 (FA_2056)                     0.00       8.66 f
+  dut_alu_1/mu0/inst1876/U1/x (ao22_2)                    0.47       9.13 f
+  dut_alu_1/mu0/inst1876/carry (FA_2056)                  0.00       9.13 f
+  dut_alu_1/mu0/inst1877/I3 (FA_2055)                     0.00       9.13 f
+  dut_alu_1/mu0/inst1877/U2/x (ao22_1)                    0.56       9.69 f
+  dut_alu_1/mu0/inst1877/carry (FA_2055)                  0.00       9.69 f
+  dut_alu_1/mu0/inst1878/I3 (FA_2054)                     0.00       9.69 f
+  dut_alu_1/mu0/inst1878/U1/x (ao22_1)                    0.70      10.39 f
+  dut_alu_1/mu0/inst1878/carry (FA_2054)                  0.00      10.39 f
+  dut_alu_1/mu0/inst1879/I3 (FA_2053)                     0.00      10.39 f
+  dut_alu_1/mu0/inst1879/U1/x (ao22_1)                    0.71      11.11 f
+  dut_alu_1/mu0/inst1879/carry (FA_2053)                  0.00      11.11 f
+  dut_alu_1/mu0/inst1880/I3 (FA_2052)                     0.00      11.11 f
+  dut_alu_1/mu0/inst1880/U1/x (ao22_2)                    0.62      11.73 f
+  dut_alu_1/mu0/inst1880/carry (FA_2052)                  0.00      11.73 f
+  dut_alu_1/mu0/inst1881/I3 (FA_2051)                     0.00      11.73 f
+  dut_alu_1/mu0/inst1881/U2/x (ao22_1)                    0.57      12.30 f
+  dut_alu_1/mu0/inst1881/carry (FA_2051)                  0.00      12.30 f
+  dut_alu_1/mu0/inst1882/I3 (FA_2050)                     0.00      12.30 f
+  dut_alu_1/mu0/inst1882/U1/x (ao22_2)                    0.62      12.92 f
+  dut_alu_1/mu0/inst1882/carry (FA_2050)                  0.00      12.92 f
+  dut_alu_1/mu0/inst1883/I3 (FA_2049)                     0.00      12.92 f
+  dut_alu_1/mu0/inst1883/U2/x (ao22_1)                    0.56      13.48 f
+  dut_alu_1/mu0/inst1883/carry (FA_2049)                  0.00      13.48 f
+  dut_alu_1/mu0/inst1884/I3 (FA_2048)                     0.00      13.48 f
+  dut_alu_1/mu0/inst1884/U1/x (ao22_1)                    0.70      14.18 f
+  dut_alu_1/mu0/inst1884/carry (FA_2048)                  0.00      14.18 f
+  dut_alu_1/mu0/inst1885/I3 (FA_2047)                     0.00      14.18 f
+  dut_alu_1/mu0/inst1885/U2/x (ao22_1)                    0.70      14.88 f
+  dut_alu_1/mu0/inst1885/carry (FA_2047)                  0.00      14.88 f
+  dut_alu_1/mu0/inst1886/I3 (FA_2046)                     0.00      14.88 f
+  dut_alu_1/mu0/inst1886/U2/x (ao22_1)                    0.71      15.60 f
+  dut_alu_1/mu0/inst1886/carry (FA_2046)                  0.00      15.60 f
+  dut_alu_1/mu0/inst1887/I3 (FA_2045)                     0.00      15.60 f
+  dut_alu_1/mu0/inst1887/U1/x (ao22_2)                    0.62      16.22 f
+  dut_alu_1/mu0/inst1887/carry (FA_2045)                  0.00      16.22 f
+  dut_alu_1/mu0/inst1888/I3 (FA_2044)                     0.00      16.22 f
+  dut_alu_1/mu0/inst1888/U2/x (ao22_1)                    0.56      16.78 f
+  dut_alu_1/mu0/inst1888/carry (FA_2044)                  0.00      16.78 f
+  dut_alu_1/mu0/inst1889/I3 (FA_2043)                     0.00      16.78 f
+  dut_alu_1/mu0/inst1889/U1/x (ao22_1)                    0.71      17.49 f
+  dut_alu_1/mu0/inst1889/carry (FA_2043)                  0.00      17.49 f
+  dut_alu_1/mu0/inst1890/I3 (FA_2042)                     0.00      17.49 f
+  dut_alu_1/mu0/inst1890/U1/x (ao22_2)                    0.62      18.11 f
+  dut_alu_1/mu0/inst1890/carry (FA_2042)                  0.00      18.11 f
+  dut_alu_1/mu0/inst1891/I3 (FA_2041)                     0.00      18.11 f
+  dut_alu_1/mu0/inst1891/U2/x (ao22_1)                    0.56      18.67 f
+  dut_alu_1/mu0/inst1891/carry (FA_2041)                  0.00      18.67 f
+  dut_alu_1/mu0/inst1892/I3 (FA_2040)                     0.00      18.67 f
+  dut_alu_1/mu0/inst1892/U2/x (ao22_1)                    0.63      19.30 f
+  dut_alu_1/mu0/inst1892/carry (FA_2040)                  0.00      19.30 f
+  dut_alu_1/mu0/rc_last_reg_reg[27]/d (sdffp_1)           0.00      19.30 f
+  data arrival time                                                 19.30
+
+  clock clk_2 (rise edge)                                20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  dut_alu_1/mu0/rc_last_reg_reg[27]/ck (sdffp_1)          0.00      20.00 r
+  library setup time                                     -0.70      19.30
+  data required time                                                19.30
+  --------------------------------------------------------------------------
+  data required time                                                19.30
+  data arrival time                                                -19.30
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+  ****************************************
+Report : area
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 16:08:11 2018
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'simd_top_level' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    cdr3synPwcslV225T125 (File: /home/faculty/chsotiriou/IHP-Lib/IHP-0.25um/digital/synopsys/sgc25a.max.db)
+
+Number of ports:                        24535
+Number of nets:                        105344
+Number of cells:                        85062
+Number of combinational cells:          29715
+Number of sequential cells:             51352
+Number of macros/black boxes:               0
+Number of buf/inv:                       7594
+Number of references:                       9
+
+Combinational area:            4695843.750000
+Buf/Inv area:                   606246.875000
+Noncombinational area:        11213637.500000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:              15909481.250000
+Total area:                 undefined
+
+
+compile -map_effort high -area_effort high -scan -power_effort low
+
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 16:12:13 2018
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: cdr3synPwcslV225T125
+Wire Load Model Mode: enclosed
+
+  Startpoint: dut_alu_1/PDone_reg
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_core_control_0/ctrl_state_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  core_control       1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  dut_alu_1/PDone_reg/ck (sdffpr_2)                       0.00 #    60.00 r
+  dut_alu_1/PDone_reg/q (sdffpr_2)                        0.68      60.68 f
+  dut_alu_1/PDone (alu_2)                                 0.00      60.68 f
+  U5/x (and4_2)                                           0.60      61.28 f
+  dut_core_control_0/procc_done (core_control)            0.00      61.28 f
+  dut_core_control_0/U28/x (oai21_1)                      0.36      61.64 r
+  dut_core_control_0/U26/x (and4i_1)                      0.84      62.48 r
+  dut_core_control_0/U20/x (inv_2)                        0.90      63.39 f
+  dut_core_control_0/U19/x (oai221_1)                     0.52      63.91 r
+  dut_core_control_0/ctrl_state_reg[1]/d (sdffpr_2)       0.00      63.91 r
+  data arrival time                                                 63.91
+
+  clock clk (rise edge)                                  80.00      80.00
+  clock network delay (ideal)                             0.00      80.00
+  dut_core_control_0/ctrl_state_reg[1]/ck (sdffpr_2)      0.00      80.00 r
+  library setup time                                     -1.15      78.85
+  data required time                                                78.85
+  --------------------------------------------------------------------------
+  data required time                                                78.85
+  data arrival time                                                -63.91
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.94
+
+
+  Startpoint: dut_alu_1/mu0/pp_reg_reg[256]
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_alu_1/mu0/rc_last_reg_reg[7]
+            (rising edge-triggered flip-flop clocked by clk_2)
+  Path Group: clk_2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  multiplier_2       16K                   cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  dut_alu_1/mu0/pp_reg_reg[256]/ck (sdffpc_1)             0.00 #     0.00 r
+  dut_alu_1/mu0/pp_reg_reg[256]/q (sdffpc_1)              0.87       0.87 f
+  dut_alu_1/mu0/inst1242/I2 (HA_88)                       0.00       0.87 f
+  dut_alu_1/mu0/inst1242/U1/x (and2_1)                    0.79       1.65 f
+  dut_alu_1/mu0/inst1242/carry (HA_88)                    0.00       1.65 f
+  dut_alu_1/mu0/inst1243/I3 (FA_2669)                     0.00       1.65 f
+  dut_alu_1/mu0/inst1243/U1/x (ao22_2)                    0.62       2.27 f
+  dut_alu_1/mu0/inst1243/carry (FA_2669)                  0.00       2.27 f
+  dut_alu_1/mu0/inst1244/I3 (FA_2668)                     0.00       2.27 f
+  dut_alu_1/mu0/inst1244/U3/x (ao22_1)                    0.57       2.84 f
+  dut_alu_1/mu0/inst1244/carry (FA_2668)                  0.00       2.84 f
+  dut_alu_1/mu0/inst1245/I3 (FA_2667)                     0.00       2.84 f
+  dut_alu_1/mu0/inst1245/U1/x (ao22_2)                    0.62       3.46 f
+  dut_alu_1/mu0/inst1245/carry (FA_2667)                  0.00       3.46 f
+  dut_alu_1/mu0/inst1246/I3 (FA_2666)                     0.00       3.46 f
+  dut_alu_1/mu0/inst1246/U2/x (ao22_1)                    0.57       4.03 f
+  dut_alu_1/mu0/inst1246/carry (FA_2666)                  0.00       4.03 f
+  dut_alu_1/mu0/inst1247/I3 (FA_2665)                     0.00       4.03 f
+  dut_alu_1/mu0/inst1247/U1/x (ao22_2)                    0.63       4.66 f
+  dut_alu_1/mu0/inst1247/carry (FA_2665)                  0.00       4.66 f
+  dut_alu_1/mu0/inst1248/I3 (FA_2664)                     0.00       4.66 f
+  dut_alu_1/mu0/inst1248/U1/x (ao22_2)                    0.47       5.13 f
+  dut_alu_1/mu0/inst1248/carry (FA_2664)                  0.00       5.13 f
+  dut_alu_1/mu0/inst1249/I3 (FA_2663)                     0.00       5.13 f
+  dut_alu_1/mu0/inst1249/U2/x (ao22_1)                    0.57       5.70 f
+  dut_alu_1/mu0/inst1249/carry (FA_2663)                  0.00       5.70 f
+  dut_alu_1/mu0/inst1250/I3 (FA_2662)                     0.00       5.70 f
+  dut_alu_1/mu0/inst1250/U1/x (ao22_2)                    0.63       6.33 f
+  dut_alu_1/mu0/inst1250/carry (FA_2662)                  0.00       6.33 f
+  dut_alu_1/mu0/inst1251/I3 (FA_2661)                     0.00       6.33 f
+  dut_alu_1/mu0/inst1251/U1/x (ao22_2)                    0.49       6.81 f
+  dut_alu_1/mu0/inst1251/carry (FA_2661)                  0.00       6.81 f
+  dut_alu_1/mu0/inst1252/I3 (FA_2660)                     0.00       6.81 f
+  dut_alu_1/mu0/inst1252/U1/x (ao22_3)                    0.47       7.28 f
+  dut_alu_1/mu0/inst1252/carry (FA_2660)                  0.00       7.28 f
+  dut_alu_1/mu0/inst1253/I3 (FA_2659)                     0.00       7.28 f
+  dut_alu_1/mu0/inst1253/U1/x (ao22_2)                    0.42       7.71 f
+  dut_alu_1/mu0/inst1253/carry (FA_2659)                  0.00       7.71 f
+  dut_alu_1/mu0/inst1254/I3 (FA_2658)                     0.00       7.71 f
+  dut_alu_1/mu0/inst1254/U1/x (ao22_2)                    0.48       8.18 f
+  dut_alu_1/mu0/inst1254/carry (FA_2658)                  0.00       8.18 f
+  dut_alu_1/mu0/inst1255/I3 (FA_2657)                     0.00       8.18 f
+  dut_alu_1/mu0/inst1255/U1/x (ao22_2)                    0.48       8.66 f
+  dut_alu_1/mu0/inst1255/carry (FA_2657)                  0.00       8.66 f
+  dut_alu_1/mu0/inst1256/I3 (FA_2656)                     0.00       8.66 f
+  dut_alu_1/mu0/inst1256/U1/x (ao22_2)                    0.47       9.13 f
+  dut_alu_1/mu0/inst1256/carry (FA_2656)                  0.00       9.13 f
+  dut_alu_1/mu0/inst1257/I3 (FA_2655)                     0.00       9.13 f
+  dut_alu_1/mu0/inst1257/U2/x (ao22_1)                    0.56       9.69 f
+  dut_alu_1/mu0/inst1257/carry (FA_2655)                  0.00       9.69 f
+  dut_alu_1/mu0/inst1258/I3 (FA_2654)                     0.00       9.69 f
+  dut_alu_1/mu0/inst1258/U1/x (ao22_1)                    0.70      10.39 f
+  dut_alu_1/mu0/inst1258/carry (FA_2654)                  0.00      10.39 f
+  dut_alu_1/mu0/inst1259/I3 (FA_2653)                     0.00      10.39 f
+  dut_alu_1/mu0/inst1259/U1/x (ao22_1)                    0.71      11.11 f
+  dut_alu_1/mu0/inst1259/carry (FA_2653)                  0.00      11.11 f
+  dut_alu_1/mu0/inst1260/I3 (FA_2652)                     0.00      11.11 f
+  dut_alu_1/mu0/inst1260/U1/x (ao22_2)                    0.62      11.73 f
+  dut_alu_1/mu0/inst1260/carry (FA_2652)                  0.00      11.73 f
+  dut_alu_1/mu0/inst1261/I3 (FA_2651)                     0.00      11.73 f
+  dut_alu_1/mu0/inst1261/U2/x (ao22_1)                    0.57      12.30 f
+  dut_alu_1/mu0/inst1261/carry (FA_2651)                  0.00      12.30 f
+  dut_alu_1/mu0/inst1262/I3 (FA_2650)                     0.00      12.30 f
+  dut_alu_1/mu0/inst1262/U1/x (ao22_2)                    0.62      12.92 f
+  dut_alu_1/mu0/inst1262/carry (FA_2650)                  0.00      12.92 f
+  dut_alu_1/mu0/inst1263/I3 (FA_2649)                     0.00      12.92 f
+  dut_alu_1/mu0/inst1263/U2/x (ao22_1)                    0.56      13.48 f
+  dut_alu_1/mu0/inst1263/carry (FA_2649)                  0.00      13.48 f
+  dut_alu_1/mu0/inst1264/I3 (FA_2648)                     0.00      13.48 f
+  dut_alu_1/mu0/inst1264/U1/x (ao22_1)                    0.70      14.18 f
+  dut_alu_1/mu0/inst1264/carry (FA_2648)                  0.00      14.18 f
+  dut_alu_1/mu0/inst1265/I3 (FA_2647)                     0.00      14.18 f
+  dut_alu_1/mu0/inst1265/U2/x (ao22_1)                    0.70      14.88 f
+  dut_alu_1/mu0/inst1265/carry (FA_2647)                  0.00      14.88 f
+  dut_alu_1/mu0/inst1266/I3 (FA_2646)                     0.00      14.88 f
+  dut_alu_1/mu0/inst1266/U2/x (ao22_1)                    0.71      15.60 f
+  dut_alu_1/mu0/inst1266/carry (FA_2646)                  0.00      15.60 f
+  dut_alu_1/mu0/inst1267/I3 (FA_2645)                     0.00      15.60 f
+  dut_alu_1/mu0/inst1267/U1/x (ao22_2)                    0.62      16.22 f
+  dut_alu_1/mu0/inst1267/carry (FA_2645)                  0.00      16.22 f
+  dut_alu_1/mu0/inst1268/I3 (FA_2644)                     0.00      16.22 f
+  dut_alu_1/mu0/inst1268/U2/x (ao22_1)                    0.56      16.78 f
+  dut_alu_1/mu0/inst1268/carry (FA_2644)                  0.00      16.78 f
+  dut_alu_1/mu0/inst1269/I3 (FA_2643)                     0.00      16.78 f
+  dut_alu_1/mu0/inst1269/U1/x (ao22_1)                    0.71      17.49 f
+  dut_alu_1/mu0/inst1269/carry (FA_2643)                  0.00      17.49 f
+  dut_alu_1/mu0/inst1270/I3 (FA_2642)                     0.00      17.49 f
+  dut_alu_1/mu0/inst1270/U1/x (ao22_2)                    0.62      18.11 f
+  dut_alu_1/mu0/inst1270/carry (FA_2642)                  0.00      18.11 f
+  dut_alu_1/mu0/inst1271/I3 (FA_2641)                     0.00      18.11 f
+  dut_alu_1/mu0/inst1271/U2/x (ao22_1)                    0.56      18.67 f
+  dut_alu_1/mu0/inst1271/carry (FA_2641)                  0.00      18.67 f
+  dut_alu_1/mu0/inst1272/I3 (FA_2640)                     0.00      18.67 f
+  dut_alu_1/mu0/inst1272/U2/x (ao22_1)                    0.63      19.30 f
+  dut_alu_1/mu0/inst1272/carry (FA_2640)                  0.00      19.30 f
+  dut_alu_1/mu0/rc_last_reg_reg[7]/d (sdffp_1)            0.00      19.30 f
+  data arrival time                                                 19.30
+
+  clock clk_2 (rise edge)                                20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  dut_alu_1/mu0/rc_last_reg_reg[7]/ck (sdffp_1)           0.00      20.00 r
+  library setup time                                     -0.70      19.30
+  data required time                                                19.30
+  --------------------------------------------------------------------------
+  data required time                                                19.30
+  data arrival time                                                -19.30
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+
+
+****************************************
+Report : area
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 16:12:34 2018
+****************************************
+
+Library(s) Used:
+
+    cdr3synPwcslV225T125 (File: /home/faculty/chsotiriou/IHP-Lib/IHP-0.25um/digital/synopsys/sgc25a.max.db)
+
+Number of ports:                        24535
+Number of nets:                        105232
+Number of cells:                        84953
+Number of combinational cells:          29606
+Number of sequential cells:             51352
+Number of macros/black boxes:               0
+Number of buf/inv:                       7584
+Number of references:                       9
+
+Combinational area:            4688673.437500
+Buf/Inv area:                   605048.437500
+Noncombinational area:        11210326.562500
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:              15899000.000000
+Total area:                 undefined
+
+
+compile -map_effort high -area_effort low -scan -power_effort high
+
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 16:22:24 2018
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: cdr3synPwcslV225T125
+Wire Load Model Mode: enclosed
+
+  Startpoint: dut_alu_1/PDone_reg
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_core_control_0/ctrl_state_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  core_control       1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  dut_alu_1/PDone_reg/ck (sdffpr_2)                       0.00 #    60.00 r
+  dut_alu_1/PDone_reg/q (sdffpr_2)                        0.68      60.68 f
+  dut_alu_1/PDone (alu_2)                                 0.00      60.68 f
+  U6/x (and4_2)                                           0.60      61.28 f
+  dut_core_control_0/procc_done (core_control)            0.00      61.28 f
+  dut_core_control_0/U27/x (oai21_1)                      0.38      61.66 r
+  dut_core_control_0/U25/x (and4i_1)                      0.82      62.48 r
+  dut_core_control_0/U28/x (inv_2)                        0.88      63.36 f
+  dut_core_control_0/U46/x (oai221_1)                     0.55      63.90 r
+  dut_core_control_0/ctrl_state_reg[1]/d (sdffpr_2)       0.00      63.90 r
+  data arrival time                                                 63.90
+
+  clock clk (rise edge)                                  80.00      80.00
+  clock network delay (ideal)                             0.00      80.00
+  dut_core_control_0/ctrl_state_reg[1]/ck (sdffpr_2)      0.00      80.00 r
+  library setup time                                     -1.15      78.85
+  data required time                                                78.85
+  --------------------------------------------------------------------------
+  data required time                                                78.85
+  data arrival time                                                -63.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.95
+
+
+  Startpoint: dut_alu_0/mu0/pp_reg_reg[512]
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_alu_0/mu0/rc_last_reg_reg[15]
+            (rising edge-triggered flip-flop clocked by clk_2)
+  Path Group: clk_2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  multiplier_3       16K                   cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  dut_alu_0/mu0/pp_reg_reg[512]/ck (sdffpc_1)             0.00 #     0.00 r
+  dut_alu_0/mu0/pp_reg_reg[512]/q (sdffpc_1)              0.87       0.87 f
+  dut_alu_0/mu0/inst1490/I2 (HA_112)                      0.00       0.87 f
+  dut_alu_0/mu0/inst1490/U1/x (and2_1)                    0.79       1.65 f
+  dut_alu_0/mu0/inst1490/carry (HA_112)                   0.00       1.65 f
+  dut_alu_0/mu0/inst1491/I3 (FA_3389)                     0.00       1.65 f
+  dut_alu_0/mu0/inst1491/U1/x (ao22_2)                    0.62       2.27 f
+  dut_alu_0/mu0/inst1491/carry (FA_3389)                  0.00       2.27 f
+  dut_alu_0/mu0/inst1492/I3 (FA_3388)                     0.00       2.27 f
+  dut_alu_0/mu0/inst1492/U1/x (ao22_1)                    0.56       2.83 f
+  dut_alu_0/mu0/inst1492/carry (FA_3388)                  0.00       2.83 f
+  dut_alu_0/mu0/inst1493/I3 (FA_3387)                     0.00       2.83 f
+  dut_alu_0/mu0/inst1493/U2/x (ao22_1)                    0.71       3.54 f
+  dut_alu_0/mu0/inst1493/carry (FA_3387)                  0.00       3.54 f
+  dut_alu_0/mu0/inst1494/I3 (FA_3386)                     0.00       3.54 f
+  dut_alu_0/mu0/inst1494/U1/x (ao22_2)                    0.63       4.17 f
+  dut_alu_0/mu0/inst1494/carry (FA_3386)                  0.00       4.17 f
+  dut_alu_0/mu0/inst1495/I3 (FA_3385)                     0.00       4.17 f
+  dut_alu_0/mu0/inst1495/U1/x (ao22_2)                    0.47       4.64 f
+  dut_alu_0/mu0/inst1495/carry (FA_3385)                  0.00       4.64 f
+  dut_alu_0/mu0/inst1496/I3 (FA_3384)                     0.00       4.64 f
+  dut_alu_0/mu0/inst1496/U2/x (ao22_1)                    0.59       5.23 f
+  dut_alu_0/mu0/inst1496/carry (FA_3384)                  0.00       5.23 f
+  dut_alu_0/mu0/inst1497/I3 (FA_3383)                     0.00       5.23 f
+  dut_alu_0/mu0/inst1497/U1/x (ao22_3)                    0.66       5.89 f
+  dut_alu_0/mu0/inst1497/carry (FA_3383)                  0.00       5.89 f
+  dut_alu_0/mu0/inst1498/I3 (FA_3382)                     0.00       5.89 f
+  dut_alu_0/mu0/inst1498/U1/x (ao22_5)                    0.41       6.30 f
+  dut_alu_0/mu0/inst1498/carry (FA_3382)                  0.00       6.30 f
+  dut_alu_0/mu0/inst1499/I3 (FA_3381)                     0.00       6.30 f
+  dut_alu_0/mu0/inst1499/U2/x (ao22_1)                    0.51       6.82 f
+  dut_alu_0/mu0/inst1499/carry (FA_3381)                  0.00       6.82 f
+  dut_alu_0/mu0/inst1500/I3 (FA_3380)                     0.00       6.82 f
+  dut_alu_0/mu0/inst1500/U1/x (ao22_3)                    0.66       7.48 f
+  dut_alu_0/mu0/inst1500/carry (FA_3380)                  0.00       7.48 f
+  dut_alu_0/mu0/inst1501/I3 (FA_3379)                     0.00       7.48 f
+  dut_alu_0/mu0/inst1501/U1/x (ao22_6)                    0.41       7.89 f
+  dut_alu_0/mu0/inst1501/carry (FA_3379)                  0.00       7.89 f
+  dut_alu_0/mu0/inst1502/I3 (FA_3378)                     0.00       7.89 f
+  dut_alu_0/mu0/inst1502/U2/x (ao22_1)                    0.50       8.39 f
+  dut_alu_0/mu0/inst1502/carry (FA_3378)                  0.00       8.39 f
+  dut_alu_0/mu0/inst1503/I3 (FA_3377)                     0.00       8.39 f
+  dut_alu_0/mu0/inst1503/U1/x (ao22_3)                    0.66       9.05 f
+  dut_alu_0/mu0/inst1503/carry (FA_3377)                  0.00       9.05 f
+  dut_alu_0/mu0/inst1504/I3 (FA_3376)                     0.00       9.05 f
+  dut_alu_0/mu0/inst1504/U1/x (ao22_6)                    0.43       9.48 f
+  dut_alu_0/mu0/inst1504/carry (FA_3376)                  0.00       9.48 f
+  dut_alu_0/mu0/inst1505/I3 (FA_3375)                     0.00       9.48 f
+  dut_alu_0/mu0/inst1505/U1/x (ao22_6)                    0.34       9.82 f
+  dut_alu_0/mu0/inst1505/carry (FA_3375)                  0.00       9.82 f
+  dut_alu_0/mu0/inst1506/I3 (FA_3374)                     0.00       9.82 f
+  dut_alu_0/mu0/inst1506/U2/x (ao22_1)                    0.50      10.32 f
+  dut_alu_0/mu0/inst1506/carry (FA_3374)                  0.00      10.32 f
+  dut_alu_0/mu0/inst1507/I3 (FA_3373)                     0.00      10.32 f
+  dut_alu_0/mu0/inst1507/U1/x (ao22_3)                    0.66      10.98 f
+  dut_alu_0/mu0/inst1507/carry (FA_3373)                  0.00      10.98 f
+  dut_alu_0/mu0/inst1508/I3 (FA_3372)                     0.00      10.98 f
+  dut_alu_0/mu0/inst1508/U1/x (ao22_6)                    0.41      11.40 f
+  dut_alu_0/mu0/inst1508/carry (FA_3372)                  0.00      11.40 f
+  dut_alu_0/mu0/inst1509/I3 (FA_3371)                     0.00      11.40 f
+  dut_alu_0/mu0/inst1509/U2/x (ao22_1)                    0.48      11.88 f
+  dut_alu_0/mu0/inst1509/carry (FA_3371)                  0.00      11.88 f
+  dut_alu_0/mu0/inst1510/I3 (FA_3370)                     0.00      11.88 f
+  dut_alu_0/mu0/inst1510/U1/x (ao22_2)                    0.62      12.50 f
+  dut_alu_0/mu0/inst1510/carry (FA_3370)                  0.00      12.50 f
+  dut_alu_0/mu0/inst1511/I3 (FA_3369)                     0.00      12.50 f
+  dut_alu_0/mu0/inst1511/U2/x (ao22_1)                    0.56      13.06 f
+  dut_alu_0/mu0/inst1511/carry (FA_3369)                  0.00      13.06 f
+  dut_alu_0/mu0/inst1512/I3 (FA_3368)                     0.00      13.06 f
+  dut_alu_0/mu0/inst1512/U2/x (ao22_1)                    0.70      13.76 f
+  dut_alu_0/mu0/inst1512/carry (FA_3368)                  0.00      13.76 f
+  dut_alu_0/mu0/inst1513/I3 (FA_3367)                     0.00      13.76 f
+  dut_alu_0/mu0/inst1513/U2/x (ao22_1)                    0.70      14.46 f
+  dut_alu_0/mu0/inst1513/carry (FA_3367)                  0.00      14.46 f
+  dut_alu_0/mu0/inst1514/I3 (FA_3366)                     0.00      14.46 f
+  dut_alu_0/mu0/inst1514/U2/x (ao22_1)                    0.70      15.16 f
+  dut_alu_0/mu0/inst1514/carry (FA_3366)                  0.00      15.16 f
+  dut_alu_0/mu0/inst1515/I3 (FA_3365)                     0.00      15.16 f
+  dut_alu_0/mu0/inst1515/U2/x (ao22_1)                    0.70      15.87 f
+  dut_alu_0/mu0/inst1515/carry (FA_3365)                  0.00      15.87 f
+  dut_alu_0/mu0/inst1516/I3 (FA_3364)                     0.00      15.87 f
+  dut_alu_0/mu0/inst1516/U2/x (ao22_1)                    0.70      16.57 f
+  dut_alu_0/mu0/inst1516/carry (FA_3364)                  0.00      16.57 f
+  dut_alu_0/mu0/inst1517/I3 (FA_3363)                     0.00      16.57 f
+  dut_alu_0/mu0/inst1517/U2/x (ao22_1)                    0.70      17.27 f
+  dut_alu_0/mu0/inst1517/carry (FA_3363)                  0.00      17.27 f
+  dut_alu_0/mu0/inst1518/I3 (FA_3362)                     0.00      17.27 f
+  dut_alu_0/mu0/inst1518/U2/x (ao22_1)                    0.70      17.97 f
+  dut_alu_0/mu0/inst1518/carry (FA_3362)                  0.00      17.97 f
+  dut_alu_0/mu0/inst1519/I3 (FA_3361)                     0.00      17.97 f
+  dut_alu_0/mu0/inst1519/U2/x (ao22_1)                    0.70      18.67 f
+  dut_alu_0/mu0/inst1519/carry (FA_3361)                  0.00      18.67 f
+  dut_alu_0/mu0/inst1520/I3 (FA_3360)                     0.00      18.67 f
+  dut_alu_0/mu0/inst1520/U2/x (ao22_1)                    0.63      19.30 f
+  dut_alu_0/mu0/inst1520/carry (FA_3360)                  0.00      19.30 f
+  dut_alu_0/mu0/rc_last_reg_reg[15]/d (sdffp_1)           0.00      19.30 f
+  data arrival time                                                 19.30
+
+  clock clk_2 (rise edge)                                20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  dut_alu_0/mu0/rc_last_reg_reg[15]/ck (sdffp_1)          0.00      20.00 r
+  library setup time                                     -0.70      19.30
+  data required time                                                19.30
+  --------------------------------------------------------------------------
+  data required time                                                19.30
+  data arrival time                                                -19.30
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+****************************************
+Report : area
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 16:22:55 2018
+****************************************
+
+Library(s) Used:
+
+    cdr3synPwcslV225T125 (File: /home/faculty/chsotiriou/IHP-Lib/IHP-0.25um/digital/synopsys/sgc25a.max.db)
+
+Number of ports:                        24535
+Number of nets:                        103261
+Number of cells:                        82983
+Number of combinational cells:          27636
+Number of sequential cells:             51352
+Number of macros/black boxes:               0
+Number of buf/inv:                       5808
+Number of references:                       9
+
+Combinational area:            4568951.562500
+Buf/Inv area:                   456767.187500
+Noncombinational area:        11207076.562500
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:              15776028.125000
+Total area:                 undefined
+
+
+compile -map_effort high -area_effort high -scan 
+
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 16:41:00 2018
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: cdr3synPwcslV225T125
+Wire Load Model Mode: enclosed
+
+  Startpoint: dut_alu_1/PDone_reg
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_core_control_0/ctrl_state_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  core_control       1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  dut_alu_1/PDone_reg/ck (sdffpr_2)                       0.00 #    60.00 r
+  dut_alu_1/PDone_reg/q (sdffpr_2)                        0.68      60.68 f
+  dut_alu_1/PDone (alu_2)                                 0.00      60.68 f
+  U7/x (and4_2)                                           0.60      61.28 f
+  dut_core_control_0/procc_done (core_control)            0.00      61.28 f
+  dut_core_control_0/U28/x (oai21_1)                      0.36      61.64 r
+  dut_core_control_0/U26/x (and4i_1)                      0.84      62.48 r
+  dut_core_control_0/U20/x (inv_2)                        0.90      63.39 f
+  dut_core_control_0/U19/x (oai221_1)                     0.52      63.91 r
+  dut_core_control_0/ctrl_state_reg[1]/d (sdffpr_2)       0.00      63.91 r
+  data arrival time                                                 63.91
+
+  clock clk (rise edge)                                  80.00      80.00
+  clock network delay (ideal)                             0.00      80.00
+  dut_core_control_0/ctrl_state_reg[1]/ck (sdffpr_2)      0.00      80.00 r
+  library setup time                                     -1.15      78.85
+  data required time                                                78.85
+  --------------------------------------------------------------------------
+  data required time                                                78.85
+  data arrival time                                                -63.91
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.94
+
+
+  Startpoint: dut_alu_1/mu0/pp_reg_reg[704]
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_alu_1/mu0/rc_last_reg_reg[22]
+            (rising edge-triggered flip-flop clocked by clk_2)
+  Path Group: clk_2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  multiplier_2       16K                   cdr3synPwcslV225T125
+  FA_2249            1K                    cdr3synPwcslV225T125
+  FA_2247            1K                    cdr3synPwcslV225T125
+  FA_2225            1K                    cdr3synPwcslV225T125
+  FA_2220            1K                    cdr3synPwcslV225T125
+  FA_2191            1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  dut_alu_1/mu0/pp_reg_reg[704]/ck (sdffpc_1)             0.00 #     0.00 r
+  dut_alu_1/mu0/pp_reg_reg[704]/q (sdffpc_1)              1.10       1.10 r
+  dut_alu_1/mu0/inst1676/I2 (HA_74)                       0.00       1.10 r
+  dut_alu_1/mu0/inst1676/U1/x (and2_1)                    0.80       1.90 r
+  dut_alu_1/mu0/inst1676/carry (HA_74)                    0.00       1.90 r
+  dut_alu_1/mu0/inst1677/I3 (FA_2249)                     0.00       1.90 r
+  dut_alu_1/mu0/inst1677/U1/x (nand2_1)                   0.39       2.28 f
+  dut_alu_1/mu0/inst1677/U2/x (nand2_4)                   0.32       2.60 r
+  dut_alu_1/mu0/inst1677/carry (FA_2249)                  0.00       2.60 r
+  dut_alu_1/mu0/inst1678/I3 (FA_2248)                     0.00       2.60 r
+  dut_alu_1/mu0/inst1678/U1/x (ao22_3)                    0.45       3.06 r
+  dut_alu_1/mu0/inst1678/carry (FA_2248)                  0.00       3.06 r
+  dut_alu_1/mu0/inst1679/I3 (FA_2247)                     0.00       3.06 r
+  dut_alu_1/mu0/inst1679/U1/x (nand2_3)                   0.20       3.26 f
+  dut_alu_1/mu0/inst1679/U3/x (nand2_2)                   0.24       3.50 r
+  dut_alu_1/mu0/inst1679/carry (FA_2247)                  0.00       3.50 r
+  dut_alu_1/mu0/inst1680/I3 (FA_2246)                     0.00       3.50 r
+  dut_alu_1/mu0/inst1680/U1/x (ao22_1)                    0.60       4.10 r
+  dut_alu_1/mu0/inst1680/carry (FA_2246)                  0.00       4.10 r
+  dut_alu_1/mu0/inst1681/I3 (FA_2245)                     0.00       4.10 r
+  dut_alu_1/mu0/inst1681/U1/x (ao22_3)                    0.55       4.65 r
+  dut_alu_1/mu0/inst1681/carry (FA_2245)                  0.00       4.65 r
+  dut_alu_1/mu0/inst1682/I3 (FA_2244)                     0.00       4.65 r
+  dut_alu_1/mu0/inst1682/U1/x (ao22_4)                    0.44       5.09 r
+  dut_alu_1/mu0/inst1682/carry (FA_2244)                  0.00       5.09 r
+  dut_alu_1/mu0/inst1683/I3 (FA_2243)                     0.00       5.09 r
+  dut_alu_1/mu0/inst1683/U1/x (ao22_6)                    0.42       5.51 r
+  dut_alu_1/mu0/inst1683/carry (FA_2243)                  0.00       5.51 r
+  dut_alu_1/mu0/inst1684/I3 (FA_2242)                     0.00       5.51 r
+  dut_alu_1/mu0/inst1684/U2/x (ao22_2)                    0.42       5.92 r
+  dut_alu_1/mu0/inst1684/carry (FA_2242)                  0.00       5.92 r
+  dut_alu_1/mu0/inst1685/I3 (FA_2241)                     0.00       5.92 r
+  dut_alu_1/mu0/inst1685/U1/x (ao22_2)                    0.50       6.42 r
+  dut_alu_1/mu0/inst1685/carry (FA_2241)                  0.00       6.42 r
+  dut_alu_1/mu0/inst1686/I3 (FA_2240)                     0.00       6.42 r
+  dut_alu_1/mu0/inst1686/U1/x (ao22_1)                    0.63       7.05 r
+  dut_alu_1/mu0/inst1686/carry (FA_2240)                  0.00       7.05 r
+  dut_alu_1/mu0/inst1687/I3 (FA_2239)                     0.00       7.05 r
+  dut_alu_1/mu0/inst1687/U1/x (ao22_3)                    0.55       7.60 r
+  dut_alu_1/mu0/inst1687/carry (FA_2239)                  0.00       7.60 r
+  dut_alu_1/mu0/inst1688/I3 (FA_2238)                     0.00       7.60 r
+  dut_alu_1/mu0/inst1688/U1/x (ao22_6)                    0.44       8.04 r
+  dut_alu_1/mu0/inst1688/carry (FA_2238)                  0.00       8.04 r
+  dut_alu_1/mu0/inst1689/I3 (FA_2237)                     0.00       8.04 r
+  dut_alu_1/mu0/inst1689/U1/x (ao22_3)                    0.38       8.42 r
+  dut_alu_1/mu0/inst1689/carry (FA_2237)                  0.00       8.42 r
+  dut_alu_1/mu0/inst1690/I3 (FA_2236)                     0.00       8.42 r
+  dut_alu_1/mu0/inst1690/U1/x (ao22_3)                    0.44       8.86 r
+  dut_alu_1/mu0/inst1690/carry (FA_2236)                  0.00       8.86 r
+  dut_alu_1/mu0/inst1691/I3 (FA_2235)                     0.00       8.86 r
+  dut_alu_1/mu0/inst1691/U1/x (ao22_6)                    0.44       9.29 r
+  dut_alu_1/mu0/inst1691/carry (FA_2235)                  0.00       9.29 r
+  dut_alu_1/mu0/inst1692/I3 (FA_2234)                     0.00       9.29 r
+  dut_alu_1/mu0/inst1692/U1/x (ao22_3)                    0.39       9.68 r
+  dut_alu_1/mu0/inst1692/carry (FA_2234)                  0.00       9.68 r
+  dut_alu_1/mu0/inst1693/I3 (FA_2233)                     0.00       9.68 r
+  dut_alu_1/mu0/inst1693/U1/x (ao22_6)                    0.44      10.13 r
+  dut_alu_1/mu0/inst1693/carry (FA_2233)                  0.00      10.13 r
+  dut_alu_1/mu0/inst1694/I3 (FA_2232)                     0.00      10.13 r
+  dut_alu_1/mu0/inst1694/U1/x (ao22_6)                    0.37      10.50 r
+  dut_alu_1/mu0/inst1694/carry (FA_2232)                  0.00      10.50 r
+  dut_alu_1/mu0/inst1695/I3 (FA_2231)                     0.00      10.50 r
+  dut_alu_1/mu0/inst1695/U1/x (ao22_1)                    0.52      11.02 r
+  dut_alu_1/mu0/inst1695/carry (FA_2231)                  0.00      11.02 r
+  dut_alu_1/mu0/inst1696/I3 (FA_2230)                     0.00      11.02 r
+  dut_alu_1/mu0/inst1696/U1/x (ao22_2)                    0.55      11.57 r
+  dut_alu_1/mu0/inst1696/carry (FA_2230)                  0.00      11.57 r
+  dut_alu_1/mu0/inst1697/I3 (FA_2229)                     0.00      11.57 r
+  dut_alu_1/mu0/inst1697/U2/x (ao22_1)                    0.61      12.17 r
+  dut_alu_1/mu0/inst1697/carry (FA_2229)                  0.00      12.17 r
+  dut_alu_1/mu0/inst1698/I3 (FA_2228)                     0.00      12.17 r
+  dut_alu_1/mu0/inst1698/U1/x (ao22_1)                    0.65      12.82 r
+  dut_alu_1/mu0/inst1698/carry (FA_2228)                  0.00      12.82 r
+  dut_alu_1/mu0/inst1699/I3 (FA_2227)                     0.00      12.82 r
+  dut_alu_1/mu0/inst1699/U1/x (ao22_1)                    0.65      13.47 r
+  dut_alu_1/mu0/inst1699/carry (FA_2227)                  0.00      13.47 r
+  dut_alu_1/mu0/inst1700/I3 (FA_2226)                     0.00      13.47 r
+  dut_alu_1/mu0/inst1700/U1/x (ao22_1)                    0.65      14.13 r
+  dut_alu_1/mu0/inst1700/carry (FA_2226)                  0.00      14.13 r
+  dut_alu_1/mu0/inst1701/I3 (FA_2225)                     0.00      14.13 r
+  dut_alu_1/mu0/inst1701/U2/x (nand2_1)                   0.31      14.44 f
+  dut_alu_1/mu0/inst1701/U1/x (nand2_2)                   0.30      14.74 r
+  dut_alu_1/mu0/inst1701/carry (FA_2225)                  0.00      14.74 r
+  dut_alu_1/mu0/inst1702/I3 (FA_2224)                     0.00      14.74 r
+  dut_alu_1/mu0/inst1702/U2/x (ao22_1)                    0.59      15.33 r
+  dut_alu_1/mu0/inst1702/carry (FA_2224)                  0.00      15.33 r
+  dut_alu_1/mu0/inst1703/I3 (FA_2223)                     0.00      15.33 r
+  dut_alu_1/mu0/inst1703/U2/x (ao22_1)                    0.66      15.98 r
+  dut_alu_1/mu0/inst1703/carry (FA_2223)                  0.00      15.98 r
+  dut_alu_1/mu0/inst1704/I3 (FA_2222)                     0.00      15.98 r
+  dut_alu_1/mu0/inst1704/U1/x (ao22_2)                    0.55      16.54 r
+  dut_alu_1/mu0/inst1704/carry (FA_2222)                  0.00      16.54 r
+  dut_alu_1/mu0/inst1705/I3 (FA_2221)                     0.00      16.54 r
+  dut_alu_1/mu0/inst1705/U1/x (ao22_2)                    0.54      17.08 r
+  dut_alu_1/mu0/inst1705/carry (FA_2221)                  0.00      17.08 r
+  dut_alu_1/mu0/inst1706/I3 (FA_2220)                     0.00      17.08 r
+  dut_alu_1/mu0/inst1706/U4/x (inv_2)                     0.34      17.41 f
+  dut_alu_1/mu0/inst1706/U3/x (nand2_2)                   0.18      17.59 r
+  dut_alu_1/mu0/inst1706/U2/x (nand2_2)                   0.23      17.82 f
+  dut_alu_1/mu0/inst1706/sum (FA_2220)                    0.00      17.82 f
+  dut_alu_1/mu0/inst1736/I1 (FA_2191)                     0.00      17.82 f
+  dut_alu_1/mu0/inst1736/U1/x (exor2_1)                   0.34      18.16 r
+  dut_alu_1/mu0/inst1736/U2/x (ao22_3)                    0.68      18.84 r
+  dut_alu_1/mu0/inst1736/carry (FA_2191)                  0.00      18.84 r
+  dut_alu_1/mu0/inst1737/I3 (FA_2190)                     0.00      18.84 r
+  dut_alu_1/mu0/inst1737/U2/x (ao22_1)                    0.49      19.33 r
+  dut_alu_1/mu0/inst1737/carry (FA_2190)                  0.00      19.33 r
+  dut_alu_1/mu0/rc_last_reg_reg[22]/d (sdffp_1)           0.00      19.33 r
+  data arrival time                                                 19.33
+
+  clock clk_2 (rise edge)                                20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  dut_alu_1/mu0/rc_last_reg_reg[22]/ck (sdffp_1)          0.00      20.00 r
+  library setup time                                     -0.67      19.33
+  data required time                                                19.33
+  --------------------------------------------------------------------------
+  data required time                                                19.33
+  data arrival time                                                -19.33
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  ****************************************
+Report : area
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 16:41:20 2018
+****************************************
+
+Library(s) Used:
+
+    cdr3synPwcslV225T125 (File: /home/faculty/chsotiriou/IHP-Lib/IHP-0.25um/digital/synopsys/sgc25a.max.db)
+
+Number of ports:                        24535
+Number of nets:                        105305
+Number of cells:                        85028
+Number of combinational cells:          29681
+Number of sequential cells:             51352
+Number of macros/black boxes:               0
+Number of buf/inv:                       7570
+Number of references:                       9
+
+Combinational area:            4689018.750000
+Buf/Inv area:                   603545.312500
+Noncombinational area:        11211057.812500
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:              15900076.562500
+Total area:                 undefined
+
+compile -map_effort high -area_effort low -scan
+
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 16:56:18 2018
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: cdr3synPwcslV225T125
+Wire Load Model Mode: enclosed
+
+  Startpoint: dut_alu_1/PDone_reg
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_core_control_0/ctrl_state_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  core_control       1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  dut_alu_1/PDone_reg/ck (sdffpr_2)                       0.00 #    60.00 r
+  dut_alu_1/PDone_reg/q (sdffpr_2)                        0.68      60.68 f
+  dut_alu_1/PDone (alu_2)                                 0.00      60.68 f
+  U9/x (and4_2)                                           0.60      61.28 f
+  dut_core_control_0/procc_done (core_control)            0.00      61.28 f
+  dut_core_control_0/U26/x (oai21_1)                      0.38      61.66 r
+  dut_core_control_0/U24/x (and4i_1)                      0.82      62.48 r
+  dut_core_control_0/U27/x (inv_2)                        0.88      63.36 f
+  dut_core_control_0/U47/x (oai221_1)                     0.55      63.90 r
+  dut_core_control_0/ctrl_state_reg[1]/d (sdffpr_2)       0.00      63.90 r
+  data arrival time                                                 63.90
+
+  clock clk (rise edge)                                  80.00      80.00
+  clock network delay (ideal)                             0.00      80.00
+  dut_core_control_0/ctrl_state_reg[1]/ck (sdffpr_2)      0.00      80.00 r
+  library setup time                                     -1.15      78.85
+  data required time                                                78.85
+  --------------------------------------------------------------------------
+  data required time                                                78.85
+  data arrival time                                                -63.90
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.95
+
+
+  Startpoint: dut_alu_3/mu0/r2s_reg_reg[2]
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_alu_3/mu0/rc_last_reg_reg[2]
+            (rising edge-triggered flip-flop clocked by clk_2)
+  Path Group: clk_2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  multiplier_0       16K                   cdr3synPwcslV225T125
+  FA_899             1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  dut_alu_3/mu0/r2s_reg_reg[2]/ck (sdffp_2)               0.00 #     0.00 r
+  dut_alu_3/mu0/r2s_reg_reg[2]/q (sdffp_2)                0.92       0.92 r
+  dut_alu_3/mu0/inst1088/I1 (FA_899)                      0.00       0.92 r
+  dut_alu_3/mu0/inst1088/U5/x (inv_2)                     0.34       1.26 f
+  dut_alu_3/mu0/inst1088/U3/x (nand2_2)                   0.19       1.45 r
+  dut_alu_3/mu0/inst1088/U4/x (nand2_2)                   0.20       1.64 f
+  dut_alu_3/mu0/inst1088/U1/x (ao22_1)                    0.52       2.16 f
+  dut_alu_3/mu0/inst1088/carry (FA_899)                   0.00       2.16 f
+  dut_alu_3/mu0/inst1089/I3 (FA_898)                      0.00       2.16 f
+  dut_alu_3/mu0/inst1089/U2/x (ao22_1)                    0.70       2.86 f
+  dut_alu_3/mu0/inst1089/carry (FA_898)                   0.00       2.86 f
+  dut_alu_3/mu0/inst1090/I3 (FA_897)                      0.00       2.86 f
+  dut_alu_3/mu0/inst1090/U2/x (ao22_1)                    0.70       3.56 f
+  dut_alu_3/mu0/inst1090/carry (FA_897)                   0.00       3.56 f
+  dut_alu_3/mu0/inst1091/I3 (FA_896)                      0.00       3.56 f
+  dut_alu_3/mu0/inst1091/U1/x (ao22_1)                    0.73       4.29 f
+  dut_alu_3/mu0/inst1091/carry (FA_896)                   0.00       4.29 f
+  dut_alu_3/mu0/inst1092/I3 (FA_895)                      0.00       4.29 f
+  dut_alu_3/mu0/inst1092/U1/x (ao22_3)                    0.65       4.94 f
+  dut_alu_3/mu0/inst1092/carry (FA_895)                   0.00       4.94 f
+  dut_alu_3/mu0/inst1093/I3 (FA_894)                      0.00       4.94 f
+  dut_alu_3/mu0/inst1093/U1/x (ao22_3)                    0.42       5.37 f
+  dut_alu_3/mu0/inst1093/carry (FA_894)                   0.00       5.37 f
+  dut_alu_3/mu0/inst1094/I3 (FA_893)                      0.00       5.37 f
+  dut_alu_3/mu0/inst1094/U1/x (ao22_4)                    0.41       5.77 f
+  dut_alu_3/mu0/inst1094/carry (FA_893)                   0.00       5.77 f
+  dut_alu_3/mu0/inst1095/I3 (FA_892)                      0.00       5.77 f
+  dut_alu_3/mu0/inst1095/U2/x (ao22_1)                    0.53       6.30 f
+  dut_alu_3/mu0/inst1095/carry (FA_892)                   0.00       6.30 f
+  dut_alu_3/mu0/inst1096/I3 (FA_891)                      0.00       6.30 f
+  dut_alu_3/mu0/inst1096/U1/x (ao22_3)                    0.63       6.94 f
+  dut_alu_3/mu0/inst1096/carry (FA_891)                   0.00       6.94 f
+  dut_alu_3/mu0/inst1097/I3 (FA_890)                      0.00       6.94 f
+  dut_alu_3/mu0/inst1097/U2/x (ao22_1)                    0.51       7.45 f
+  dut_alu_3/mu0/inst1097/carry (FA_890)                   0.00       7.45 f
+  dut_alu_3/mu0/inst1098/I3 (FA_889)                      0.00       7.45 f
+  dut_alu_3/mu0/inst1098/U2/x (ao22_1)                    0.73       8.18 f
+  dut_alu_3/mu0/inst1098/carry (FA_889)                   0.00       8.18 f
+  dut_alu_3/mu0/inst1099/I3 (FA_888)                      0.00       8.18 f
+  dut_alu_3/mu0/inst1099/U1/x (ao22_3)                    0.63       8.82 f
+  dut_alu_3/mu0/inst1099/carry (FA_888)                   0.00       8.82 f
+  dut_alu_3/mu0/inst1100/I3 (FA_887)                      0.00       8.82 f
+  dut_alu_3/mu0/inst1100/U2/x (ao22_1)                    0.51       9.33 f
+  dut_alu_3/mu0/inst1100/carry (FA_887)                   0.00       9.33 f
+  dut_alu_3/mu0/inst1101/I3 (FA_886)                      0.00       9.33 f
+  dut_alu_3/mu0/inst1101/U2/x (ao22_1)                    0.73      10.06 f
+  dut_alu_3/mu0/inst1101/carry (FA_886)                   0.00      10.06 f
+  dut_alu_3/mu0/inst1102/I3 (FA_885)                      0.00      10.06 f
+  dut_alu_3/mu0/inst1102/U1/x (ao22_3)                    0.66      10.73 f
+  dut_alu_3/mu0/inst1102/carry (FA_885)                   0.00      10.73 f
+  dut_alu_3/mu0/inst1103/I3 (FA_884)                      0.00      10.73 f
+  dut_alu_3/mu0/inst1103/U1/x (ao22_6)                    0.41      11.14 f
+  dut_alu_3/mu0/inst1103/carry (FA_884)                   0.00      11.14 f
+  dut_alu_3/mu0/inst1104/I3 (FA_883)                      0.00      11.14 f
+  dut_alu_3/mu0/inst1104/U1/x (ao22_2)                    0.37      11.51 f
+  dut_alu_3/mu0/inst1104/carry (FA_883)                   0.00      11.51 f
+  dut_alu_3/mu0/inst1105/I3 (FA_882)                      0.00      11.51 f
+  dut_alu_3/mu0/inst1105/U2/x (ao22_1)                    0.59      12.10 f
+  dut_alu_3/mu0/inst1105/carry (FA_882)                   0.00      12.10 f
+  dut_alu_3/mu0/inst1106/I3 (FA_881)                      0.00      12.10 f
+  dut_alu_3/mu0/inst1106/U1/x (ao22_3)                    0.63      12.74 f
+  dut_alu_3/mu0/inst1106/carry (FA_881)                   0.00      12.74 f
+  dut_alu_3/mu0/inst1107/I3 (FA_880)                      0.00      12.74 f
+  dut_alu_3/mu0/inst1107/U2/x (ao22_1)                    0.51      13.25 f
+  dut_alu_3/mu0/inst1107/carry (FA_880)                   0.00      13.25 f
+  dut_alu_3/mu0/inst1108/I3 (FA_879)                      0.00      13.25 f
+  dut_alu_3/mu0/inst1108/U2/x (ao22_1)                    0.73      13.98 f
+  dut_alu_3/mu0/inst1108/carry (FA_879)                   0.00      13.98 f
+  dut_alu_3/mu0/inst1109/I3 (FA_878)                      0.00      13.98 f
+  dut_alu_3/mu0/inst1109/U1/x (ao22_3)                    0.63      14.62 f
+  dut_alu_3/mu0/inst1109/carry (FA_878)                   0.00      14.62 f
+  dut_alu_3/mu0/inst1110/I3 (FA_877)                      0.00      14.62 f
+  dut_alu_3/mu0/inst1110/U2/x (ao22_1)                    0.51      15.13 f
+  dut_alu_3/mu0/inst1110/carry (FA_877)                   0.00      15.13 f
+  dut_alu_3/mu0/inst1111/I3 (FA_876)                      0.00      15.13 f
+  dut_alu_3/mu0/inst1111/U2/x (ao22_1)                    0.73      15.86 f
+  dut_alu_3/mu0/inst1111/carry (FA_876)                   0.00      15.86 f
+  dut_alu_3/mu0/inst1112/I3 (FA_875)                      0.00      15.86 f
+  dut_alu_3/mu0/inst1112/U1/x (ao22_3)                    0.64      16.50 f
+  dut_alu_3/mu0/inst1112/carry (FA_875)                   0.00      16.50 f
+  dut_alu_3/mu0/inst1113/I3 (FA_874)                      0.00      16.50 f
+  dut_alu_3/mu0/inst1113/U1/x (ao22_2)                    0.42      16.92 f
+  dut_alu_3/mu0/inst1113/carry (FA_874)                   0.00      16.92 f
+  dut_alu_3/mu0/inst1114/I3 (FA_873)                      0.00      16.92 f
+  dut_alu_3/mu0/inst1114/U2/x (ao22_1)                    0.56      17.48 f
+  dut_alu_3/mu0/inst1114/carry (FA_873)                   0.00      17.48 f
+  dut_alu_3/mu0/inst1115/I3 (FA_872)                      0.00      17.48 f
+  dut_alu_3/mu0/inst1115/U2/x (ao22_1)                    0.71      18.20 f
+  dut_alu_3/mu0/inst1115/carry (FA_872)                   0.00      18.20 f
+  dut_alu_3/mu0/inst1116/I3 (FA_871)                      0.00      18.20 f
+  dut_alu_3/mu0/inst1116/U1/x (ao22_2)                    0.62      18.82 f
+  dut_alu_3/mu0/inst1116/carry (FA_871)                   0.00      18.82 f
+  dut_alu_3/mu0/inst1117/I3 (FA_870)                      0.00      18.82 f
+  dut_alu_3/mu0/inst1117/U2/x (ao22_1)                    0.49      19.30 f
+  dut_alu_3/mu0/inst1117/carry (FA_870)                   0.00      19.30 f
+  dut_alu_3/mu0/rc_last_reg_reg[2]/d (sdffp_1)            0.00      19.30 f
+  data arrival time                                                 19.30
+
+  clock clk_2 (rise edge)                                20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  dut_alu_3/mu0/rc_last_reg_reg[2]/ck (sdffp_1)           0.00      20.00 r
+  library setup time                                     -0.70      19.30
+  data required time                                                19.30
+  --------------------------------------------------------------------------
+  data required time                                                19.30
+  data arrival time                                                -19.30
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  ****************************************
+Report : area
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 16:56:52 2018
+****************************************
+
+Library(s) Used:
+
+    cdr3synPwcslV225T125 (File: /home/faculty/chsotiriou/IHP-Lib/IHP-0.25um/digital/synopsys/sgc25a.max.db)
+
+Number of ports:                        24535
+Number of nets:                        103263
+Number of cells:                        82988
+Number of combinational cells:          27641
+Number of sequential cells:             51352
+Number of macros/black boxes:               0
+Number of buf/inv:                       5805
+Number of references:                       9
+
+Combinational area:            4569601.562500
+Buf/Inv area:                   456787.500000
+Noncombinational area:        11207239.062500
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:              15776840.625000
+Total area:                 undefined
+///////////////////////////////////////////////////////////////////////////////////////////////
+defalut run from script 
++ area effort min max 
++ incremental 
+
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 17:29:52 2018
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: cdr3synPwcslV225T125
+Wire Load Model Mode: enclosed
+
+  Startpoint: dut_alu_1/PDone_reg
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_core_control_0/ctrl_data_contition_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     250K                  cdr3synPwcslV225T125
+  core_control       1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  dut_alu_1/PDone_reg/ck (sdffpr_1)                       0.00 #    60.00 r
+  dut_alu_1/PDone_reg/q (sdffpr_1)                        0.88      60.88 r
+  dut_alu_1/PDone (alu_2)                                 0.00      60.88 r
+  C9/x (and2_8)                                           0.61      61.49 r
+  C8/x (and2_8)                                           0.30      61.79 r
+  C7/x (and2_8)                                           0.31      62.10 r
+  dut_core_control_0/procc_done (core_control)            0.00      62.10 r
+  dut_core_control_0/U47/x (oai21_1)                      0.21      62.31 f
+  dut_core_control_0/U40/x (and4i_1)                      0.66      62.97 f
+  dut_core_control_0/U39/x (inv_0)                        0.89      63.86 r
+  dut_core_control_0/U37/x (nand2_0)                      1.26      65.12 f
+  dut_core_control_0/U20/x (inv_0)                        0.72      65.84 r
+  dut_core_control_0/U19/x (ao21_1)                       0.51      66.36 r
+  dut_core_control_0/ctrl_data_contition_reg[0]/d (sdffpr_1)
+                                                          0.00      66.36 r
+  data arrival time                                                 66.36
+
+  clock clk (rise edge)                                  80.00      80.00
+  clock network delay (ideal)                             0.00      80.00
+  dut_core_control_0/ctrl_data_contition_reg[0]/ck (sdffpr_1)
+                                                          0.00      80.00 r
+  library setup time                                     -0.95      79.05
+  data required time                                                79.05
+  --------------------------------------------------------------------------
+  data required time                                                79.05
+  data arrival time                                                -66.36
+  --------------------------------------------------------------------------
+  slack (MET)                                                       12.69
+
+
+  Startpoint: dut_alu_1/mu0/pp_reg_reg[480]
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_alu_1/mu0/r15s_reg_reg[30]
+            (rising edge-triggered flip-flop clocked by clk_2)
+  Path Group: clk_2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     250K                  cdr3synPwcslV225T125
+  multiplier_2       17K                   cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  dut_alu_1/mu0/pp_reg_reg[480]/ck (sdffpc_2)             0.00 #     0.00 r
+  dut_alu_1/mu0/pp_reg_reg[480]/q (sdffpc_2)              0.76       0.76 f
+  dut_alu_1/mu0/inst1459/I2 (HA_81)                       0.00       0.76 f
+  dut_alu_1/mu0/inst1459/U2/x (and2_1)                    0.61       1.37 f
+  dut_alu_1/mu0/inst1459/carry (HA_81)                    0.00       1.37 f
+  dut_alu_1/mu0/inst1460/I3 (FA_2459)                     0.00       1.37 f
+  dut_alu_1/mu0/inst1460/U2/x (ao22_1)                    0.70       2.06 f
+  dut_alu_1/mu0/inst1460/carry (FA_2459)                  0.00       2.06 f
+  dut_alu_1/mu0/inst1461/I3 (FA_2458)                     0.00       2.06 f
+  dut_alu_1/mu0/inst1461/U2/x (ao22_1)                    0.70       2.76 f
+  dut_alu_1/mu0/inst1461/carry (FA_2458)                  0.00       2.76 f
+  dut_alu_1/mu0/inst1462/I3 (FA_2457)                     0.00       2.76 f
+  dut_alu_1/mu0/inst1462/U2/x (ao22_1)                    0.70       3.46 f
+  dut_alu_1/mu0/inst1462/carry (FA_2457)                  0.00       3.46 f
+  dut_alu_1/mu0/inst1463/I3 (FA_2456)                     0.00       3.46 f
+  dut_alu_1/mu0/inst1463/U2/x (ao22_1)                    0.70       4.17 f
+  dut_alu_1/mu0/inst1463/carry (FA_2456)                  0.00       4.17 f
+  dut_alu_1/mu0/inst1464/I3 (FA_2455)                     0.00       4.17 f
+  dut_alu_1/mu0/inst1464/U2/x (ao22_1)                    0.70       4.87 f
+  dut_alu_1/mu0/inst1464/carry (FA_2455)                  0.00       4.87 f
+  dut_alu_1/mu0/inst1465/I3 (FA_2454)                     0.00       4.87 f
+  dut_alu_1/mu0/inst1465/U2/x (ao22_1)                    0.70       5.57 f
+  dut_alu_1/mu0/inst1465/carry (FA_2454)                  0.00       5.57 f
+  dut_alu_1/mu0/inst1466/I3 (FA_2453)                     0.00       5.57 f
+  dut_alu_1/mu0/inst1466/U2/x (ao22_1)                    0.70       6.27 f
+  dut_alu_1/mu0/inst1466/carry (FA_2453)                  0.00       6.27 f
+  dut_alu_1/mu0/inst1467/I3 (FA_2452)                     0.00       6.27 f
+  dut_alu_1/mu0/inst1467/U2/x (ao22_1)                    0.70       6.97 f
+  dut_alu_1/mu0/inst1467/carry (FA_2452)                  0.00       6.97 f
+  dut_alu_1/mu0/inst1468/I3 (FA_2451)                     0.00       6.97 f
+  dut_alu_1/mu0/inst1468/U2/x (ao22_1)                    0.70       7.67 f
+  dut_alu_1/mu0/inst1468/carry (FA_2451)                  0.00       7.67 f
+  dut_alu_1/mu0/inst1469/I3 (FA_2450)                     0.00       7.67 f
+  dut_alu_1/mu0/inst1469/U2/x (ao22_1)                    0.70       8.38 f
+  dut_alu_1/mu0/inst1469/carry (FA_2450)                  0.00       8.38 f
+  dut_alu_1/mu0/inst1470/I3 (FA_2449)                     0.00       8.38 f
+  dut_alu_1/mu0/inst1470/U2/x (ao22_1)                    0.70       9.08 f
+  dut_alu_1/mu0/inst1470/carry (FA_2449)                  0.00       9.08 f
+  dut_alu_1/mu0/inst1471/I3 (FA_2448)                     0.00       9.08 f
+  dut_alu_1/mu0/inst1471/U2/x (ao22_1)                    0.70       9.78 f
+  dut_alu_1/mu0/inst1471/carry (FA_2448)                  0.00       9.78 f
+  dut_alu_1/mu0/inst1472/I3 (FA_2447)                     0.00       9.78 f
+  dut_alu_1/mu0/inst1472/U2/x (ao22_1)                    0.70      10.48 f
+  dut_alu_1/mu0/inst1472/carry (FA_2447)                  0.00      10.48 f
+  dut_alu_1/mu0/inst1473/I3 (FA_2446)                     0.00      10.48 f
+  dut_alu_1/mu0/inst1473/U2/x (ao22_1)                    0.70      11.18 f
+  dut_alu_1/mu0/inst1473/carry (FA_2446)                  0.00      11.18 f
+  dut_alu_1/mu0/inst1474/I3 (FA_2445)                     0.00      11.18 f
+  dut_alu_1/mu0/inst1474/U2/x (ao22_1)                    0.70      11.88 f
+  dut_alu_1/mu0/inst1474/carry (FA_2445)                  0.00      11.88 f
+  dut_alu_1/mu0/inst1475/I3 (FA_2444)                     0.00      11.88 f
+  dut_alu_1/mu0/inst1475/U2/x (ao22_1)                    0.71      12.60 f
+  dut_alu_1/mu0/inst1475/carry (FA_2444)                  0.00      12.60 f
+  dut_alu_1/mu0/inst1476/I3 (FA_2443)                     0.00      12.60 f
+  dut_alu_1/mu0/inst1476/U2/x (ao22_2)                    0.62      13.22 f
+  dut_alu_1/mu0/inst1476/carry (FA_2443)                  0.00      13.22 f
+  dut_alu_1/mu0/inst1477/I3 (FA_2442)                     0.00      13.22 f
+  dut_alu_1/mu0/inst1477/U2/x (ao22_1)                    0.57      13.79 f
+  dut_alu_1/mu0/inst1477/carry (FA_2442)                  0.00      13.79 f
+  dut_alu_1/mu0/inst1478/I3 (FA_2441)                     0.00      13.79 f
+  dut_alu_1/mu0/inst1478/U2/x (ao22_2)                    0.61      14.39 f
+  dut_alu_1/mu0/inst1478/carry (FA_2441)                  0.00      14.39 f
+  dut_alu_1/mu0/inst1479/I3 (FA_2440)                     0.00      14.39 f
+  dut_alu_1/mu0/inst1479/U2/x (ao22_1)                    0.51      14.91 f
+  dut_alu_1/mu0/inst1479/carry (FA_2440)                  0.00      14.91 f
+  dut_alu_1/mu0/inst1480/I3 (FA_2439)                     0.00      14.91 f
+  dut_alu_1/mu0/inst1480/U5/x (ao22_2)                    0.54      15.44 f
+  dut_alu_1/mu0/inst1480/carry (FA_2439)                  0.00      15.44 f
+  dut_alu_1/mu0/inst1481/I3 (FA_2438)                     0.00      15.44 f
+  dut_alu_1/mu0/inst1481/U5/x (ao22_2)                    0.42      15.87 f
+  dut_alu_1/mu0/inst1481/carry (FA_2438)                  0.00      15.87 f
+  dut_alu_1/mu0/inst1482/I3 (FA_2437)                     0.00      15.87 f
+  dut_alu_1/mu0/inst1482/U5/x (ao22_2)                    0.42      16.29 f
+  dut_alu_1/mu0/inst1482/carry (FA_2437)                  0.00      16.29 f
+  dut_alu_1/mu0/inst1483/I3 (FA_2436)                     0.00      16.29 f
+  dut_alu_1/mu0/inst1483/U5/x (ao22_2)                    0.42      16.71 f
+  dut_alu_1/mu0/inst1483/carry (FA_2436)                  0.00      16.71 f
+  dut_alu_1/mu0/inst1484/I3 (FA_2435)                     0.00      16.71 f
+  dut_alu_1/mu0/inst1484/U5/x (ao22_2)                    0.42      17.13 f
+  dut_alu_1/mu0/inst1484/carry (FA_2435)                  0.00      17.13 f
+  dut_alu_1/mu0/inst1485/I3 (FA_2434)                     0.00      17.13 f
+  dut_alu_1/mu0/inst1485/U5/x (ao22_2)                    0.42      17.55 f
+  dut_alu_1/mu0/inst1485/carry (FA_2434)                  0.00      17.55 f
+  dut_alu_1/mu0/inst1486/I3 (FA_2433)                     0.00      17.55 f
+  dut_alu_1/mu0/inst1486/U5/x (ao22_2)                    0.42      17.97 f
+  dut_alu_1/mu0/inst1486/carry (FA_2433)                  0.00      17.97 f
+  dut_alu_1/mu0/inst1487/I3 (FA_2432)                     0.00      17.97 f
+  dut_alu_1/mu0/inst1487/U5/x (ao22_2)                    0.43      18.40 f
+  dut_alu_1/mu0/inst1487/carry (FA_2432)                  0.00      18.40 f
+  dut_alu_1/mu0/inst1488/I3 (FA_2431)                     0.00      18.40 f
+  dut_alu_1/mu0/inst1488/U4/x (ao22_2)                    0.44      18.83 f
+  dut_alu_1/mu0/inst1488/carry (FA_2431)                  0.00      18.83 f
+  dut_alu_1/mu0/inst1489/I3 (FA_2430)                     0.00      18.83 f
+  dut_alu_1/mu0/inst1489/U1/x (exor2_1)                   0.28      19.11 r
+  dut_alu_1/mu0/inst1489/sum (FA_2430)                    0.00      19.11 r
+  dut_alu_1/mu0/r15s_reg_reg[30]/d (sdffp_2)              0.00      19.11 r
+  data arrival time                                                 19.11
+
+  clock clk_2 (rise edge)                                20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  dut_alu_1/mu0/r15s_reg_reg[30]/ck (sdffp_2)             0.00      20.00 r
+  library setup time                                     -0.89      19.11
+  data required time                                                19.11
+  --------------------------------------------------------------------------
+  data required time                                                19.11
+  data arrival time                                                -19.11
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+  ****************************************
+Report : area
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 17:31:22 2018
+****************************************
+
+Library(s) Used:
+
+    cdr3synPwcslV225T125 (File: /home/faculty/chsotiriou/IHP-Lib/IHP-0.25um/digital/synopsys/sgc25a.max.db)
+
+Number of ports:                        24535
+Number of nets:                        108890
+Number of cells:                        88497
+Number of combinational cells:          33150
+Number of sequential cells:             51352
+Number of macros/black boxes:               0
+Number of buf/inv:                      11458
+Number of references:                       9
+
+Combinational area:            5749148.437500
+Buf/Inv area:                  1691239.062500
+Noncombinational area:        14044082.812500
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:              19793231.250000
+Total area:                 undefined
+
+compile -map_effort high -area_effort low -scan 
+
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 17:56:43 2018
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: cdr3synPwcslV225T125
+Wire Load Model Mode: enclosed
+
+  Startpoint: dut_alu_1/PDone_reg
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_core_control_0/ctrl_data_contition_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  core_control       1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  dut_alu_1/PDone_reg/ck (sdffpr_2)                       0.00 #    60.00 r
+  dut_alu_1/PDone_reg/q (sdffpr_2)                        0.68      60.68 f
+  dut_alu_1/PDone (alu_2)                                 0.00      60.68 f
+  U2/x (and4_2)                                           0.60      61.28 f
+  dut_core_control_0/procc_done (core_control)            0.00      61.28 f
+  dut_core_control_0/U27/x (oai21_1)                      0.38      61.66 r
+  dut_core_control_0/U25/x (and4i_1)                      0.75      62.41 r
+  dut_core_control_0/U28/x (inv_2)                        0.75      63.16 f
+  dut_core_control_0/U29/x (nand2_2)                      0.53      63.69 r
+  dut_core_control_0/U32/x (inv_2)                        0.25      63.94 f
+  dut_core_control_0/U31/x (ao21_1)                       0.35      64.29 f
+  dut_core_control_0/ctrl_data_contition_reg[0]/d (sdffpr_2)
+                                                          0.00      64.29 f
+  data arrival time                                                 64.29
+
+  clock clk (rise edge)                                  80.00      80.00
+  clock network delay (ideal)                             0.00      80.00
+  dut_core_control_0/ctrl_data_contition_reg[0]/ck (sdffpr_2)
+                                                          0.00      80.00 r
+  library setup time                                     -0.91      79.09
+  data required time                                                79.09
+  --------------------------------------------------------------------------
+  data required time                                                79.09
+  data arrival time                                                -64.29
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.79
+
+
+  Startpoint: dut_alu_0/mu0/pp_reg_reg[512]
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_alu_0/mu0/rc_last_reg_reg[15]
+            (rising edge-triggered flip-flop clocked by clk_2)
+  Path Group: clk_2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  multiplier_3       16K                   cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  dut_alu_0/mu0/pp_reg_reg[512]/ck (sdffpc_1)             0.00 #     0.00 r
+  dut_alu_0/mu0/pp_reg_reg[512]/q (sdffpc_1)              0.87       0.87 f
+  dut_alu_0/mu0/inst1490/I2 (HA_112)                      0.00       0.87 f
+  dut_alu_0/mu0/inst1490/U1/x (and2_1)                    0.79       1.65 f
+  dut_alu_0/mu0/inst1490/carry (HA_112)                   0.00       1.65 f
+  dut_alu_0/mu0/inst1491/I3 (FA_3389)                     0.00       1.65 f
+  dut_alu_0/mu0/inst1491/U1/x (ao22_2)                    0.62       2.27 f
+  dut_alu_0/mu0/inst1491/carry (FA_3389)                  0.00       2.27 f
+  dut_alu_0/mu0/inst1492/I3 (FA_3388)                     0.00       2.27 f
+  dut_alu_0/mu0/inst1492/U2/x (ao22_1)                    0.56       2.83 f
+  dut_alu_0/mu0/inst1492/carry (FA_3388)                  0.00       2.83 f
+  dut_alu_0/mu0/inst1493/I3 (FA_3387)                     0.00       2.83 f
+  dut_alu_0/mu0/inst1493/U2/x (ao22_1)                    0.71       3.54 f
+  dut_alu_0/mu0/inst1493/carry (FA_3387)                  0.00       3.54 f
+  dut_alu_0/mu0/inst1494/I3 (FA_3386)                     0.00       3.54 f
+  dut_alu_0/mu0/inst1494/U1/x (ao22_2)                    0.63       4.17 f
+  dut_alu_0/mu0/inst1494/carry (FA_3386)                  0.00       4.17 f
+  dut_alu_0/mu0/inst1495/I3 (FA_3385)                     0.00       4.17 f
+  dut_alu_0/mu0/inst1495/U1/x (ao22_2)                    0.47       4.64 f
+  dut_alu_0/mu0/inst1495/carry (FA_3385)                  0.00       4.64 f
+  dut_alu_0/mu0/inst1496/I3 (FA_3384)                     0.00       4.64 f
+  dut_alu_0/mu0/inst1496/U2/x (ao22_1)                    0.59       5.23 f
+  dut_alu_0/mu0/inst1496/carry (FA_3384)                  0.00       5.23 f
+  dut_alu_0/mu0/inst1497/I3 (FA_3383)                     0.00       5.23 f
+  dut_alu_0/mu0/inst1497/U1/x (ao22_3)                    0.66       5.89 f
+  dut_alu_0/mu0/inst1497/carry (FA_3383)                  0.00       5.89 f
+  dut_alu_0/mu0/inst1498/I3 (FA_3382)                     0.00       5.89 f
+  dut_alu_0/mu0/inst1498/U1/x (ao22_5)                    0.41       6.30 f
+  dut_alu_0/mu0/inst1498/carry (FA_3382)                  0.00       6.30 f
+  dut_alu_0/mu0/inst1499/I3 (FA_3381)                     0.00       6.30 f
+  dut_alu_0/mu0/inst1499/U2/x (ao22_1)                    0.51       6.82 f
+  dut_alu_0/mu0/inst1499/carry (FA_3381)                  0.00       6.82 f
+  dut_alu_0/mu0/inst1500/I3 (FA_3380)                     0.00       6.82 f
+  dut_alu_0/mu0/inst1500/U1/x (ao22_3)                    0.66       7.48 f
+  dut_alu_0/mu0/inst1500/carry (FA_3380)                  0.00       7.48 f
+  dut_alu_0/mu0/inst1501/I3 (FA_3379)                     0.00       7.48 f
+  dut_alu_0/mu0/inst1501/U1/x (ao22_6)                    0.41       7.89 f
+  dut_alu_0/mu0/inst1501/carry (FA_3379)                  0.00       7.89 f
+  dut_alu_0/mu0/inst1502/I3 (FA_3378)                     0.00       7.89 f
+  dut_alu_0/mu0/inst1502/U2/x (ao22_1)                    0.50       8.39 f
+  dut_alu_0/mu0/inst1502/carry (FA_3378)                  0.00       8.39 f
+  dut_alu_0/mu0/inst1503/I3 (FA_3377)                     0.00       8.39 f
+  dut_alu_0/mu0/inst1503/U1/x (ao22_3)                    0.66       9.05 f
+  dut_alu_0/mu0/inst1503/carry (FA_3377)                  0.00       9.05 f
+  dut_alu_0/mu0/inst1504/I3 (FA_3376)                     0.00       9.05 f
+  dut_alu_0/mu0/inst1504/U1/x (ao22_6)                    0.43       9.48 f
+  dut_alu_0/mu0/inst1504/carry (FA_3376)                  0.00       9.48 f
+  dut_alu_0/mu0/inst1505/I3 (FA_3375)                     0.00       9.48 f
+  dut_alu_0/mu0/inst1505/U1/x (ao22_6)                    0.34       9.82 f
+  dut_alu_0/mu0/inst1505/carry (FA_3375)                  0.00       9.82 f
+  dut_alu_0/mu0/inst1506/I3 (FA_3374)                     0.00       9.82 f
+  dut_alu_0/mu0/inst1506/U2/x (ao22_1)                    0.50      10.32 f
+  dut_alu_0/mu0/inst1506/carry (FA_3374)                  0.00      10.32 f
+  dut_alu_0/mu0/inst1507/I3 (FA_3373)                     0.00      10.32 f
+  dut_alu_0/mu0/inst1507/U1/x (ao22_3)                    0.66      10.98 f
+  dut_alu_0/mu0/inst1507/carry (FA_3373)                  0.00      10.98 f
+  dut_alu_0/mu0/inst1508/I3 (FA_3372)                     0.00      10.98 f
+  dut_alu_0/mu0/inst1508/U1/x (ao22_6)                    0.41      11.40 f
+  dut_alu_0/mu0/inst1508/carry (FA_3372)                  0.00      11.40 f
+  dut_alu_0/mu0/inst1509/I3 (FA_3371)                     0.00      11.40 f
+  dut_alu_0/mu0/inst1509/U2/x (ao22_1)                    0.48      11.88 f
+  dut_alu_0/mu0/inst1509/carry (FA_3371)                  0.00      11.88 f
+  dut_alu_0/mu0/inst1510/I3 (FA_3370)                     0.00      11.88 f
+  dut_alu_0/mu0/inst1510/U1/x (ao22_2)                    0.62      12.50 f
+  dut_alu_0/mu0/inst1510/carry (FA_3370)                  0.00      12.50 f
+  dut_alu_0/mu0/inst1511/I3 (FA_3369)                     0.00      12.50 f
+  dut_alu_0/mu0/inst1511/U2/x (ao22_1)                    0.56      13.06 f
+  dut_alu_0/mu0/inst1511/carry (FA_3369)                  0.00      13.06 f
+  dut_alu_0/mu0/inst1512/I3 (FA_3368)                     0.00      13.06 f
+  dut_alu_0/mu0/inst1512/U2/x (ao22_1)                    0.70      13.76 f
+  dut_alu_0/mu0/inst1512/carry (FA_3368)                  0.00      13.76 f
+  dut_alu_0/mu0/inst1513/I3 (FA_3367)                     0.00      13.76 f
+  dut_alu_0/mu0/inst1513/U2/x (ao22_1)                    0.70      14.46 f
+  dut_alu_0/mu0/inst1513/carry (FA_3367)                  0.00      14.46 f
+  dut_alu_0/mu0/inst1514/I3 (FA_3366)                     0.00      14.46 f
+  dut_alu_0/mu0/inst1514/U2/x (ao22_1)                    0.70      15.16 f
+  dut_alu_0/mu0/inst1514/carry (FA_3366)                  0.00      15.16 f
+  dut_alu_0/mu0/inst1515/I3 (FA_3365)                     0.00      15.16 f
+  dut_alu_0/mu0/inst1515/U2/x (ao22_1)                    0.70      15.87 f
+  dut_alu_0/mu0/inst1515/carry (FA_3365)                  0.00      15.87 f
+  dut_alu_0/mu0/inst1516/I3 (FA_3364)                     0.00      15.87 f
+  dut_alu_0/mu0/inst1516/U2/x (ao22_1)                    0.70      16.57 f
+  dut_alu_0/mu0/inst1516/carry (FA_3364)                  0.00      16.57 f
+  dut_alu_0/mu0/inst1517/I3 (FA_3363)                     0.00      16.57 f
+  dut_alu_0/mu0/inst1517/U2/x (ao22_1)                    0.70      17.27 f
+  dut_alu_0/mu0/inst1517/carry (FA_3363)                  0.00      17.27 f
+  dut_alu_0/mu0/inst1518/I3 (FA_3362)                     0.00      17.27 f
+  dut_alu_0/mu0/inst1518/U2/x (ao22_1)                    0.70      17.97 f
+  dut_alu_0/mu0/inst1518/carry (FA_3362)                  0.00      17.97 f
+  dut_alu_0/mu0/inst1519/I3 (FA_3361)                     0.00      17.97 f
+  dut_alu_0/mu0/inst1519/U2/x (ao22_1)                    0.70      18.67 f
+  dut_alu_0/mu0/inst1519/carry (FA_3361)                  0.00      18.67 f
+  dut_alu_0/mu0/inst1520/I3 (FA_3360)                     0.00      18.67 f
+  dut_alu_0/mu0/inst1520/U2/x (ao22_1)                    0.63      19.30 f
+  dut_alu_0/mu0/inst1520/carry (FA_3360)                  0.00      19.30 f
+  dut_alu_0/mu0/rc_last_reg_reg[15]/d (sdffp_1)           0.00      19.30 f
+  data arrival time                                                 19.30
+
+  clock clk_2 (rise edge)                                20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  dut_alu_0/mu0/rc_last_reg_reg[15]/ck (sdffp_1)          0.00      20.00 r
+  library setup time                                     -0.70      19.30
+  data required time                                                19.30
+  --------------------------------------------------------------------------
+  data required time                                                19.30
+  data arrival time                                                -19.30
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+  ****************************************
+Report : area
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 17:59:16 2018
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'simd_top_level' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    cdr3synPwcslV225T125 (File: /home/faculty/chsotiriou/IHP-Lib/IHP-0.25um/digital/synopsys/sgc25a.max.db)
+
+Number of ports:                        24535
+Number of nets:                        103034
+Number of cells:                        82747
+Number of combinational cells:          27400
+Number of sequential cells:             51352
+Number of macros/black boxes:               0
+Number of buf/inv:                       5620
+Number of references:                       9
+
+Combinational area:            4568931.250000
+Buf/Inv area:                   445981.250000
+Noncombinational area:        11217232.812500
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:              15786164.062500
+Total area:                 undefined
+
+compile -map_effort high -area_effort high -scan 
+
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 18:07:36 2018
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: cdr3synPwcslV225T125
+Wire Load Model Mode: enclosed
+
+  Startpoint: dut_alu_1/PDone_reg
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_core_control_0/ctrl_data_contition_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  core_control       1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  dut_alu_1/PDone_reg/ck (sdffpr_2)                       0.00 #    60.00 r
+  dut_alu_1/PDone_reg/q (sdffpr_2)                        0.68      60.68 f
+  dut_alu_1/PDone (alu_2)                                 0.00      60.68 f
+  U2/x (and4_2)                                           0.60      61.28 f
+  dut_core_control_0/procc_done (core_control)            0.00      61.28 f
+  dut_core_control_0/U26/x (oai21_1)                      0.38      61.66 r
+  dut_core_control_0/U24/x (and4i_1)                      0.75      62.41 r
+  dut_core_control_0/U17/x (inv_2)                        0.75      63.16 f
+  dut_core_control_0/U19/x (nand2_2)                      0.53      63.69 r
+  dut_core_control_0/U34/x (inv_2)                        0.25      63.94 f
+  dut_core_control_0/U32/x (ao21_1)                       0.35      64.29 f
+  dut_core_control_0/ctrl_data_contition_reg[0]/d (sdffpr_2)
+                                                          0.00      64.29 f
+  data arrival time                                                 64.29
+
+  clock clk (rise edge)                                  80.00      80.00
+  clock network delay (ideal)                             0.00      80.00
+  dut_core_control_0/ctrl_data_contition_reg[0]/ck (sdffpr_2)
+                                                          0.00      80.00 r
+  library setup time                                     -0.91      79.09
+  data required time                                                79.09
+  --------------------------------------------------------------------------
+  data required time                                                79.09
+  data arrival time                                                -64.29
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.79
+
+
+  Startpoint: dut_alu_0/mu0/r27s_reg_reg[2]
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_alu_0/mu0/rc_last_reg_reg[27]
+            (rising edge-triggered flip-flop clocked by clk_2)
+  Path Group: clk_2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  multiplier_3       16K                   cdr3synPwcslV225T125
+  FA_3029            1K                    cdr3synPwcslV225T125
+  FA_3011            1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  dut_alu_0/mu0/r27s_reg_reg[2]/ck (sdffp_1)              0.00 #     0.00 r
+  dut_alu_0/mu0/r27s_reg_reg[2]/q (sdffp_1)               1.03       1.03 r
+  dut_alu_0/mu0/inst1863/I1 (FA_3029)                     0.00       1.03 r
+  dut_alu_0/mu0/inst1863/U2/x (buf_2)                     0.43       1.46 r
+  dut_alu_0/mu0/inst1863/U7/x (inv_2)                     0.21       1.67 f
+  dut_alu_0/mu0/inst1863/U5/x (nand2_2)                   0.16       1.83 r
+  dut_alu_0/mu0/inst1863/U6/x (nand2_2)                   0.19       2.02 f
+  dut_alu_0/mu0/inst1863/U3/x (ao22_1)                    0.53       2.55 f
+  dut_alu_0/mu0/inst1863/carry (FA_3029)                  0.00       2.55 f
+  dut_alu_0/mu0/inst1864/I3 (FA_3028)                     0.00       2.55 f
+  dut_alu_0/mu0/inst1864/U1/x (ao22_2)                    0.62       3.17 f
+  dut_alu_0/mu0/inst1864/carry (FA_3028)                  0.00       3.17 f
+  dut_alu_0/mu0/inst1865/I3 (FA_3027)                     0.00       3.17 f
+  dut_alu_0/mu0/inst1865/U1/x (ao22_2)                    0.48       3.65 f
+  dut_alu_0/mu0/inst1865/carry (FA_3027)                  0.00       3.65 f
+  dut_alu_0/mu0/inst1866/I3 (FA_3026)                     0.00       3.65 f
+  dut_alu_0/mu0/inst1866/U1/x (ao22_2)                    0.49       4.13 f
+  dut_alu_0/mu0/inst1866/carry (FA_3026)                  0.00       4.13 f
+  dut_alu_0/mu0/inst1867/I3 (FA_3025)                     0.00       4.13 f
+  dut_alu_0/mu0/inst1867/U1/x (ao22_3)                    0.46       4.60 f
+  dut_alu_0/mu0/inst1867/carry (FA_3025)                  0.00       4.60 f
+  dut_alu_0/mu0/inst1868/I3 (FA_3024)                     0.00       4.60 f
+  dut_alu_0/mu0/inst1868/U1/x (ao22_1)                    0.54       5.14 f
+  dut_alu_0/mu0/inst1868/carry (FA_3024)                  0.00       5.14 f
+  dut_alu_0/mu0/inst1869/I3 (FA_3023)                     0.00       5.14 f
+  dut_alu_0/mu0/inst1869/U1/x (ao22_3)                    0.65       5.79 f
+  dut_alu_0/mu0/inst1869/carry (FA_3023)                  0.00       5.79 f
+  dut_alu_0/mu0/inst1870/I3 (FA_3022)                     0.00       5.79 f
+  dut_alu_0/mu0/inst1870/U1/x (ao22_4)                    0.41       6.20 f
+  dut_alu_0/mu0/inst1870/carry (FA_3022)                  0.00       6.20 f
+  dut_alu_0/mu0/inst1871/I3 (FA_3021)                     0.00       6.20 f
+  dut_alu_0/mu0/inst1871/U2/x (ao22_1)                    0.53       6.73 f
+  dut_alu_0/mu0/inst1871/carry (FA_3021)                  0.00       6.73 f
+  dut_alu_0/mu0/inst1872/I3 (FA_3020)                     0.00       6.73 f
+  dut_alu_0/mu0/inst1872/U1/x (ao22_3)                    0.64       7.37 f
+  dut_alu_0/mu0/inst1872/carry (FA_3020)                  0.00       7.37 f
+  dut_alu_0/mu0/inst1873/I3 (FA_3019)                     0.00       7.37 f
+  dut_alu_0/mu0/inst1873/U1/x (ao22_2)                    0.43       7.81 f
+  dut_alu_0/mu0/inst1873/carry (FA_3019)                  0.00       7.81 f
+  dut_alu_0/mu0/inst1874/I3 (FA_3018)                     0.00       7.81 f
+  dut_alu_0/mu0/inst1874/U1/x (ao22_3)                    0.46       8.27 f
+  dut_alu_0/mu0/inst1874/carry (FA_3018)                  0.00       8.27 f
+  dut_alu_0/mu0/inst1875/I3 (FA_3017)                     0.00       8.27 f
+  dut_alu_0/mu0/inst1875/U2/x (ao22_1)                    0.52       8.79 f
+  dut_alu_0/mu0/inst1875/carry (FA_3017)                  0.00       8.79 f
+  dut_alu_0/mu0/inst1876/I3 (FA_3016)                     0.00       8.79 f
+  dut_alu_0/mu0/inst1876/U1/x (ao22_2)                    0.63       9.42 f
+  dut_alu_0/mu0/inst1876/carry (FA_3016)                  0.00       9.42 f
+  dut_alu_0/mu0/inst1877/I3 (FA_3015)                     0.00       9.42 f
+  dut_alu_0/mu0/inst1877/U1/x (ao22_2)                    0.48       9.90 f
+  dut_alu_0/mu0/inst1877/carry (FA_3015)                  0.00       9.90 f
+  dut_alu_0/mu0/inst1878/I3 (FA_3014)                     0.00       9.90 f
+  dut_alu_0/mu0/inst1878/U1/x (ao22_2)                    0.48      10.37 f
+  dut_alu_0/mu0/inst1878/carry (FA_3014)                  0.00      10.37 f
+  dut_alu_0/mu0/inst1879/I3 (FA_3013)                     0.00      10.37 f
+  dut_alu_0/mu0/inst1879/U1/x (ao22_2)                    0.48      10.85 f
+  dut_alu_0/mu0/inst1879/carry (FA_3013)                  0.00      10.85 f
+  dut_alu_0/mu0/inst1880/I3 (FA_3012)                     0.00      10.85 f
+  dut_alu_0/mu0/inst1880/U1/x (ao22_2)                    0.48      11.33 f
+  dut_alu_0/mu0/inst1880/carry (FA_3012)                  0.00      11.33 f
+  dut_alu_0/mu0/inst1881/I3 (FA_3011)                     0.00      11.33 f
+  dut_alu_0/mu0/inst1881/U3/x (nand2_2)                   0.28      11.61 r
+  dut_alu_0/mu0/inst1881/U1/x (nand2_2)                   0.21      11.82 f
+  dut_alu_0/mu0/inst1881/carry (FA_3011)                  0.00      11.82 f
+  dut_alu_0/mu0/inst1882/I3 (FA_3010)                     0.00      11.82 f
+  dut_alu_0/mu0/inst1882/U1/x (ao22_1)                    0.54      12.36 f
+  dut_alu_0/mu0/inst1882/carry (FA_3010)                  0.00      12.36 f
+  dut_alu_0/mu0/inst1883/I3 (FA_3009)                     0.00      12.36 f
+  dut_alu_0/mu0/inst1883/U2/x (ao22_1)                    0.70      13.06 f
+  dut_alu_0/mu0/inst1883/carry (FA_3009)                  0.00      13.06 f
+  dut_alu_0/mu0/inst1884/I3 (FA_3008)                     0.00      13.06 f
+  dut_alu_0/mu0/inst1884/U1/x (ao22_1)                    0.70      13.76 f
+  dut_alu_0/mu0/inst1884/carry (FA_3008)                  0.00      13.76 f
+  dut_alu_0/mu0/inst1885/I3 (FA_3007)                     0.00      13.76 f
+  dut_alu_0/mu0/inst1885/U2/x (ao22_1)                    0.70      14.46 f
+  dut_alu_0/mu0/inst1885/carry (FA_3007)                  0.00      14.46 f
+  dut_alu_0/mu0/inst1886/I3 (FA_3006)                     0.00      14.46 f
+  dut_alu_0/mu0/inst1886/U2/x (ao22_1)                    0.70      15.17 f
+  dut_alu_0/mu0/inst1886/carry (FA_3006)                  0.00      15.17 f
+  dut_alu_0/mu0/inst1887/I3 (FA_3005)                     0.00      15.17 f
+  dut_alu_0/mu0/inst1887/U2/x (ao22_1)                    0.70      15.87 f
+  dut_alu_0/mu0/inst1887/carry (FA_3005)                  0.00      15.87 f
+  dut_alu_0/mu0/inst1888/I3 (FA_3004)                     0.00      15.87 f
+  dut_alu_0/mu0/inst1888/U2/x (ao22_1)                    0.70      16.57 f
+  dut_alu_0/mu0/inst1888/carry (FA_3004)                  0.00      16.57 f
+  dut_alu_0/mu0/inst1889/I3 (FA_3003)                     0.00      16.57 f
+  dut_alu_0/mu0/inst1889/U1/x (ao22_1)                    0.70      17.27 f
+  dut_alu_0/mu0/inst1889/carry (FA_3003)                  0.00      17.27 f
+  dut_alu_0/mu0/inst1890/I3 (FA_3002)                     0.00      17.27 f
+  dut_alu_0/mu0/inst1890/U1/x (ao22_1)                    0.70      17.97 f
+  dut_alu_0/mu0/inst1890/carry (FA_3002)                  0.00      17.97 f
+  dut_alu_0/mu0/inst1891/I3 (FA_3001)                     0.00      17.97 f
+  dut_alu_0/mu0/inst1891/U2/x (ao22_1)                    0.70      18.68 f
+  dut_alu_0/mu0/inst1891/carry (FA_3001)                  0.00      18.68 f
+  dut_alu_0/mu0/inst1892/I3 (FA_3000)                     0.00      18.68 f
+  dut_alu_0/mu0/inst1892/U2/x (ao22_1)                    0.63      19.30 f
+  dut_alu_0/mu0/inst1892/carry (FA_3000)                  0.00      19.30 f
+  dut_alu_0/mu0/rc_last_reg_reg[27]/d (sdffp_1)           0.00      19.30 f
+  data arrival time                                                 19.30
+
+  clock clk_2 (rise edge)                                20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  dut_alu_0/mu0/rc_last_reg_reg[27]/ck (sdffp_1)          0.00      20.00 r
+  library setup time                                     -0.70      19.30
+  data required time                                                19.30
+  --------------------------------------------------------------------------
+  data required time                                                19.30
+  data arrival time                                                -19.30
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+****************************************
+Report : area
+Design : simd_top_level
+Version: M-2016.12
+Date   : Fri Apr 27 18:09:17 2018
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'simd_top_level' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    cdr3synPwcslV225T125 (File: /home/faculty/chsotiriou/IHP-Lib/IHP-0.25um/digital/synopsys/sgc25a.max.db)
+
+Number of ports:                        24535
+Number of nets:                        105275
+Number of cells:                        84988
+Number of combinational cells:          29641
+Number of sequential cells:             51352
+Number of macros/black boxes:               0
+Number of buf/inv:                       7675
+Number of references:                       9
+
+Combinational area:            4697956.250000
+Buf/Inv area:                   610553.125000
+Noncombinational area:        11211829.687500
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:              15909785.937500
+Total area:                 undefined
+
+      Uncollapsed Stuck Fault Summary Report 
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT     595025 
+  Possibly detected                PT          0 
+  Undetectable                     UD          0 
+  ATPG untestable                  AU          0 
+  Not detected                     ND          1 
+  ----------------------------------------------- 
+  total faults                            595026 
+  test coverage                           100.00% 
+  ----------------------------------------------- 
+             Pattern Summary Report 
+  ----------------------------------------------- 
+  #internal patterns                         992 
+      #basic_scan patterns                   992 
+  ----------------------------------------------- 
+
+
+  FINAL MAXS
+
+ ****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : simd_top_level
+Version: M-2016.12
+Date   : Mon Apr 30 14:29:06 2018
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: nom_pvt   Library: cdr3synPwcslV225T125
+Wire Load Model Mode: enclosed
+
+  Startpoint: dut_alu_1/PDone_reg
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_core_control_0/ctrl_data_contition_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  core_control       1K                    cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  dut_alu_1/PDone_reg/ck (sdffpr_2)                       0.00 #    60.00 r
+  dut_alu_1/PDone_reg/q (sdffpr_2)                        0.68      60.68 f
+  dut_alu_1/PDone (alu_2)                                 0.00      60.68 f
+  U2/x (and4_2)                                           0.60      61.28 f
+  dut_core_control_0/procc_done (core_control)            0.00      61.28 f
+  dut_core_control_0/U27/x (oai21_1)                      0.38      61.66 r
+  dut_core_control_0/U25/x (and4i_1)                      0.75      62.41 r
+  dut_core_control_0/U28/x (inv_2)                        0.75      63.16 f
+  dut_core_control_0/U29/x (nand2_2)                      0.53      63.69 r
+  dut_core_control_0/U32/x (inv_2)                        0.25      63.94 f
+  dut_core_control_0/U31/x (ao21_1)                       0.35      64.29 f
+  dut_core_control_0/ctrl_data_contition_reg[0]/d (sdffpr_2)
+                                                          0.00      64.29 f
+  data arrival time                                                 64.29
+
+  clock clk (rise edge)                                  80.00      80.00
+  clock network delay (ideal)                             0.00      80.00
+  dut_core_control_0/ctrl_data_contition_reg[0]/ck (sdffpr_2)
+                                                          0.00      80.00 r
+  library setup time                                     -0.91      79.09
+  data required time                                                79.09
+  --------------------------------------------------------------------------
+  data required time                                                79.09
+  data arrival time                                                -64.29
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.79
+
+
+  Startpoint: dut_alu_0/mu0/pp_reg_reg[512]
+              (rising edge-triggered flip-flop clocked by clk_2)
+  Endpoint: dut_alu_0/mu0/rc_last_reg_reg[15]
+            (rising edge-triggered flip-flop clocked by clk_2)
+  Path Group: clk_2
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  simd_top_level     200K                  cdr3synPwcslV225T125
+  multiplier_3       16K                   cdr3synPwcslV225T125
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_2 (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  dut_alu_0/mu0/pp_reg_reg[512]/ck (sdffpc_1)             0.00 #     0.00 r
+  dut_alu_0/mu0/pp_reg_reg[512]/q (sdffpc_1)              0.87       0.87 f
+  dut_alu_0/mu0/inst1490/I2 (HA_112)                      0.00       0.87 f
+  dut_alu_0/mu0/inst1490/U1/x (and2_1)                    0.79       1.65 f
+  dut_alu_0/mu0/inst1490/carry (HA_112)                   0.00       1.65 f
+  dut_alu_0/mu0/inst1491/I3 (FA_3389)                     0.00       1.65 f
+  dut_alu_0/mu0/inst1491/U1/x (ao22_2)                    0.62       2.27 f
+  dut_alu_0/mu0/inst1491/carry (FA_3389)                  0.00       2.27 f
+  dut_alu_0/mu0/inst1492/I3 (FA_3388)                     0.00       2.27 f
+  dut_alu_0/mu0/inst1492/U2/x (ao22_1)                    0.56       2.83 f
+  dut_alu_0/mu0/inst1492/carry (FA_3388)                  0.00       2.83 f
+  dut_alu_0/mu0/inst1493/I3 (FA_3387)                     0.00       2.83 f
+  dut_alu_0/mu0/inst1493/U2/x (ao22_1)                    0.71       3.54 f
+  dut_alu_0/mu0/inst1493/carry (FA_3387)                  0.00       3.54 f
+  dut_alu_0/mu0/inst1494/I3 (FA_3386)                     0.00       3.54 f
+  dut_alu_0/mu0/inst1494/U1/x (ao22_2)                    0.63       4.17 f
+  dut_alu_0/mu0/inst1494/carry (FA_3386)                  0.00       4.17 f
+  dut_alu_0/mu0/inst1495/I3 (FA_3385)                     0.00       4.17 f
+  dut_alu_0/mu0/inst1495/U1/x (ao22_2)                    0.47       4.64 f
+  dut_alu_0/mu0/inst1495/carry (FA_3385)                  0.00       4.64 f
+  dut_alu_0/mu0/inst1496/I3 (FA_3384)                     0.00       4.64 f
+  dut_alu_0/mu0/inst1496/U2/x (ao22_1)                    0.59       5.23 f
+  dut_alu_0/mu0/inst1496/carry (FA_3384)                  0.00       5.23 f
+  dut_alu_0/mu0/inst1497/I3 (FA_3383)                     0.00       5.23 f
+  dut_alu_0/mu0/inst1497/U1/x (ao22_3)                    0.66       5.89 f
+  dut_alu_0/mu0/inst1497/carry (FA_3383)                  0.00       5.89 f
+  dut_alu_0/mu0/inst1498/I3 (FA_3382)                     0.00       5.89 f
+  dut_alu_0/mu0/inst1498/U1/x (ao22_5)                    0.41       6.30 f
+  dut_alu_0/mu0/inst1498/carry (FA_3382)                  0.00       6.30 f
+  dut_alu_0/mu0/inst1499/I3 (FA_3381)                     0.00       6.30 f
+  dut_alu_0/mu0/inst1499/U2/x (ao22_1)                    0.51       6.82 f
+  dut_alu_0/mu0/inst1499/carry (FA_3381)                  0.00       6.82 f
+  dut_alu_0/mu0/inst1500/I3 (FA_3380)                     0.00       6.82 f
+  dut_alu_0/mu0/inst1500/U1/x (ao22_3)                    0.66       7.48 f
+  dut_alu_0/mu0/inst1500/carry (FA_3380)                  0.00       7.48 f
+  dut_alu_0/mu0/inst1501/I3 (FA_3379)                     0.00       7.48 f
+  dut_alu_0/mu0/inst1501/U1/x (ao22_6)                    0.41       7.89 f
+  dut_alu_0/mu0/inst1501/carry (FA_3379)                  0.00       7.89 f
+  dut_alu_0/mu0/inst1502/I3 (FA_3378)                     0.00       7.89 f
+  dut_alu_0/mu0/inst1502/U2/x (ao22_1)                    0.50       8.39 f
+  dut_alu_0/mu0/inst1502/carry (FA_3378)                  0.00       8.39 f
+  dut_alu_0/mu0/inst1503/I3 (FA_3377)                     0.00       8.39 f
+  dut_alu_0/mu0/inst1503/U1/x (ao22_3)                    0.66       9.05 f
+  dut_alu_0/mu0/inst1503/carry (FA_3377)                  0.00       9.05 f
+  dut_alu_0/mu0/inst1504/I3 (FA_3376)                     0.00       9.05 f
+  dut_alu_0/mu0/inst1504/U1/x (ao22_6)                    0.43       9.48 f
+  dut_alu_0/mu0/inst1504/carry (FA_3376)                  0.00       9.48 f
+  dut_alu_0/mu0/inst1505/I3 (FA_3375)                     0.00       9.48 f
+  dut_alu_0/mu0/inst1505/U1/x (ao22_6)                    0.34       9.82 f
+  dut_alu_0/mu0/inst1505/carry (FA_3375)                  0.00       9.82 f
+  dut_alu_0/mu0/inst1506/I3 (FA_3374)                     0.00       9.82 f
+  dut_alu_0/mu0/inst1506/U2/x (ao22_1)                    0.50      10.32 f
+  dut_alu_0/mu0/inst1506/carry (FA_3374)                  0.00      10.32 f
+  dut_alu_0/mu0/inst1507/I3 (FA_3373)                     0.00      10.32 f
+  dut_alu_0/mu0/inst1507/U1/x (ao22_3)                    0.66      10.98 f
+  dut_alu_0/mu0/inst1507/carry (FA_3373)                  0.00      10.98 f
+  dut_alu_0/mu0/inst1508/I3 (FA_3372)                     0.00      10.98 f
+  dut_alu_0/mu0/inst1508/U1/x (ao22_6)                    0.41      11.40 f
+  dut_alu_0/mu0/inst1508/carry (FA_3372)                  0.00      11.40 f
+  dut_alu_0/mu0/inst1509/I3 (FA_3371)                     0.00      11.40 f
+  dut_alu_0/mu0/inst1509/U2/x (ao22_1)                    0.48      11.88 f
+  dut_alu_0/mu0/inst1509/carry (FA_3371)                  0.00      11.88 f
+  dut_alu_0/mu0/inst1510/I3 (FA_3370)                     0.00      11.88 f
+  dut_alu_0/mu0/inst1510/U1/x (ao22_2)                    0.62      12.50 f
+  dut_alu_0/mu0/inst1510/carry (FA_3370)                  0.00      12.50 f
+  dut_alu_0/mu0/inst1511/I3 (FA_3369)                     0.00      12.50 f
+  dut_alu_0/mu0/inst1511/U2/x (ao22_1)                    0.56      13.06 f
+  dut_alu_0/mu0/inst1511/carry (FA_3369)                  0.00      13.06 f
+  dut_alu_0/mu0/inst1512/I3 (FA_3368)                     0.00      13.06 f
+  dut_alu_0/mu0/inst1512/U2/x (ao22_1)                    0.70      13.76 f
+  dut_alu_0/mu0/inst1512/carry (FA_3368)                  0.00      13.76 f
+  dut_alu_0/mu0/inst1513/I3 (FA_3367)                     0.00      13.76 f
+  dut_alu_0/mu0/inst1513/U2/x (ao22_1)                    0.70      14.46 f
+  dut_alu_0/mu0/inst1513/carry (FA_3367)                  0.00      14.46 f
+  dut_alu_0/mu0/inst1514/I3 (FA_3366)                     0.00      14.46 f
+  dut_alu_0/mu0/inst1514/U2/x (ao22_1)                    0.70      15.16 f
+  dut_alu_0/mu0/inst1514/carry (FA_3366)                  0.00      15.16 f
+  dut_alu_0/mu0/inst1515/I3 (FA_3365)                     0.00      15.16 f
+  dut_alu_0/mu0/inst1515/U2/x (ao22_1)                    0.70      15.87 f
+  dut_alu_0/mu0/inst1515/carry (FA_3365)                  0.00      15.87 f
+  dut_alu_0/mu0/inst1516/I3 (FA_3364)                     0.00      15.87 f
+  dut_alu_0/mu0/inst1516/U2/x (ao22_1)                    0.70      16.57 f
+  dut_alu_0/mu0/inst1516/carry (FA_3364)                  0.00      16.57 f
+  dut_alu_0/mu0/inst1517/I3 (FA_3363)                     0.00      16.57 f
+  dut_alu_0/mu0/inst1517/U2/x (ao22_1)                    0.70      17.27 f
+  dut_alu_0/mu0/inst1517/carry (FA_3363)                  0.00      17.27 f
+  dut_alu_0/mu0/inst1518/I3 (FA_3362)                     0.00      17.27 f
+  dut_alu_0/mu0/inst1518/U2/x (ao22_1)                    0.70      17.97 f
+  dut_alu_0/mu0/inst1518/carry (FA_3362)                  0.00      17.97 f
+  dut_alu_0/mu0/inst1519/I3 (FA_3361)                     0.00      17.97 f
+  dut_alu_0/mu0/inst1519/U2/x (ao22_1)                    0.70      18.67 f
+  dut_alu_0/mu0/inst1519/carry (FA_3361)                  0.00      18.67 f
+  dut_alu_0/mu0/inst1520/I3 (FA_3360)                     0.00      18.67 f
+  dut_alu_0/mu0/inst1520/U2/x (ao22_1)                    0.63      19.30 f
+  dut_alu_0/mu0/inst1520/carry (FA_3360)                  0.00      19.30 f
+  dut_alu_0/mu0/rc_last_reg_reg[15]/d (sdffp_1)           0.00      19.30 f
+  data arrival time                                                 19.30
+
+  clock clk_2 (rise edge)                                20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  dut_alu_0/mu0/rc_last_reg_reg[15]/ck (sdffp_1)          0.00      20.00 r
+  library setup time                                     -0.70      19.30
+  data required time                                                19.30
+  --------------------------------------------------------------------------
+  data required time                                                19.30
+  data arrival time                                                -19.30
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+No Scan flip flops
+
+
+****************************************
+Report : area
+Design : simd_top_level
+Version: M-2016.12
+Date   : Mon Apr 30 14:30:19 2018
+****************************************
+
+Library(s) Used:
+
+    cdr3synPwcslV225T125 (File: /home/faculty/chsotiriou/IHP-Lib/IHP-0.25um/digital/synopsys/sgc25a.max.db)
+
+Number of ports:                        24535
+Number of nets:                        103034
+Number of cells:                        82747
+Number of combinational cells:          27400
+Number of sequential cells:             51352
+Number of macros/black boxes:               0
+Number of buf/inv:                       5620
+Number of references:                       9
+
+Combinational area:            4568931.250000
+Buf/Inv area:                   445981.250000
+Noncombinational area:        11217232.812500
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:              15786164.062500
+Total area:                 undefined
+1
+
+scan flip flops
+
+****************************************
+Report : area
+Design : simd_top_level
+Version: M-2016.12
+Date   : Mon Apr 30 14:32:37 2018
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'simd_top_level' contains 3 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    cdr3synPwcslV225T125 (File: /home/faculty/chsotiriou/IHP-Lib/IHP-0.25um/digital/synopsys/sgc25a.max.db)
+
+Number of ports:                        24568
+Number of nets:                        102631
+Number of cells:                        57081
+Number of combinational cells:          27400
+Number of sequential cells:             25686
+Number of macros/black boxes:               0
+Number of buf/inv:                       5620
+Number of references:                       9
+
+Combinational area:            4568931.250000
+Buf/Inv area:                   445981.250000
+Noncombinational area:        11217232.812500
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:              15786164.062500
+Total area:                 undefined
+1
+
+
+     Uncollapsed Stuck Fault Summary Report 
+  ----------------------------------------------- 
+  fault class                     code   #faults 
+  ------------------------------  ----  --------- 
+  Detected                         DT     595025 
+  Possibly detected                PT          0 
+  Undetectable                     UD          0 
+  ATPG untestable                  AU          0 
+  Not detected                     ND          1 
+  ----------------------------------------------- 
+  total faults                            595026 
+  test coverage                           100.00% 
+  ----------------------------------------------- 
+             Pattern Summary Report 
+  ----------------------------------------------- 
+  #internal patterns                         992 
+      #basic_scan patterns                   992 
+  ----------------------------------------------- 
+
+No scan flip-flops
+NO ANOTAION
+
+Global Operating Voltage = 2.25 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = Unitless
+
+      
+  Cell Internal Power  = 125.8945 mW   (99%)
+  Net Switching Power  =   1.3277 mW    (1%)
+                         ---------
+Total Dynamic Power    = 127.2222 mW  (100%)
+
+Cell Leakage Power     =   0.0000 
+
+Error: Either dynamic power or leakage power, in the library, is unitless. Unable to display complete power group summary. (PWR-799)
+ 
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000               NA   (     N/A)
+memory             0.0000            0.0000            0.0000               NA   (     N/A)
+black_box          0.0000            0.0000            0.0000               NA   (     N/A)
+clock_network      0.0000            0.0000            0.0000               NA   (     N/A)
+register         125.4721            0.2517            0.0000               NA   (     N/A)
+sequential         0.0000            0.0000            0.0000               NA   (     N/A)
+combinational      0.4223            1.0761            0.0000               NA   (     N/A)
+--------------------------------------------------------------------------------------------------
+Total            125.8944 mW         1.3278 mW         0.0000               NA        
+1
+
+
+scan flip flops
+NO ANNOTATION
+
+Global Operating Voltage = 2.25 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = Unitless
+
+ 
+  Cell Internal Power  = 267.8783 mW   (86%)
+  Net Switching Power  =  44.4632 mW   (14%)
+                         ---------
+Total Dynamic Power    = 312.3414 mW  (100%)
+
+Cell Leakage Power     =   0.0000 
+
+Error: Either dynamic power or leakage power, in the library, is unitless. Unable to display complete power group summary. (PWR-799)
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000               NA   (     N/A)
+memory             0.0000            0.0000            0.0000               NA   (     N/A)
+black_box          0.0000            0.0000            0.0000               NA   (     N/A)
+clock_network      0.0000            0.0000            0.0000               NA   (     N/A)
+register         220.2973           19.8656            0.0000               NA   (     N/A)
+sequential         0.0000            0.0000            0.0000               NA   (     N/A)
+combinational     47.5821           24.5968            0.0000               NA   (     N/A)
+--------------------------------------------------------------------------------------------------
+Total            267.8794 mW        44.4625 mW         0.0000               NA        
+
+
+No scan flip-flops
+WITH SAIF
+
+Global Operating Voltage = 2.25 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = Unitless
+
+      
+  Cell Internal Power  = 136.0836 mW   (97%)
+  Net Switching Power  =   3.9547 mW    (3%)
+                         ---------
+Total Dynamic Power    = 140.0382 mW  (100%)
+
+Cell Leakage Power     =   0.0000 
+
+Error: Either dynamic power or leakage power, in the library, is unitless. Unable to display complete power group summary. (PWR-799)
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000               NA   (     N/A)
+memory             0.0000            0.0000            0.0000               NA   (     N/A)
+black_box          0.0000            0.0000            0.0000               NA   (     N/A)
+clock_network      0.0000            0.0000            0.0000               NA   (     N/A)
+register         130.4456            1.3088            0.0000               NA   (     N/A)
+sequential         0.0000            0.0000            0.0000               NA   (     N/A)
+combinational      5.6386            2.6459            0.0000               NA   (     N/A)
+--------------------------------------------------------------------------------------------------
+Total            136.0842 mW         3.9547 mW         0.0000               NA        
+1
+
+No scan flip-flops
+WITH VCD2SAIF
+
+Global Operating Voltage = 2.25 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = Unitless
+
+      
+  Cell Internal Power  = 136.0904 mW   (97%)
+  Net Switching Power  =   3.9554 mW    (3%)
+                         ---------
+Total Dynamic Power    = 140.0457 mW  (100%)
+
+Cell Leakage Power     =   0.0000 
+
+Error: Either dynamic power or leakage power, in the library, is unitless. Unable to display complete power group summary. (PWR-799)
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000               NA   (     N/A)
+memory             0.0000            0.0000            0.0000               NA   (     N/A)
+black_box          0.0000            0.0000            0.0000               NA   (     N/A)
+clock_network      0.0000            0.0000            0.0000               NA   (     N/A)
+register         130.4517            1.3091            0.0000               NA   (     N/A)
+sequential         0.0000            0.0000            0.0000               NA   (     N/A)
+combinational      5.6393            2.6463            0.0000               NA   (     N/A)
+--------------------------------------------------------------------------------------------------
+Total            136.0910 mW         3.9554 mW         0.0000               NA        
+1
+
+with more complete testbench and unit names same as instanciation exept for alu
+
+Global Operating Voltage = 2.25 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = Unitless
+
+     
+  Cell Internal Power  = 132.8224 mW   (98%)
+  Net Switching Power  =   3.1163 mW    (2%)
+                         ---------
+Total Dynamic Power    = 135.9386 mW  (100%)
+
+Cell Leakage Power     =   0.0000 
+
+Error: Either dynamic power or leakage power, in the library, is unitless. Unable to display complete power group summary. (PWR-799)
+ 
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000               NA   (     N/A)
+memory             0.0000            0.0000            0.0000               NA   (     N/A)
+black_box          0.0000            0.0000            0.0000               NA   (     N/A)
+clock_network      0.0000            0.0000            0.0000               NA   (     N/A)
+register         128.6523            0.9629            0.0000               NA   (     N/A)
+sequential         0.0000            0.0000            0.0000               NA   (     N/A)
+combinational      4.1704            2.1534            0.0000               NA   (     N/A)
+--------------------------------------------------------------------------------------------------
+Total            132.8227 mW         3.1163 mW         0.0000               NA        
+1
+dc_shell>    
+
+with more complete testbench and unit names same as instanciation exept for alu
+
+stated simd_top_level as the top module in rtl vcd, probe setup as well as library setup
+read SAIF power simd_saif.saif
+
+most acurate thus far
+
+Global Operating Voltage = 2.25 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = Unitless
+
+
+  Cell Internal Power  = 133.0945 mW   (98%)
+  Net Switching Power  =   3.3195 mW    (2%)
+                         ---------
+Total Dynamic Power    = 136.4140 mW  (100%)
+
+Cell Leakage Power     =   0.0000 
+
+Error: Either dynamic power or leakage power, in the library, is unitless. Unable to display complete power group summary. (PWR-799)
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000               NA   (     N/A)
+memory             0.0000            0.0000            0.0000               NA   (     N/A)
+black_box          0.0000            0.0000            0.0000               NA   (     N/A)
+clock_network      0.0000            0.0000            0.0000               NA   (     N/A)
+register         128.5455            0.8936            0.0000               NA   (     N/A)
+sequential         0.0000            0.0000            0.0000               NA   (     N/A)
+combinational      4.5486            2.4260            0.0000               NA   (     N/A)
+--------------------------------------------------------------------------------------------------
+Total            133.0941 mW         3.3195 mW         0.0000               NA        
+1
+
+****************************************
+Report : saif
+Design : simd_top_level
+Version: M-2016.12
+Date   : Sun May  6 16:37:45 2018
+****************************************
+
+  
+
+--------------------------------------------------------------------------------
+              User              Default           Propagated
+Object type   Annotated (%)     Activity (%)      Activity (%)       Total
+--------------------------------------------------------------------------------
+  
+ Nets         534(100.00%)      0(0.00%)          0(0.00%)           534
+ Ports        526(100.00%)      0(0.00%)          0(0.00%)           526
+ Pins         9(100.00%)        0(0.00%)          0(0.00%)           9
+--------------------------------------------------------------------------------
+1
+
+136.4140 = 2.25 * I 
+I = 60.628444
+
+stated simd_top_level as the top module in rtl vcd, probe setup as well as library setup
+correct vcd ending 
+vcd2saif and then 
+read SAIF power 
+noluck
